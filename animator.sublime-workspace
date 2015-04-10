@@ -1,0 +1,1130 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"E",
+				"EqualT"
+			],
+			[
+				"Supe",
+				"SuperEqual"
+			],
+			[
+				"int",
+				"interval"
+			],
+			[
+				"prot",
+				"proteinIndex"
+			],
+			[
+				"pro",
+				"proteinIndex"
+			],
+			[
+				"cal",
+				"calcFinalAns"
+			],
+			[
+				"ca",
+				"calcFinalAns"
+			],
+			[
+				"pers",
+				"personNo"
+			],
+			[
+				"per",
+				"percAns"
+			],
+			[
+				"answe",
+				"answerSet"
+			],
+			[
+				"an",
+				"answerNo"
+			],
+			[
+				"ans",
+				"answerNo"
+			],
+			[
+				"pat",
+				"_patternIndex"
+			],
+			[
+				"patt",
+				"patternIndex"
+			],
+			[
+				"up",
+				"_updated"
+			],
+			[
+				"_",
+				"_e"
+			],
+			[
+				"tem",
+				"template"
+			],
+			[
+				"In",
+				"Interval"
+			],
+			[
+				"print",
+				"println"
+			],
+			[
+				"LM",
+				"LMa"
+			],
+			[
+				"make",
+				"makeCapital"
+			],
+			[
+				"GL_ON",
+				"GL_ONE_MINUS_SRC_ALPHA"
+			],
+			[
+				"set",
+				"setVec1f"
+			],
+			[
+				"GL",
+				"GL_BLEND"
+			],
+			[
+				"ver",
+				"verbose"
+			],
+			[
+				"sha",
+				"shader_list"
+			],
+			[
+				"norma",
+				"normalNorm"
+			],
+			[
+				"float",
+				"float3"
+			],
+			[
+				"height",
+				"height-1"
+			],
+			[
+				"prin",
+				"printKdTree"
+			],
+			[
+				"obje",
+				"objectID"
+			],
+			[
+				"tri",
+				"trimesh"
+			],
+			[
+				"trac",
+				"TraceUI"
+			],
+			[
+				"ref",
+				"reflectedDirection"
+			],
+			[
+				"refracted",
+				"refractedDirection"
+			],
+			[
+				"cos",
+				"cosineAngle"
+			],
+			[
+				"sin",
+				"sinT"
+			],
+			[
+				"sq",
+				"sqrt"
+			],
+			[
+				"ligh",
+				"lightIntensity"
+			],
+			[
+				"is",
+				"iszero"
+			],
+			[
+				"get",
+				"getMin"
+			],
+			[
+				"fina",
+				"finalPoint"
+			],
+			[
+				"dim",
+				"dimen"
+			],
+			[
+				"righ",
+				"rightObjects"
+			],
+			[
+				"fin",
+				"finalCost"
+			],
+			[
+				"cur",
+				"currCost"
+			],
+			[
+				"lef",
+				"leftObjects"
+			],
+			[
+				"left",
+				"leftArea"
+			],
+			[
+				"rig",
+				"rightArea"
+			],
+			[
+				"sec",
+				"second"
+			],
+			[
+				"fir",
+				"firstX"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"tra",
+				"traceUI"
+			],
+			[
+				"buf",
+				"buffer_height"
+			],
+			[
+				"ray",
+				"rayCountBuf"
+			],
+			[
+				"del",
+				"deltaX"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"pixe",
+				"pixelIntensity"
+			],
+			[
+				"cou",
+				"count"
+			],
+			[
+				"pix",
+				"pixelIntensities"
+			],
+			[
+				"pi",
+				"pixelIntensity"
+			],
+			[
+				"sub",
+				"subSampleRow"
+			],
+			[
+				"curr",
+				"currPixelX"
+			],
+			[
+				"pixel",
+				"pixelX"
+			],
+			[
+				"thr",
+				"threadNo"
+			],
+			[
+				"noOf",
+				"noOfCols"
+			],
+			[
+				"noo",
+				"noOfCols"
+			],
+			[
+				"nof",
+				"noOfRows"
+			],
+			[
+				"thre",
+				"threadNo"
+			],
+			[
+				"threa",
+				"threadNo"
+			],
+			[
+				"go",
+				"goingIn"
+			],
+			[
+				"cosT",
+				"cosThetaI"
+			],
+			[
+				"sqr",
+				"sqrtTerm"
+			],
+			[
+				"refra",
+				"refractedDirection"
+			],
+			[
+				"fa",
+				"FALL_RATE"
+			],
+			[
+				"fall",
+				"fallRate"
+			],
+			[
+				"fal",
+				"fallFactor"
+			],
+			[
+				"shad",
+				"shadowDirection"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"att",
+				"atten_angle"
+			],
+			[
+				"has",
+				"hasPosition"
+			],
+			[
+				"parseSca",
+				"parseScalarExpression"
+			],
+			[
+				"toke",
+				"tokenNames"
+			],
+			[
+				"rese",
+				"reservedWords"
+			],
+			[
+				"bg",
+				"bgSize"
+			],
+			[
+				"bg_buf",
+				"bg_buffer_width"
+			],
+			[
+				"buff",
+				"buffer"
+			],
+			[
+				"x",
+				"xScale"
+			],
+			[
+				"obj",
+				"objectID"
+			],
+			[
+				"Tra",
+				"TraceUI"
+			],
+			[
+				"TR",
+				"TraceUI"
+			],
+			[
+				"push",
+				"push_back"
+			],
+			[
+				"cure",
+				"currentCost"
+			],
+			[
+				"final",
+				"finalMinMax"
+			],
+			[
+				"right",
+				"noRightObjects"
+			],
+			[
+				"curre",
+				"currentCost"
+			],
+			[
+				"firs",
+				"first"
+			],
+			[
+				"fi",
+				"firstBB"
+			],
+			[
+				"refl",
+				"reflectedRay"
+			],
+			[
+				"colo",
+				"color1"
+			],
+			[
+				"de",
+				"deltaY"
+			],
+			[
+				"fil",
+				"filteredBuf"
+			],
+			[
+				"tr",
+				"true"
+			],
+			[
+				"filte",
+				"filterRow"
+			],
+			[
+				"filt",
+				"filterColumn"
+			],
+			[
+				"rayt",
+				"raytracer"
+			],
+			[
+				"Ray",
+				"RayTracer"
+			],
+			[
+				"inte",
+				"intensity"
+			],
+			[
+				"triM",
+				"triMesh"
+			],
+			[
+				"inter",
+				"intersectKdTree"
+			],
+			[
+				"getC",
+				"getCubeMap"
+			],
+			[
+				"m_",
+				"m_kdTree"
+			],
+			[
+				"kdTr",
+				"kdtreeRoot"
+			],
+			[
+				"use",
+				"useKdTree"
+			],
+			[
+				"sce",
+				"sceneHit"
+			],
+			[
+				"us",
+				"useKdTree"
+			],
+			[
+				"TRIME",
+				"TRIMESH"
+			],
+			[
+				"kdT",
+				"kdTreeLeafSize"
+			],
+			[
+				"kd",
+				"kdNode"
+			],
+			[
+				"kdtr",
+				"kdTreeLeafSize"
+			],
+			[
+				"kdt",
+				"kdTreeDepth"
+			],
+			[
+				"tM",
+				"tMax"
+			],
+			[
+				"_tM",
+				"_tMin"
+			],
+			[
+				"ob",
+				"objectsVector"
+			],
+			[
+				"no",
+				"noOfObjects"
+			],
+			[
+				"ts",
+				"tStar"
+			],
+			[
+				"tSta",
+				"tStar"
+			],
+			[
+				"kdtre",
+				"kdtreeRoot"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Final Project/fluids/simulation.cpp",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.cpp",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Final Project/fluids/simparameters.cpp",
+		"/u/kwadia/cs312/a7_clean/feedback/WordProcessor.java",
+		"/u/kwadia/cs312/a7_clean/turnin/assignment-7-group-32_3832602_36221146_WordProcessor.java",
+		"/u/kwadia/cs312/a7_clean/WordProcessor.java",
+		"/u/kwadia/cs312/a7_clean/graded/WordProcessor (1).java",
+		"/u/kwadia/cs312/a7_clean/feedback/WordProcessor (1).java",
+		"/u/kwadia/cs312/a8_clean/feedback/inselmann--lauren_3832602_36266860_Personality.java",
+		"/u/kwadia/cs312/a8_clean/graded/inselmann--lauren_3832602_36266860_Personality.java",
+		"/u/kwadia/CS380C - Compilers/sample assignment 4/test.ll",
+		"/u/kwadia/cs312/a8_clean/graded/roquemore--eric_4067091_36277134_Personality.java",
+		"/u/kwadia/cs312/a8_clean/feedback/roquemore--eric_4067091_36277134_Personality.java",
+		"/u/kwadia/cs312/a8_clean/turnin/geng--haoqing-late_4081329_36287264_Personality.java",
+		"/u/kwadia/cs312/a8_clean/regrade/geng--haoqing-late_4081329_36287264_Personality.java",
+		"/u/kwadia/cs312/a8_clean/turnin/an--haocheng_3915936_36266640_Personality.java",
+		"/u/kwadia/cs312/a8_clean/makefile",
+		"/u/kwadia/CS380C - Compilers/sample assignment 3/ConstantIdentification.h",
+		"/u/kwadia/CS380C - Compilers/sample assignment 3/ConstantIdentification.cpp",
+		"/u/kwadia/cs312/a6_clean/graded/an--haocheng_3915936_36151211_Hangman.java",
+		"/u/kwadia/Desktop/Temp/Output",
+		"/u/kwadia/CS380C - Compilers/sample assignment 3/output/reach_out",
+		"/u/kwadia/Desktop/Temp/test.cpp",
+		"/u/kwadia/Downloads/Personality.java",
+		"/u/kwadia/Desktop/Temp/Test.java",
+		"/u/kwadia/cs312/a7_clean/regrade/test1_OUT.txt",
+		"/u/kwadia/cs312/a7_clean/regrade/test1_GoldenOUT.txt",
+		"/u/kwadia/cs312/a7_clean/regrade/RomanEmpire_GoldenOUT.txt",
+		"/u/kwadia/cs312/a7_clean/regrade/RomanEmpire_OUT.txt",
+		"/u/kwadia/cs312/a7_clean/turnin/assignment-7-group-34-late_4033299_36232042_WordProcessor.java",
+		"/u/kwadia/cs312/a7_clean/readme.txt",
+		"/u/kwadia/cs312/a7_clean/makefile",
+		"/u/kwadia/cs312/a7_clean/regrade/test2_OUT.txt",
+		"/u/kwadia/cs312/a7_clean/regrade/test2_GoldenOUT.txt",
+		"/u/kwadia/cs312/a7_clean/regrade/test3_GoldenOUT.txt",
+		"/u/kwadia/cs312/a7_clean/input.txt",
+		"/u/kwadia/cs312/a7_clean/regrade/test3_OUT.txt",
+		"/u/kwadia/cs312/a7_clean/regrade/test3.txt",
+		"/u/kwadia/cs312/a7_clean/regrade/test2.txt",
+		"/u/kwadia/cs312/a7_clean/turnin/assignment-7-group-38_3875349_36213170_WordProcessor.java",
+		"/u/kwadia/cs312/a7_clean/regrade/WordProcessor.java",
+		"/u/kwadia/cs312/a7_clean/regrade/RomanEmpire.txt",
+		"/u/kwadia/cs312/a7_clean/turnin/assignment-7-group-28-late_4017052_36232213_WordProcessor.java",
+		"/u/kwadia/cs312/a7_clean/turnin/assignment-7-group-35_3530469_36219738_WordProcessor.java",
+		"/u/kwadia/Downloads/WordProcessor.java",
+		"/u/kwadia/Desktop/Temp/WordProcessor.java",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/10_toon.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/02_diffuse.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/11_parallax.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/08_bump_reflection.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/07_reflection.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/03_bump_diffuse.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/04_specular.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/05_diffspec.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/06_bump_lit.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/torus.vert",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/01_decal.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/12_toon_decal.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/13_trans.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/09_combo.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/texture.hpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/texture.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/scene.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/scene.hpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/menus.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/main.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/15_temp.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/glew/include/GL/glew.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/glew/src/glew.c",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/12_toon_texture.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/stb/stb_image.c",
+		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistDoc.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/stb/stb_image.h",
+		"/u/kwadia/Downloads/10_cartoon.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/00_red.frag",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/include/Cg/vector.hpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/ReadMe.txt",
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/inverse.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/material.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/ray.sublime-project",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/ray.h",
+		"/u/kwadia/cs312/a4_clean/RockPaperScissors.java",
+		"/u/kwadia/cs312/a4_clean/turnin/geng--haoqing_4081329_36036082_RockPaperScissors.java",
+		"/u/kwadia/cs312/a4_clean/turnin/tran--tracy_3879181_36041139_RockPaperScissors.java",
+		"/u/kwadia/cs312/a4_clean/makefile",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/SceneObjects/trimesh.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/TraceUI.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/GraphicalUI.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/GraphicalUI.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/CommandLineUI.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/scene.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/RayTracer.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/fileio/buffer.cpp",
+		"/u/kwadia/Downloads/scene.cpp",
+		"/u/kwadia/Downloads/Ciphers.java",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/cubeMap.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/RayTracer.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/vecmath/vec.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/scene.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/light.h",
+		"/u/kwadia/Downloads/raytracepixel.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/light.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/cubeMap.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/debuggingView.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/parser/Tokenizer.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/parser/Token.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/parser/Parser.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/parser/Parser.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/parser/Token.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/glObjects.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/RayTracer/src/RayTracer.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/Makefile",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/CubeMapChooser.cxx",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/SceneObjects/trimesh.h",
+		"/u/kwadia/Downloads/light.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/scenes/simple/spot_light_test.ray",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/camera.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistUI.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/fileio/bitmap.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistUI.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/backup/scene.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/camera.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/bbox.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/backup/Old kd tree loop",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/TraceGLWindow.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/main.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/CubeMapChooser.h"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"generateAllForces",
+			"numericalIntegration",
+			"readTextFromFile",
+			"70",
+			",",
+			"tmp",
+			"bb",
+			"bb8",
+			"bb6",
+			"bb4",
+			"bb2",
+			"bb",
+			"tmp7",
+			"tmp",
+			"tmp3",
+			"bb8",
+			"bb4",
+			"bb2",
+			"entry",
+			"bb",
+			"bb6",
+			"tmp3",
+			"tmp5",
+			"tmp7",
+			"tmp1",
+			"tmp",
+			"SuperEqual",
+			"SuperHash",
+			"<T>",
+			"EqualT",
+			"SuperHash",
+			"numPeople",
+			"numberOfRecords",
+			"i",
+			"Interval",
+			"print",
+			"d",
+			"xyz",
+			"getTextureObject",
+			"glBindTexture",
+			"d",
+			"surfCoords",
+			"surfaceCoords",
+			"objectCoords",
+			"newTexCoords",
+			".y",
+			".x",
+			"x",
+			"diffIntensity",
+			"diffuseMax",
+			"height",
+			"setVec1f",
+			"glUniform",
+			"reflectedWorldSpace",
+			"reflectedObject",
+			"reflectedWorld",
+			"reflectedLocal",
+			"clampMax",
+			"tempColor",
+			"gl_FragColor",
+			"glEnable",
+			"specMax",
+			"specDot",
+			"torusInfo",
+			"setSampler",
+			"normalMapTexCoord",
+			"newTexCoords",
+			"normalMapTexCoord",
+			"stbi_load",
+			"diffuseMax",
+			"diffIntensity",
+			"intensity",
+			"color",
+			"light_diffuse",
+			"));\n",
+			"normalize",
+			"^",
+			"cross",
+			"255",
+			"height",
+			"load",
+			"xyz",
+			"cos",
+			"m_antiAliasWhite",
+			"cb_aaWhiteCheckButton",
+			"cb_aaCheckButton",
+			"m_aaCheckButton",
+			"printf",
+			"cout",
+			"print",
+			"tEnd",
+			"finalPoint",
+			"finalBB",
+			"cb_aaCheckButton",
+			"m_aaCheckButton",
+			"pi",
+			"pj",
+			"pi",
+			"pj",
+			"pi",
+			"pixelCol",
+			"pixelRow",
+			"pixelY",
+			"pixelX",
+			"setUseKdTree",
+			"y",
+			"x",
+			"pixelColumn",
+			"pixelRow",
+			"COL",
+			"setRa",
+			"REFRACTION",
+			"PointLight",
+			"cb_ffi",
+			"DirectionalLight",
+			"cb_debuggingDisplayCheckButton",
+			"memcpy",
+			"cb_bfCheckButton",
+			"(*ii)->getBoundingBox()",
+			"std::",
+			"Geometry*",
+			"secondY",
+			"firstY",
+			"secondX",
+			"secondY",
+			"firstY",
+			"m_nPaintWidth",
+			"m_traceGlWindow"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			""
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"sce",
+				"src/scene.cpp"
+			],
+			[
+				"tex",
+				"src/texture.cpp"
+			],
+			[
+				"text",
+				"src/texture.cpp"
+			],
+			[
+				"gl",
+				"glew/include/GL/glew.h"
+			],
+			[
+				"glew",
+				"glew/src/glew.c"
+			],
+			[
+				"men",
+				"src/menus.cpp"
+			],
+			[
+				"main",
+				"src/main.cpp"
+			],
+			[
+				"menus",
+				"src/menus.cpp"
+			],
+			[
+				"vec",
+				"src/include/Cg/vector.hpp"
+			],
+			[
+				"read",
+				"src/ReadMe.txt"
+			],
+			[
+				"co",
+				"src/ui/CommandLineUI.cpp"
+			],
+			[
+				"mater",
+				"src/scene/material.cpp"
+			],
+			[
+				"ray",
+				"src/scene/ray.h"
+			],
+			[
+				"ligh",
+				"src/scene/light.cpp"
+			],
+			[
+				"tra",
+				"src/ui/TraceUI.h"
+			],
+			[
+				"trim",
+				"src/SceneObjects/trimesh.cpp"
+			],
+			[
+				"mat",
+				"src/scene/material.cpp"
+			],
+			[
+				"rayt",
+				"src/RayTracer.cpp"
+			],
+			[
+				"gra",
+				"src/ui/GraphicalUI.cpp"
+			],
+			[
+				"sc",
+				"src/scene/scene.cpp"
+			],
+			[
+				"tr",
+				"src/ui/TraceUI.h"
+			],
+			[
+				"ra",
+				"src/RayTracer.h"
+			],
+			[
+				"comm",
+				"src/ui/CommandLineUI.cpp"
+			],
+			[
+				"graphi",
+				"src/ui/GraphicalUI.cpp"
+			],
+			[
+				"cu",
+				"src/scene/cubeMap.cpp"
+			],
+			[
+				"cub",
+				"src/scene/cubeMap.h"
+			],
+			[
+				"tri",
+				"src/SceneObjects/trimesh.cpp"
+			],
+			[
+				"tok",
+				"src/parser/Token.cpp"
+			],
+			[
+				"pa",
+				"src/parser/Parser.cpp"
+			],
+			[
+				"to",
+				"src/parser/Token.h"
+			],
+			[
+				"raytr",
+				"src/RayTracer.cpp"
+			],
+			[
+				"pars",
+				"src/parser/Parser.h"
+			],
+			[
+				"mate",
+				"src/scene/material.cpp"
+			],
+			[
+				"lig",
+				"src/scene/light.cpp"
+			],
+			[
+				"toke",
+				"src/parser/Token.h"
+			],
+			[
+				"camer",
+				"src/scene/camera.cpp"
+			],
+			[
+				"bit",
+				"src/fileio/bitmap.h"
+			],
+			[
+				"cube",
+				"src/ui/CubeMapChooser.cxx"
+			],
+			[
+				"bb",
+				"src/scene/bbox.h"
+			],
+			[
+				"graph",
+				"src/ui/GraphicalUI.cpp"
+			],
+			[
+				"trac",
+				"src/ui/TraceUI.h"
+			],
+			[
+				"trime",
+				"src/SceneObjects/trimesh.cpp"
+			],
+			[
+				"sphe",
+				"src/SceneObjects/Sphere.h"
+			],
+			[
+				"par",
+				"src/parser/Parser.cpp"
+			],
+			[
+				"ryt",
+				"src/RayTracer.cpp"
+			],
+			[
+				"bbo",
+				"src/scene/bbox.h"
+			],
+			[
+				"sph",
+				"src/SceneObjects/Sphere.h"
+			],
+			[
+				"parse",
+				"src/parser/Parser.cpp"
+			],
+			[
+				"cyl",
+				"src/SceneObjects/Cylinder.h"
+			],
+			[
+				"deb",
+				"src/ui/debuggingView.cpp"
+			],
+			[
+				"trace",
+				"src/ui/TraceUI.h"
+			],
+			[
+				"scen",
+				"src/scene/scene.cpp"
+			],
+			[
+				"ve",
+				"src/vecmath/vec.h"
+			],
+			[
+				"bo",
+				"src/SceneObjects/Box.cpp"
+			],
+			[
+				"grap",
+				"src/ui/GraphicalUI.cpp"
+			],
+			[
+				"ray.h",
+				"src/scene/ray.h"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 294.0,
+	"status_bar_visible": true
+}
