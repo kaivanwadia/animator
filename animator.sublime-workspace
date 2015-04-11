@@ -4,6 +4,130 @@
 		"selected_items":
 		[
 			[
+				"pt",
+				"ptvEvaluatedCurvePts"
+			],
+			[
+				"bezie",
+				"bezierBasis"
+			],
+			[
+				"ptv",
+				"ptvCtrlPts"
+			],
+			[
+				"be",
+				"bezierBasis"
+			],
+			[
+				"nu",
+				"numCtrlPoints-1"
+			],
+			[
+				"wrap",
+				"wrapLength"
+			],
+			[
+				"fn",
+				"fAniLength"
+			],
+			[
+				"x",
+				"xCoords"
+			],
+			[
+				"de",
+				"define"
+			],
+			[
+				"n",
+				"numCtrlPoints"
+			],
+			[
+				"beg",
+				"begin"
+			],
+			[
+				"mode",
+				"modelMatrix"
+			],
+			[
+				"Mat",
+				"matrix"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"Vec",
+				"Vec4f"
+			],
+			[
+				"GL",
+				"GL_MODELVIEW_MATRIX"
+			],
+			[
+				"model",
+				"modelViewMatrix"
+			],
+			[
+				"max",
+				"maxVelocity"
+			],
+			[
+				"no",
+				"noOfPart"
+			],
+			[
+				"Part",
+				"Particle"
+			],
+			[
+				"part",
+				"particles"
+			],
+			[
+				"particles",
+				"particles"
+			],
+			[
+				"for",
+				"forces"
+			],
+			[
+				"ve",
+				"vel"
+			],
+			[
+				"tim",
+				"timeStep"
+			],
+			[
+				"drag",
+				"dragCoeff"
+			],
+			[
+				"gra",
+				"gravity"
+			],
+			[
+				"dra",
+				"dragForce"
+			],
+			[
+				"g",
+				"getRandomVelocity"
+			],
+			[
+				"vec",
+				"vector	std::vector"
+			],
+			[
+				"cur",
+				"currentColor"
+			],
+			[
 				"glP",
 				"glPopMatrix"
 			],
@@ -120,10 +244,6 @@
 				"setVec1f"
 			],
 			[
-				"GL",
-				"GL_BLEND"
-			],
-			[
 				"ver",
 				"verbose"
 			],
@@ -208,10 +328,6 @@
 				"finalCost"
 			],
 			[
-				"cur",
-				"currCost"
-			],
-			[
 				"lef",
 				"leftObjects"
 			],
@@ -230,10 +346,6 @@
 			[
 				"fir",
 				"firstX"
-			],
-			[
-				"inc",
-				"include"
 			],
 			[
 				"tra",
@@ -376,10 +488,6 @@
 				"buffer"
 			],
 			[
-				"x",
-				"xScale"
-			],
-			[
 				"obj",
 				"objectID"
 			],
@@ -406,148 +514,48 @@
 			[
 				"right",
 				"noRightObjects"
-			],
-			[
-				"curre",
-				"currentCost"
-			],
-			[
-				"firs",
-				"first"
-			],
-			[
-				"fi",
-				"firstBB"
-			],
-			[
-				"refl",
-				"reflectedRay"
-			],
-			[
-				"colo",
-				"color1"
-			],
-			[
-				"de",
-				"deltaY"
-			],
-			[
-				"fil",
-				"filteredBuf"
-			],
-			[
-				"tr",
-				"true"
-			],
-			[
-				"filte",
-				"filterRow"
-			],
-			[
-				"filt",
-				"filterColumn"
-			],
-			[
-				"rayt",
-				"raytracer"
-			],
-			[
-				"Ray",
-				"RayTracer"
-			],
-			[
-				"inte",
-				"intensity"
-			],
-			[
-				"triM",
-				"triMesh"
-			],
-			[
-				"inter",
-				"intersectKdTree"
-			],
-			[
-				"getC",
-				"getCubeMap"
-			],
-			[
-				"m_",
-				"m_kdTree"
-			],
-			[
-				"kdTr",
-				"kdtreeRoot"
-			],
-			[
-				"use",
-				"useKdTree"
-			],
-			[
-				"sce",
-				"sceneHit"
-			],
-			[
-				"us",
-				"useKdTree"
-			],
-			[
-				"TRIME",
-				"TRIMESH"
-			],
-			[
-				"kdT",
-				"kdTreeLeafSize"
-			],
-			[
-				"kd",
-				"kdNode"
-			],
-			[
-				"kdtr",
-				"kdTreeLeafSize"
-			],
-			[
-				"kdt",
-				"kdTreeDepth"
-			],
-			[
-				"tM",
-				"tMax"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "customModel.cpp",
+			"file": "graphwidget.cpp",
 			"settings":
 			{
-				"buffer_size": 10575,
+				"buffer_size": 33272,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "modelerview.h",
+			"file": "graphwidget.h",
 			"settings":
 			{
-				"buffer_size": 984,
+				"buffer_size": 4862,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "modelerview.cpp",
+			"file": "animatoruiwindows.cpp",
 			"settings":
 			{
-				"buffer_size": 4081,
+				"buffer_size": 11341,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "modelerapp.cpp",
+			"file": "beziercurveevaluator.cpp",
 			"settings":
 			{
-				"buffer_size": 5676,
+				"buffer_size": 4490,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 871,
 				"line_ending": "Unix"
 			}
 		}
@@ -576,13 +584,32 @@
 	},
 	"file_history":
 	[
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/curveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/curveevaluator.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/beziercurveevaluator.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/linearcurveevaluator.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/linearcurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Particle.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/vec.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/mat.h",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.h",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.h",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/customModel.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Makefile",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/rulerwindow.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/.gitignore",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Final Project/fluids/simulation.cpp",
-		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.cpp",
-		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Final Project/fluids/simparameters.cpp",
 		"/u/kwadia/cs312/a7_clean/feedback/WordProcessor.java",
 		"/u/kwadia/cs312/a7_clean/turnin/assignment-7-group-32_3832602_36221146_WordProcessor.java",
@@ -684,26 +711,7 @@
 		"/u/kwadia/Downloads/raytracepixel.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/light.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/cubeMap.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/debuggingView.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/parser/Tokenizer.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/parser/Token.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/parser/Parser.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/parser/Parser.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/parser/Token.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/glObjects.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/RayTracer/src/RayTracer.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/Makefile",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/CubeMapChooser.cxx",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/SceneObjects/trimesh.h",
-		"/u/kwadia/Downloads/light.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/scenes/simple/spot_light_test.ray",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/camera.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistUI.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/fileio/bitmap.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistUI.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/backup/scene.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/camera.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/bbox.h"
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/debuggingView.cpp"
 	],
 	"find":
 	{
@@ -711,7 +719,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -722,6 +730,41 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"bSplineBasis",
+			" / 6.0",
+			".x",
+			" -fAniLength",
+			"xCoords",
+			"x",
+			"i",
+			"fAniLength + 4",
+			"LINEAR",
+			"Vec4f",
+			"m",
+			"pos",
+			"RAND_MAX",
+			"particlestodelete",
+			"particlesToDelete",
+			"newparticles",
+			"particles_",
+			"+",
+			"particlesList",
+			"qprev",
+			"erased",
+			"processGravityForce",
+			"0.5",
+			"ParticleSystem::",
+			"particlesList",
+			"p",
+			"Eigen::Vector2d",
+			"int",
+			"setDiffuseColor",
+			"2",
+			"1",
+			"gl",
+			"flgl",
+			"flg",
+			"redrawModelerView",
 			"75",
 			"0.25,",
 			"0.25",
@@ -814,42 +857,7 @@
 			"255",
 			"height",
 			"load",
-			"xyz",
-			"cos",
-			"m_antiAliasWhite",
-			"cb_aaWhiteCheckButton",
-			"cb_aaCheckButton",
-			"m_aaCheckButton",
-			"printf",
-			"cout",
-			"print",
-			"tEnd",
-			"finalPoint",
-			"finalBB",
-			"cb_aaCheckButton",
-			"m_aaCheckButton",
-			"pi",
-			"pj",
-			"pi",
-			"pj",
-			"pi",
-			"pixelCol",
-			"pixelRow",
-			"pixelY",
-			"pixelX",
-			"setUseKdTree",
-			"y",
-			"x",
-			"pixelColumn",
-			"pixelRow",
-			"COL",
-			"setRa",
-			"REFRACTION",
-			"PointLight",
-			"cb_ffi",
-			"DirectionalLight",
-			"cb_debuggingDisplayCheckButton",
-			"memcpy"
+			"xyz"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -868,54 +876,60 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "customModel.cpp",
+					"file": "graphwidget.cpp",
 					"settings":
 					{
-						"buffer_size": 10575,
+						"buffer_size": 33272,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4581,
-								4581
+								763,
+								763
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2138.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "modelerview.h",
+					"file": "graphwidget.h",
 					"settings":
 					{
-						"buffer_size": 984,
+						"buffer_size": 4862,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								399,
+								399
+							],
+							[
+								524,
+								524
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -925,45 +939,46 @@
 				},
 				{
 					"buffer": 2,
-					"file": "modelerview.cpp",
+					"file": "animatoruiwindows.cpp",
 					"settings":
 					{
-						"buffer_size": 4081,
+						"buffer_size": 11341,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								644,
-								644
+								2462,
+								2462
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 918.0,
+						"translation.y": 255.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "modelerapp.cpp",
+					"file": "beziercurveevaluator.cpp",
 					"settings":
 					{
-						"buffer_size": 5676,
+						"buffer_size": 4490,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1694,
-								1694
+								1545,
+								1545
 							]
 						],
 						"settings":
@@ -972,7 +987,33 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1071.0,
+						"translation.y": 102.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Makefile",
+					"settings":
+					{
+						"buffer_size": 871,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1030,6 +1071,42 @@
 				"Makefile"
 			],
 			[
+				"cur",
+				"curveevaluator.h"
+			],
+			[
+				"linea",
+				"linearcurveevaluator.cpp"
+			],
+			[
+				"anim",
+				"animatoruiwindows.cpp"
+			],
+			[
+				"grap",
+				"graphwidget.cpp"
+			],
+			[
+				"vec",
+				"vec.h"
+			],
+			[
+				"mat",
+				"mat.h"
+			],
+			[
+				"mode",
+				"modelerapp.cpp"
+			],
+			[
+				"robot",
+				"robotarm.cpp"
+			],
+			[
+				"part",
+				"particleSystem.cpp"
+			],
+			[
 				"sce",
 				"src/scene.cpp"
 			],
@@ -1062,10 +1139,6 @@
 				"src/menus.cpp"
 			],
 			[
-				"vec",
-				"src/include/Cg/vector.hpp"
-			],
-			[
 				"read",
 				"src/ReadMe.txt"
 			],
@@ -1092,10 +1165,6 @@
 			[
 				"trim",
 				"src/SceneObjects/trimesh.cpp"
-			],
-			[
-				"mat",
-				"src/scene/material.cpp"
 			],
 			[
 				"rayt",
@@ -1244,10 +1313,6 @@
 			[
 				"bo",
 				"src/SceneObjects/Box.cpp"
-			],
-			[
-				"grap",
-				"src/ui/GraphicalUI.cpp"
 			],
 			[
 				"ray.h",

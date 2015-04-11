@@ -4,6 +4,9 @@
 #pragma warning(disable : 4786)
 
 #include "curve.h"
+#include "vec.h"
+#include "mat.h"
+#include <iostream>
 
 //using namespace std;
 
@@ -17,6 +20,7 @@ public:
 							   const bool& wrap_control_points) const = 0;
 	static float s_fFlatnessEpsilon;
 	static int s_iSegCount;
+	static float STEPS;
 };
 
 

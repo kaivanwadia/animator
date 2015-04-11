@@ -19,7 +19,8 @@ CC = g++
 	$(CC) $(CFLAGS) -c -o $*.o $<
 
 ALL.O = bitmap.o camera.o color.o curve.o curveevaluator.o \
-        graphwidget.o indicatorwindow.o linearcurveevaluator.o \
+        graphwidget.o indicatorwindow.o linearcurveevaluator.o bsplinecurveevaluator.o \
+        beziercurveevaluator.o \
         modelerapp.o modelerdraw.o modelerui.o animatoruiwindows.o \
         modelerview.o particleSystem.o point.o \
         rect.o robotarm.o rulerwindow.o
