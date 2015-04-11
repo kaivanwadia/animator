@@ -16,6 +16,7 @@
 #include "mat.h"
 #include <FL/gl.h>
 #include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
@@ -142,6 +143,32 @@ void RobotArm::draw()
 
 	glTranslatef( 0.0, h3, 0.0 );
 	glRotatef( cr, 0.0, 0.0, 1.0 );
+
+	// glPushMatrix();
+	// Mat4f mvMatrix = glGetMatrix(GL_MODELVIEW_MATRIX);
+	// glPopMatrix();
+	// cout << "\n\nmatrix : \n";
+	// for (int i = 1; i <= 16; i++) {
+	// 	cout << *(mvMatrix[i-1]) << "\t";
+	// 	if (i%4 == 0)
+	// 	{
+	// 		cout<< "\n";
+	// 	}
+	// }
+
+	// Vec3f point = mvMatrix * Vec3f(0.5, 1.0, 0.5);
+	// point[0] *= -1;
+	// point[2] = point[2] + 27.5;
+	// ModelerApplication::Instance()->clawPoint = point;
+	// cout<< "\n\nvector : \n";
+	// for (int i = 0; i < 3; i++)
+	// {
+	// 	cout << (point[i]) << "\t";
+	// }
+	// cout << "\n";
+	// for (int i = 0; i < 16; i++) {
+	// 	mvMatrix[i] = modelViewMatrix[i];
+	// }
 	claw(1.0);
 
 
@@ -322,6 +349,8 @@ int main()
 	// You should create a ParticleSystem object ps here and then
 	// call ModelerApplication::Instance()->SetParticleSystem(ps)
 	// to hook it up to the animator interface.
+	ParticleSystem* ps = new ParticleSystem();
+	ModelerApplication::Instance()->SetParticleSystem(ps);
 
     ModelerApplication::Instance()->Init(&createRobotArm, controls, NUMCONTROLS);
     return ModelerApplication::Instance()->Run();

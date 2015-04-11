@@ -181,6 +181,9 @@ void ModelerApplication::ValueChangedCallback()
 	float playEndTime = m_ui->playEndTime();
 
 	ParticleSystem *ps = m_app->GetParticleSystem();
+
+	float h1 = m_app->GetControlValue(4);
+	ps->setEmitterPosition(Vec4f(0.5, 2*h1 + 0.8, 0.5, 1.0));
 	
 	if (ps != NULL) {
 		bool simulating = ps->isSimulate();

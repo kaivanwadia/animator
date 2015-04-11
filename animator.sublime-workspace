@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"glP",
+				"glPopMatrix"
+			],
+			[
+				"gl",
+				"glRotatef"
+			],
+			[
+				"bot",
+				"bottomRadius"
+			],
+			[
+				"draw",
+				"drawCylinder"
+			],
+			[
+				"grou",
+				"groundBox"
+			],
+			[
+				"gro",
+				"groundBox"
+			],
+			[
 				"E",
 				"EqualT"
 			],
@@ -490,35 +514,43 @@
 			[
 				"tM",
 				"tMax"
-			],
-			[
-				"_tM",
-				"_tMin"
-			],
-			[
-				"ob",
-				"objectsVector"
-			],
-			[
-				"no",
-				"noOfObjects"
-			],
-			[
-				"ts",
-				"tStar"
-			],
-			[
-				"tSta",
-				"tStar"
-			],
-			[
-				"kdtre",
-				"kdtreeRoot"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "customModel.cpp",
+			"settings":
+			{
+				"buffer_size": 10575,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "modelerview.h",
+			"settings":
+			{
+				"buffer_size": 984,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "modelerview.cpp",
+			"settings":
+			{
+				"buffer_size": 4081,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "modelerapp.cpp",
+			"settings":
+			{
+				"buffer_size": 5676,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -544,6 +576,10 @@
 	},
 	"file_history":
 	[
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Makefile",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/rulerwindow.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/.gitignore",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Final Project/fluids/simulation.cpp",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.cpp",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
@@ -667,11 +703,7 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistUI.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 2/backup/scene.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/camera.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/bbox.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/backup/Old kd tree loop",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/TraceGLWindow.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/main.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/ui/CubeMapChooser.h"
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/bbox.h"
 	],
 	"find":
 	{
@@ -679,7 +711,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			""
@@ -690,6 +722,17 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"75",
+			"0.25,",
+			"0.25",
+			"h",
+			"matCam",
+			"VAL",
+			"y_box",
+			"ground",
+			"main()",
+			"RobotArm",
+			"BASE_ROTATION",
 			"generateAllForces",
 			"numericalIntegration",
 			"readTextFromFile",
@@ -806,18 +849,7 @@
 			"cb_ffi",
 			"DirectionalLight",
 			"cb_debuggingDisplayCheckButton",
-			"memcpy",
-			"cb_bfCheckButton",
-			"(*ii)->getBoundingBox()",
-			"std::",
-			"Geometry*",
-			"secondY",
-			"firstY",
-			"secondX",
-			"secondY",
-			"firstY",
-			"m_nPaintWidth",
-			"m_traceGlWindow"
+			"memcpy"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -836,8 +868,115 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "customModel.cpp",
+					"settings":
+					{
+						"buffer_size": 10575,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4581,
+								4581
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2138.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "modelerview.h",
+					"settings":
+					{
+						"buffer_size": 984,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "modelerview.cpp",
+					"settings":
+					{
+						"buffer_size": 4081,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								644,
+								644
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 918.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "modelerapp.cpp",
+					"settings":
+					{
+						"buffer_size": 5676,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1694,
+								1694
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1071.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -878,7 +1017,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -886,6 +1025,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"make",
+				"Makefile"
+			],
 			[
 				"sce",
 				"src/scene.cpp"

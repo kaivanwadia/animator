@@ -17,6 +17,8 @@
 #define __PARTICLE_SYSTEM_H__
 
 #include "vec.h"
+#include "Particle.h"
+#include "mat.h"
 
 class ParticleSystem {
 
@@ -66,6 +68,12 @@ public:
 	bool isDirty() { return dirty; }
 	void setDirty(bool d) { dirty = d; }
 
+	void setEmitParticles();
+	void setEmitterPosition(Vec3f _emitPos);
+	void emitParticles();
+	Vec3f getRandomVelocity(int max, int min);
+	void numericalIntegration(float timeStep);
+
 
 protected:
 	
@@ -80,7 +88,19 @@ protected:
 	/** General state variables **/
 	bool simulate;						// flag for simulation mode
 	bool dirty;							// flag for updating ui (don't worry about this)
+	
+	// Particle Stuff
+	std::vector<Particle> particles;
+	Mat4f worldMatrix;
+	Vec3f emitPosition;
+	int maxPartPerFrame;
+	int totalNoOfParticles;
 
+	float gravity;
+	float dragCoeff;
+	int maxVelocity;
+	bool gravityForce;
+	bool dragForce;
 };
 
 

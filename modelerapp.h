@@ -6,6 +6,7 @@
 #define MODELERAPP_H
 
 #include "modelerview.h"
+#include "vec.h"
 
 struct ModelerControl
 {
@@ -67,6 +68,7 @@ public:
 
 	// Returns animating flag
 	bool Animating();
+	Vec3f clawPoint;
 
 private:
 	// Private for singleton
@@ -82,7 +84,6 @@ private:
 
     static void ValueChangedCallback();
 	static void RedrawLoop(void*);
-
 	// Just a flag for updates
 	bool m_animating;
 
