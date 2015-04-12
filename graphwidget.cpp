@@ -32,6 +32,7 @@
 #include "cardcurveevaluator.h"
 #include "dcjaucurveevaluator.h"
 #include "qbsplinecurveevaluator.h"
+#include "lreisencurveevaluator.h"
 
 #define LEFT		1
 #define MIDDLE		2
@@ -129,6 +130,7 @@ m_flcCurrCurve(FL_BLACK)
 	m_ppceCurveEvaluators[CURVE_TYPE_CARDINAL] = new CardCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_DCJAU] = new DCJauCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_QUAD] = new QBSplineCurveEvaluator();
+	m_ppceCurveEvaluators[CURVE_TYPE_LREISEN] = new LReisenCurveEvaluator();
 }
 
 GraphWidget::~GraphWidget()

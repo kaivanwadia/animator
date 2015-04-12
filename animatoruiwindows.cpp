@@ -47,6 +47,7 @@ Fl_Menu_Item ModelerUIWindows::menu_m_pchoCurveType[] = {
  {"Cardinal", 0,  0, 0, 0, 0, 0, 12, 0},
  {"De Casteljau", 0,  0, 0, 0, 0, 0, 12, 0},
  {"Quad B-Spline", 0,  0, 0, 0, 0, 0, 12, 0},
+ {"Lane Riesen", 0,  0, 0, 0, 0, 0, 12, 0},
  {0}
 };
 
