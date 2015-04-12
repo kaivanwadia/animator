@@ -28,6 +28,10 @@
 #include "linearcurveevaluator.h"
 #include "bsplinecurveevaluator.h"
 #include "beziercurveevaluator.h"
+#include "catromcurveevaluator.h"
+#include "cardcurveevaluator.h"
+#include "dcjaucurveevaluator.h"
+#include "qbsplinecurveevaluator.h"
 
 #define LEFT		1
 #define MIDDLE		2
@@ -119,10 +123,12 @@ m_flcCurrCurve(FL_BLACK)
 	// TODO: replace these linear evaluators
 	m_ppceCurveEvaluators[CURVE_TYPE_BSPLINE] = new BSplineCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_BEZIER] = new BezierCurveEvaluator();
-	m_ppceCurveEvaluators[CURVE_TYPE_CATMULLROM] = new LinearCurveEvaluator();
+	m_ppceCurveEvaluators[CURVE_TYPE_CATMULLROM] = new CatRomCurveEvaluator();
 	// Note that C2-Interpolating curve is not a requirement
 	m_ppceCurveEvaluators[CURVE_TYPE_C2INTERPOLATING] = new LinearCurveEvaluator();
-	m_ppceCurveEvaluators[CURVE_TYPE_CARDINAL] = new LinearCurveEvaluator();
+	m_ppceCurveEvaluators[CURVE_TYPE_CARDINAL] = new CardCurveEvaluator();
+	m_ppceCurveEvaluators[CURVE_TYPE_DCJAU] = new DCJauCurveEvaluator();
+	m_ppceCurveEvaluators[CURVE_TYPE_QUAD] = new QBSplineCurveEvaluator();
 }
 
 GraphWidget::~GraphWidget()

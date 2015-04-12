@@ -72,5 +72,13 @@ public:
   Fl_Button *m_pbtRemoveAllCamKeyFrames;
   Fl_Window *m_pwndModelerWnd;
   ModelerView *m_pwndModelerView;
+
+  Fl_Value_Slider* m_tauSlider;
+  static double m_nTAU;
+  static void cb_tauSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_stepSlider;
+  static double m_nSteps;
+  static void cb_stepSlider(Fl_Widget* o, void* v);
 };
 #endif

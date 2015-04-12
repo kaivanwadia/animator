@@ -20,7 +20,8 @@ CC = g++
 
 ALL.O = bitmap.o camera.o color.o curve.o curveevaluator.o \
         graphwidget.o indicatorwindow.o linearcurveevaluator.o bsplinecurveevaluator.o \
-        beziercurveevaluator.o \
+        beziercurveevaluator.o catromcurveevaluator.o cardcurveevaluator.o dcjaucurveevaluator.o \
+        qbsplinecurveevaluator.o \
         modelerapp.o modelerdraw.o modelerui.o animatoruiwindows.o \
         modelerview.o particleSystem.o point.o \
         rect.o robotarm.o rulerwindow.o

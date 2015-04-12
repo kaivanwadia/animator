@@ -40,13 +40,38 @@ Fl_Menu_Item* ModelerUIWindows::m_pmiSetAniLen = ModelerUIWindows::menu_m_pmbMen
 
 Fl_Menu_Item ModelerUIWindows::menu_m_pchoCurveType[] = {
  {"Linear", 0,  0, 0, 0, 0, 0, 12, 0},
- {"B-Spline", 0,  0, 0, 0, 0, 0, 12, 0},
+ {"Cubic B-Spline", 0,  0, 0, 0, 0, 0, 12, 0},
  {"Bezier", 0,  0, 0, 0, 0, 0, 12, 0},
  {"Catmull-Rom", 0,  0, 0, 0, 0, 0, 12, 0},
  {"C2-Interpolating", 0,  0, 0, 0, 0, 0, 12, 0},
  {"Cardinal", 0,  0, 0, 0, 0, 0, 12, 0},
+ {"De Casteljau", 0,  0, 0, 0, 0, 0, 12, 0},
+ {"Quad B-Spline", 0,  0, 0, 0, 0, 0, 12, 0},
  {0}
 };
+
+double ModelerUIWindows::m_nTAU;
+double ModelerUIWindows::m_nSteps;
+
+void ModelerUIWindows::cb_tauSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nTAU = ((Fl_Slider*)o)->value();
+  if(((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType()==CURVE_TYPE_CARDINAL)
+  {
+    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_CARDINAL);
+    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
+  }
+}
+
+void ModelerUIWindows::cb_stepSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nSteps = ((Fl_Slider*)o)->value();
+  if(((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType()==CURVE_TYPE_DCJAU)
+  {
+    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_DCJAU);
+    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
+  }
+}
 
 ModelerUIWindows::ModelerUIWindows() {
   Fl_Window* w;
@@ -136,6 +161,37 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       o->end();
     }
+
+    { 
+      m_nTAU = 0.1;
+      m_tauSlider = new Fl_Value_Slider(200,500,100,20,"Tau");
+      m_tauSlider->user_data((void*)this);
+      m_tauSlider->type(FL_HOR_NICE_SLIDER);
+      m_tauSlider->labelfont(FL_COURIER);
+      m_tauSlider->labelsize(12);
+      m_tauSlider->minimum(0.1);
+      m_tauSlider->maximum(1.5);
+      m_tauSlider->step(0.1);
+      m_tauSlider->value(m_nTAU);
+      m_tauSlider->align(FL_ALIGN_RIGHT);
+      m_tauSlider->callback(cb_tauSlider);
+    }
+
+    { 
+      m_nSteps = 1;
+      m_stepSlider = new Fl_Value_Slider(400,500,100,20,"DCJ Step");
+      m_stepSlider->user_data((void*)this);
+      m_stepSlider->type(FL_HOR_NICE_SLIDER);
+      m_stepSlider->labelfont(FL_COURIER);
+      m_stepSlider->labelsize(12);
+      m_stepSlider->minimum(1);
+      m_stepSlider->maximum(25);
+      m_stepSlider->step(1);
+      m_stepSlider->value(m_nSteps);
+      m_stepSlider->align(FL_ALIGN_RIGHT);
+      m_stepSlider->callback(cb_stepSlider);
+    }
+
     { Fl_Group* o = new Fl_Group(5, 510, 580, 190, "Animation Controls");
       o->labeltype(FL_NO_LABEL);
       { Fl_Group* o = new Fl_Group(95, 550, 490, 150, "Playback");

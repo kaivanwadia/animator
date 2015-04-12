@@ -121,5 +121,4 @@ void BezierCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,
 			ptvEvaluatedCurvePts.push_back(Point(ptvCtrlPts[numCtrlPoints-1].x + wrapLength, ptvCtrlPts[0].y));
 		}
 	}
-
 }
