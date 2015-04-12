@@ -54,6 +54,12 @@ Fl_Menu_Item ModelerUIWindows::menu_m_pchoCurveType[] = {
 double ModelerUIWindows::m_nTAU;
 double ModelerUIWindows::m_nSteps;
 
+double ModelerUIWindows::m_nGravity;
+double ModelerUIWindows::m_nDragCoeff;
+
+double ModelerUIWindows::m_nFlDrag;
+double ModelerUIWindows::m_nFlStiff;
+
 void ModelerUIWindows::cb_tauSlider(Fl_Widget* o, void* v)
 {
   ((ModelerUIWindows*)(o->user_data()))->m_nTAU = ((Fl_Slider*)o)->value();
@@ -74,9 +80,29 @@ void ModelerUIWindows::cb_stepSlider(Fl_Widget* o, void* v)
   }
 }
 
+void ModelerUIWindows::cb_gravitySlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nGravity = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_dragSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nDragCoeff = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_flDragSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nFlDrag = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_flStiffSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nFlStiff = ((Fl_Slider*)o)->value();
+}
+
 ModelerUIWindows::ModelerUIWindows() {
   Fl_Window* w;
-  { Fl_Window* o = m_pwndMainWnd = new Fl_Window(589, 705, "CS384g Animator Fall 2005");
+  { Fl_Window* o = m_pwndMainWnd = new Fl_Window(589, 855, "CS384g Animator Fall 2005");
     w = o;
     o->color(185);
     o->labeltype(FL_NORMAL_LABEL);
@@ -111,7 +137,7 @@ ModelerUIWindows::ModelerUIWindows() {
         o->end();
         Fl_Group::current()->resizable(o);
       }
-      { Fl_Group* o = m_pgrpCurveGroup = new Fl_Group(160, 55, 425, 435, "Curves");
+      { Fl_Group* o = m_pgrpCurveGroup = new Fl_Group(160, 55, 425, 500, "Curves");//435
         o->labelsize(12);
         { Fl_Group* o = new Fl_Group(160, 55, 420, 410);
           { Fl_Box* o = new Fl_Box(160, 55, 40, 20, "Useless Box");
@@ -165,13 +191,13 @@ ModelerUIWindows::ModelerUIWindows() {
 
     { 
       m_nTAU = 0.1;
-      m_tauSlider = new Fl_Value_Slider(200,500,100,20,"Tau");
+      m_tauSlider = new Fl_Value_Slider(200,550,100,20,"Tau");
       m_tauSlider->user_data((void*)this);
       m_tauSlider->type(FL_HOR_NICE_SLIDER);
       m_tauSlider->labelfont(FL_COURIER);
       m_tauSlider->labelsize(12);
       m_tauSlider->minimum(0.1);
-      m_tauSlider->maximum(1.5);
+      m_tauSlider->maximum(1);
       m_tauSlider->step(0.1);
       m_tauSlider->value(m_nTAU);
       m_tauSlider->align(FL_ALIGN_RIGHT);
@@ -180,7 +206,7 @@ ModelerUIWindows::ModelerUIWindows() {
 
     { 
       m_nSteps = 1;
-      m_stepSlider = new Fl_Value_Slider(400,500,100,20,"DCJ Step");
+      m_stepSlider = new Fl_Value_Slider(400,550,100,20,"DCJ Step");
       m_stepSlider->user_data((void*)this);
       m_stepSlider->type(FL_HOR_NICE_SLIDER);
       m_stepSlider->labelfont(FL_COURIER);
@@ -193,37 +219,97 @@ ModelerUIWindows::ModelerUIWindows() {
       m_stepSlider->callback(cb_stepSlider);
     }
 
-    { Fl_Group* o = new Fl_Group(5, 510, 580, 190, "Animation Controls");
+    { 
+      m_nGravity = 9.8;
+      m_gravitySlider = new Fl_Value_Slider(200,575,100,20,"Gravity");
+      m_gravitySlider->user_data((void*)this);
+      m_gravitySlider->type(FL_HOR_NICE_SLIDER);
+      m_gravitySlider->labelfont(FL_COURIER);
+      m_gravitySlider->labelsize(12);
+      m_gravitySlider->minimum(0.0);
+      m_gravitySlider->maximum(20.0);
+      m_gravitySlider->step(0.1);
+      m_gravitySlider->value(m_nGravity);
+      m_gravitySlider->align(FL_ALIGN_RIGHT);
+      m_gravitySlider->callback(cb_gravitySlider);
+    }
+
+    { 
+      m_nDragCoeff = 0.48;
+      m_dragSlider = new Fl_Value_Slider(400,575,100,20,"Drag Coeff");
+      m_dragSlider->user_data((void*)this);
+      m_dragSlider->type(FL_HOR_NICE_SLIDER);
+      m_dragSlider->labelfont(FL_COURIER);
+      m_dragSlider->labelsize(12);
+      m_dragSlider->minimum(0.0);
+      m_dragSlider->maximum(10.0);
+      m_dragSlider->step(0.2);
+      m_dragSlider->value(m_nDragCoeff);
+      m_dragSlider->align(FL_ALIGN_RIGHT);
+      m_dragSlider->callback(cb_dragSlider);
+    }
+
+    { 
+      m_nFlDrag = 10;
+      m_flDragSlider = new Fl_Value_Slider(200,605,100,20,"Floor Drag");
+      m_flDragSlider->user_data((void*)this);
+      m_flDragSlider->type(FL_HOR_NICE_SLIDER);
+      m_flDragSlider->labelfont(FL_COURIER);
+      m_flDragSlider->labelsize(12);
+      m_flDragSlider->minimum(0);
+      m_flDragSlider->maximum(30);
+      m_flDragSlider->step(1);
+      m_flDragSlider->value(m_nFlDrag);
+      m_flDragSlider->align(FL_ALIGN_RIGHT);
+      m_flDragSlider->callback(cb_flDragSlider);
+    }
+
+    { 
+      m_nFlStiff = 100;
+      m_flStiffSlider = new Fl_Value_Slider(400,605,100,20,"Floor Stiffness");
+      m_flStiffSlider->user_data((void*)this);
+      m_flStiffSlider->type(FL_HOR_NICE_SLIDER);
+      m_flStiffSlider->labelfont(FL_COURIER);
+      m_flStiffSlider->labelsize(12);
+      m_flStiffSlider->minimum(0);
+      m_flStiffSlider->maximum(150);
+      m_flStiffSlider->step(1);
+      m_flStiffSlider->value(m_nFlStiff);
+      m_flStiffSlider->align(FL_ALIGN_RIGHT);
+      m_flStiffSlider->callback(cb_flStiffSlider);
+    }
+
+    { Fl_Group* o = new Fl_Group(5, 650, 580, 190, "Animation Controls");
       o->labeltype(FL_NO_LABEL);
-      { Fl_Group* o = new Fl_Group(95, 550, 490, 150, "Playback");
+      { Fl_Group* o = new Fl_Group(95, 690, 490, 150, "Playback");
         o->labeltype(FL_NO_LABEL);
-        { Fl_Group* o = new Fl_Group(155, 550, 430, 55, "Playback Controls");
+        { Fl_Group* o = new Fl_Group(155, 690, 430, 55, "Playback Controls");
           o->box(FL_ENGRAVED_BOX);
           o->labeltype(FL_NO_LABEL);
-          { Fl_Button* o = m_pbtStepBack = new Fl_Button(165, 580, 20, 20, "@|<");
+          { Fl_Button* o = m_pbtStepBack = new Fl_Button(165, 720, 20, 20, "@|<");
             o->shortcut(0x7a);
             o->labeltype(FL_SYMBOL_LABEL);
             o->user_data((void*)(this));
           }
-          { Fl_Button* o = m_pbtPlay = new Fl_Button(185, 580, 40, 20, "@>");
+          { Fl_Button* o = m_pbtPlay = new Fl_Button(185, 720, 40, 20, "@>");
             o->shortcut(0x78);
             o->labeltype(FL_SYMBOL_LABEL);
             o->user_data((void*)(this));
           }
-          { Fl_Button* o = m_pbtStepForw = new Fl_Button(225, 580, 20, 20, "@>|");
+          { Fl_Button* o = m_pbtStepForw = new Fl_Button(225, 720, 20, 20, "@>|");
             o->shortcut(0x63);
             o->labeltype(FL_SYMBOL_LABEL);
             o->user_data((void*)(this));
           }
-          { Fl_Light_Button* o = m_pbtLoop = new Fl_Light_Button(250, 580, 50, 20, "&Loop");
+          { Fl_Light_Button* o = m_pbtLoop = new Fl_Light_Button(250, 720, 50, 20, "&Loop");
             o->labelsize(12);
             o->user_data((void*)(this));
           }
-          { Fl_Light_Button* o = m_pbtSimulate = new Fl_Light_Button(335, 580, 70, 20, "&Simulate");
+          { Fl_Light_Button* o = m_pbtSimulate = new Fl_Light_Button(335, 720, 70, 20, "&Simulate");
             o->labelsize(12);
             o->user_data((void*)(this));
           }
-          { Fl_Value_Slider* o = m_psldrFPS = new Fl_Value_Slider(470, 580, 100, 20, "FPS");
+          { Fl_Value_Slider* o = m_psldrFPS = new Fl_Value_Slider(470, 720, 100, 20, "FPS");
             o->type(5);
             o->labelsize(12);
             o->minimum(5);
@@ -234,13 +320,13 @@ ModelerUIWindows::ModelerUIWindows() {
             o->align(FL_ALIGN_LEFT);
             Fl_Group::current()->resizable(o);
           }
-          { Fl_Box* o = new Fl_Box(165, 555, 135, 20, "Playback Controls");
+          { Fl_Box* o = new Fl_Box(165, 695, 135, 20, "Playback Controls");
             o->labelsize(12);
             o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
           }
           o->end();
         }
-        { IndicatorWindow* o = m_pwndIndicatorWnd = new IndicatorWindow(190, 610, 375, 20);
+        { IndicatorWindow* o = m_pwndIndicatorWnd = new IndicatorWindow(190, 750, 375, 20);
           o->box(FL_ENGRAVED_BOX);
           o->user_data((void*)(this));
           o->align(FL_ALIGN_LEFT);
@@ -248,46 +334,46 @@ ModelerUIWindows::ModelerUIWindows() {
           o->end();
           Fl_Group::current()->resizable(o);
         }
-        { Fl_Slider* o = m_psldrTimeSlider = new Fl_Slider(185, 635, 390, 20);
+        { Fl_Slider* o = m_psldrTimeSlider = new Fl_Slider(185, 775, 390, 20);
           o->type(5);
           o->user_data((void*)(this));
         }
-        { Fl_Slider* o = m_psldrPlayStart = new Fl_Slider(185, 655, 390, 20);
+        { Fl_Slider* o = m_psldrPlayStart = new Fl_Slider(185, 795, 390, 20);
           o->type(5);
           o->color(10);
           o->user_data((void*)(this));
         }
-        { Fl_Slider* o = m_psldrPlayEnd = new Fl_Slider(185, 675, 390, 20);
+        { Fl_Slider* o = m_psldrPlayEnd = new Fl_Slider(185, 815, 390, 20);
           o->type(5);
           o->color(80);
           o->user_data((void*)(this));
         }
-        { Fl_Box* o = new Fl_Box(95, 635, 90, 20, "Time:");
+        { Fl_Box* o = new Fl_Box(95, 775, 90, 20, "Time:");
           o->labelsize(12);
           o->labelcolor(7);
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
-        { Fl_Box* o = new Fl_Box(95, 655, 90, 20, "Start:");
+        { Fl_Box* o = new Fl_Box(95, 795, 90, 20, "Start:");
           o->labelsize(12);
           o->labelcolor(7);
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
-        { Fl_Box* o = new Fl_Box(95, 675, 90, 20, "End:");
+        { Fl_Box* o = new Fl_Box(95, 815, 90, 20, "End:");
           o->labelsize(12);
           o->labelcolor(7);
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
-        { Fl_Output* o = m_poutTime = new Fl_Output(130, 635, 55, 20, "Time:");
+        { Fl_Output* o = m_poutTime = new Fl_Output(130, 775, 55, 20, "Time:");
           o->labeltype(FL_NO_LABEL);
           o->labelsize(12);
           o->textsize(12);
         }
-        { Fl_Output* o = m_poutPlayStart = new Fl_Output(130, 655, 55, 20, "Time:");
+        { Fl_Output* o = m_poutPlayStart = new Fl_Output(130, 795, 55, 20, "Time:");
           o->labeltype(FL_NO_LABEL);
           o->labelsize(12);
           o->textsize(12);
         }
-        { Fl_Output* o = m_poutPlayEnd = new Fl_Output(130, 675, 55, 20, "Time:");
+        { Fl_Output* o = m_poutPlayEnd = new Fl_Output(130, 815, 55, 20, "Time:");
           o->labeltype(FL_NO_LABEL);
           o->labelsize(12);
           o->textsize(12);
@@ -295,7 +381,7 @@ ModelerUIWindows::ModelerUIWindows() {
         o->end();
         Fl_Group::current()->resizable(o);
       }
-      { Fl_Group* o = new Fl_Group(15, 510, 125, 95, "partical system");
+      { Fl_Group* o = new Fl_Group(15, 510, 125, 210, "partical system");
         o->box(FL_ENGRAVED_BOX);
         o->labeltype(FL_NO_LABEL);
         { Fl_Box* o = new Fl_Box(20, 510, 90, 20, "Particle System");
@@ -308,23 +394,23 @@ ModelerUIWindows::ModelerUIWindows() {
         }
         o->end();
       }
-      { Fl_Group* o = new Fl_Group(10, 620, 80, 80, "Camera");
+      { Fl_Group* o = new Fl_Group(10, 760, 80, 80, "Camera");
         o->box(FL_ENGRAVED_BOX);
         o->labeltype(FL_NO_LABEL);
-        { Fl_Box* o = new Fl_Box(15, 620, 70, 15, "Camera");
+        { Fl_Box* o = new Fl_Box(15, 760, 70, 15, "Camera");
           o->labelsize(12);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
         }
-        { Fl_Button* o = m_pbtSetCamKeyFrame = new Fl_Button(15, 635, 70, 20, "&Set");
+        { Fl_Button* o = m_pbtSetCamKeyFrame = new Fl_Button(15, 775, 70, 20, "&Set");
           o->labelsize(12);
           o->user_data((void*)(this));
         }
-        { Fl_Button* o = m_pbtRemoveCamKeyFrame = new Fl_Button(15, 655, 70, 20, "&Remove");
+        { Fl_Button* o = m_pbtRemoveCamKeyFrame = new Fl_Button(15, 795, 70, 20, "&Remove");
           o->labelsize(12);
           o->user_data((void*)(this));
           o->deactivate();
         }
-        { Fl_Button* o = m_pbtRemoveAllCamKeyFrames = new Fl_Button(15, 675, 70, 20, "R&emove All");
+        { Fl_Button* o = m_pbtRemoveAllCamKeyFrames = new Fl_Button(15, 815, 70, 20, "R&emove All");
           o->labelsize(12);
           o->user_data((void*)(this));
         }

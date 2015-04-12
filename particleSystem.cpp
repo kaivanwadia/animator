@@ -1,6 +1,7 @@
 #pragma warning(disable : 4786)
 
 #include "particleSystem.h"
+#include "animatoruiwindows.h"
 
 #include <cstdio>
 #include <cstdlib>
@@ -23,8 +24,8 @@ ParticleSystem::ParticleSystem()
 {
 	totalNoOfParticles = 0;
 	maxPartPerFrame = 6;
-	gravity = -9.8;
-	dragCoeff = 1;
+	gravity = -ModelerUIWindows::m_nGravity;
+	dragCoeff = -ModelerUIWindows::m_nDragCoeff;
 	gravityForce = true;
 	dragForce = true;
 	maxVelocity = 2;
@@ -81,6 +82,9 @@ void ParticleSystem::resetSimulation(float t)
 void ParticleSystem::computeForcesAndUpdateParticles(float t)
 {
 	if(t == prevT) return;	//no time has passed
+
+	gravity = -ModelerUIWindows::m_nGravity;
+	dragCoeff = -ModelerUIWindows::m_nDragCoeff;
     
     int numberErased = 0;
 
@@ -168,9 +172,9 @@ void ParticleSystem::emitParticles()
 		float y = rand()/float(RAND_MAX);
 		float z = rand()/float(RAND_MAX) - 0.5;
 		Vec3f pos = Vec3f(x, y, z);
-		cout << "Pos : " << pos[0] << "\t" << pos[1] << "\t" << pos[2] << "\n";
+		// cout << "Pos : " << pos[0] << "\t" << pos[1] << "\t" << pos[2] << "\n";
 		pos = pos + emitPosition;
-		cout << "Emit Pos : " << emitPosition[0] << "\t" << emitPosition[1] << "\t" << emitPosition[2] << "\n";
+		// cout << "Emit Pos : " << emitPosition[0] << "\t" << emitPosition[1] << "\t" << emitPosition[2] << "\n";
 		Vec3f vel = getRandomVelocity(maxVelocity*2, -maxVelocity);
 		// Vec3f vel = Vec3f(7, 7, 0.0);
 		Vec4f color = Vec4f(1.0, 0.0, 0.0, 1.0);

@@ -80,5 +80,21 @@ public:
   Fl_Value_Slider* m_stepSlider;
   static double m_nSteps;
   static void cb_stepSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_gravitySlider;
+  static double m_nGravity;
+  static void cb_gravitySlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_dragSlider;
+  static double m_nDragCoeff;
+  static void cb_dragSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_flDragSlider;
+  static double m_nFlDrag;
+  static void cb_flDragSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_flStiffSlider;
+  static double m_nFlStiff;
+  static void cb_flStiffSlider(Fl_Widget* o, void* v);
 };
 #endif
