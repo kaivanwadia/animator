@@ -137,7 +137,7 @@ ModelerUIWindows::ModelerUIWindows() {
         o->end();
         Fl_Group::current()->resizable(o);
       }
-      { Fl_Group* o = m_pgrpCurveGroup = new Fl_Group(160, 55, 425, 500, "Curves");//435
+      { Fl_Group* o = m_pgrpCurveGroup = new Fl_Group(160, 55, 425, 435, "Curves");//435
         o->labelsize(12);
         { Fl_Group* o = new Fl_Group(160, 55, 420, 410);
           { Fl_Box* o = new Fl_Box(160, 55, 40, 20, "Useless Box");
@@ -249,37 +249,37 @@ ModelerUIWindows::ModelerUIWindows() {
       m_dragSlider->callback(cb_dragSlider);
     }
 
-    { 
-      m_nFlDrag = 10;
-      m_flDragSlider = new Fl_Value_Slider(200,605,100,20,"Floor Drag");
-      m_flDragSlider->user_data((void*)this);
-      m_flDragSlider->type(FL_HOR_NICE_SLIDER);
-      m_flDragSlider->labelfont(FL_COURIER);
-      m_flDragSlider->labelsize(12);
-      m_flDragSlider->minimum(0);
-      m_flDragSlider->maximum(30);
-      m_flDragSlider->step(1);
-      m_flDragSlider->value(m_nFlDrag);
-      m_flDragSlider->align(FL_ALIGN_RIGHT);
-      m_flDragSlider->callback(cb_flDragSlider);
-    }
+    // { 
+    //   m_nFlDrag = 900;
+    //   m_flDragSlider = new Fl_Value_Slider(400,605,100,20,"Floor Drag");
+    //   m_flDragSlider->user_data((void*)this);
+    //   m_flDragSlider->type(FL_HOR_NICE_SLIDER);
+    //   m_flDragSlider->labelfont(FL_COURIER);
+    //   m_flDragSlider->labelsize(12);
+    //   m_flDragSlider->minimum(0);
+    //   m_flDragSlider->maximum(2000);
+    //   m_flDragSlider->step(100);
+    //   m_flDragSlider->value(m_nFlDrag);
+    //   m_flDragSlider->align(FL_ALIGN_RIGHT);
+    //   m_flDragSlider->callback(cb_flDragSlider);
+    // }
 
     { 
-      m_nFlStiff = 100;
-      m_flStiffSlider = new Fl_Value_Slider(400,605,100,20,"Floor Stiffness");
+      m_nFlStiff = 9000;
+      m_flStiffSlider = new Fl_Value_Slider(200,605,100,20,"Fl Stiffness");
       m_flStiffSlider->user_data((void*)this);
       m_flStiffSlider->type(FL_HOR_NICE_SLIDER);
       m_flStiffSlider->labelfont(FL_COURIER);
       m_flStiffSlider->labelsize(12);
       m_flStiffSlider->minimum(0);
-      m_flStiffSlider->maximum(150);
-      m_flStiffSlider->step(1);
+      m_flStiffSlider->maximum(20000);
+      m_flStiffSlider->step(500);
       m_flStiffSlider->value(m_nFlStiff);
       m_flStiffSlider->align(FL_ALIGN_RIGHT);
       m_flStiffSlider->callback(cb_flStiffSlider);
     }
 
-    { Fl_Group* o = new Fl_Group(5, 650, 580, 190, "Animation Controls");
+    { Fl_Group* o = new Fl_Group(5, 650, 580, 190, "Animation Controls");//5, 510, 580, 190,
       o->labeltype(FL_NO_LABEL);
       { Fl_Group* o = new Fl_Group(95, 690, 490, 150, "Playback");
         o->labeltype(FL_NO_LABEL);
@@ -381,14 +381,14 @@ ModelerUIWindows::ModelerUIWindows() {
         o->end();
         Fl_Group::current()->resizable(o);
       }
-      { Fl_Group* o = new Fl_Group(15, 510, 125, 210, "partical system");
+      { Fl_Group* o = new Fl_Group(15, 650, 125, 95, "partical system");
         o->box(FL_ENGRAVED_BOX);
         o->labeltype(FL_NO_LABEL);
-        { Fl_Box* o = new Fl_Box(20, 510, 90, 20, "Particle System");
+       { Fl_Box* o = new Fl_Box(20, 650, 90, 20, "Particle System");
           o->labelsize(12);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
         }
-        { Fl_Button* o = m_pbtClearSim = new Fl_Button(60, 535, 70, 20, "C&lear Sim.");
+        { Fl_Button* o = m_pbtClearSim = new Fl_Button(60, 675, 70, 20, "C&lear Sim.");
           o->labelsize(12);
           o->user_data((void*)(this));
         }

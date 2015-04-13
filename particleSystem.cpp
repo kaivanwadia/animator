@@ -9,6 +9,7 @@
 #include <cmath>
 #include <iostream>
 #include <set>
+#include <string>
 
 #include <FL/gl.h>
 
@@ -23,12 +24,14 @@ static float prevT;
 ParticleSystem::ParticleSystem() 
 {
 	totalNoOfParticles = 0;
-	maxPartPerFrame = 6;
+	maxPartPerFrame = 2;
 	gravity = -ModelerUIWindows::m_nGravity;
 	dragCoeff = -ModelerUIWindows::m_nDragCoeff;
-	gravityForce = true;
-	dragForce = true;
-	maxVelocity = 2;
+	floorStiff = ModelerUIWindows::m_nFlStiff;
+	floorDrag = ModelerUIWindows::m_nFlDrag;
+	maxVelocityChimney = 4; //5
+	maxVelocityClaw = 3;
+	timeStep = 0;
 }
 
 
@@ -85,13 +88,15 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 
 	gravity = -ModelerUIWindows::m_nGravity;
 	dragCoeff = -ModelerUIWindows::m_nDragCoeff;
+	floorStiff = ModelerUIWindows::m_nFlStiff;
+	floorDrag = ModelerUIWindows::m_nFlDrag;
+	timeStep = t-prevT;
     
     int numberErased = 0;
 
 	if (simulate) {
-		//EMIT new particles
-		emitParticles();
 
+		// Kill dead particles
 		std::set<int> particlesToDelete;
 		for(int i=0; i<(int)particles.size(); i++)
 	    {
@@ -103,7 +108,6 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 	        	continue;
 	        }
 	    }
-
 	    vector<Particle> newparticles;
 	    if(!particlesToDelete.empty())
 	    {
@@ -116,28 +120,16 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 	        }
 	        particles = newparticles;
 	    }
-		for(auto partItr = particles.begin(); partItr != particles.end(); ++partItr) {
-			//Clear forces
-			partItr->clearForce();
 
-			//ADD FORCES:
-			if (gravityForce)
-			{
-				// cout << "Gravity\n";
-				partItr->forces[0] += 0.0;
-				partItr->forces[1] += partItr->mass*gravity;
-				partItr->forces[2] += 0.0;
-			}
-			if (dragForce)
-			{
-				// cout << "Drag\n";
-				partItr->forces[0] += partItr->vel[0] * dragCoeff;
-				partItr->forces[1] += partItr->vel[1] * dragCoeff;
-				partItr->forces[2] += partItr->vel[2] * dragCoeff;
-			}
-		}
-		//SOLVER
-		numericalIntegration(t-prevT);
+	    //EMIT new particles
+		emitParticles();
+		vector<float> q, qprev, vel;
+		// Build configuration
+		buildConfiguration(q, qprev, vel);
+		// printVector(vel, "Start Vel");
+		numericalIntegration(q, qprev, vel);
+
+		unbuildConfiguration(q, vel);
 	}
 	
 	// Debugging info
@@ -148,24 +140,107 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 	//fcout << "Particles: " << particles.size() << endl;
 }
 
-void ParticleSystem::numericalIntegration(float timeStep)
+void ParticleSystem::printVector(vector<float> &v, string name) const
 {
-	for(auto partItr = particles.begin(); partItr != particles.end(); ++partItr) {
-		partItr->pos[0] = partItr->pos[0] + (timeStep * partItr->vel[0]);
-		partItr->pos[1] = partItr->pos[1] + (timeStep * partItr->vel[1]);
-		partItr->pos[2] = partItr->pos[2] + (timeStep * partItr->vel[2]);
-		// p->setPosition( p->getPosition() + (dt * p->getVelocity()) );
-		partItr->vel[0] = partItr->vel[0] + (timeStep * (partItr->forces[0]/partItr->mass));
-		partItr->vel[1] = partItr->vel[1] + (timeStep * (partItr->forces[1]/partItr->mass));
-		partItr->vel[2] = partItr->vel[2] + (timeStep * (partItr->forces[2]/partItr->mass));
-		// p->setVelocity( p->getVelocity() + (dt * (p->getForce()/p->getMass()) ) );
+	cout << name << " : \n";
+	for (int i = 0; i < v.size(); i++)
+	{
+		cout << i << " : " << v[i] << "\n";
 	}
+	cout << "\n";
+}
+
+void ParticleSystem::numericalIntegration(vector<float> &q, vector<float> &qprev, vector<float> &vel)
+{
+    std::vector<float> forces;
+
+    std::vector<float> oldq = q;
+    for (int i = 0; i < q.size(); i++)
+    {
+    	q[i] += timeStep*vel[i];
+    }
+    computeForceAndHessian(q, oldq, vel, forces);
+    for (int i = 0; i < q.size(); i++)
+    {
+    	int index = i/3;
+    	float tempVel = timeStep * forces[i]/particles[index].mass;
+    	vel[i] = vel[i] + tempVel;
+    }
+}
+
+void ParticleSystem::computeForceAndHessian(vector<float> &q, vector<float> &qprev, vector<float> &vel, vector<float> &forces)
+{
+    forces.clear();
+    forces.resize(q.size(), 0);
+    processGravityForce(forces);
+    processDragForce(vel, forces);
+    processFloorForce(q, qprev, forces);
+
+    // if(params_.activeForces & SimParameters::F_SPRINGS)
+    //     processSpringForce(q, F, Hcoeffs);
+    // if(params_.activeForces & SimParameters::F_DAMPING)
+    //     processDampingForce(q, qprev, F, Hcoeffs);
+    // if(params_.activeForces & SimParameters::F_FLOOR)
+    //     processFloorForce(q, qprev, F, Hcoeffs);
+    // if(params_.activeForces & SimParameters::F_ELASTIC)
+    //     processElasticBendingForce(q, F);
+    // if(params_.constraint == SimParameters::CH_PENALTY_FORCE)
+    //     processPenaltyForce(q, F);
+
+    // H.setFromTriplets(Hcoeffs.begin(), Hcoeffs.end());
+
+}
+
+void ParticleSystem::processGravityForce(vector<float> &forces)
+{
+    int nparticles = (int)particles.size();
+    for(int i=0; i<nparticles; i++)
+    {
+        forces[(3*i)+1] += gravity*particles[i].mass;
+    }
+}
+
+void ParticleSystem::processDragForce(vector<float> &vel, vector<float> &forces)
+{
+    int nparticles = (int)particles.size();
+    for(int i=0; i<nparticles; i++)
+    {
+        forces[(3*i)] = forces[(3*i)] + dragCoeff*vel[(3*i)];
+        forces[(3*i) + 1] = forces[(3*i) + 1] + dragCoeff*vel[(3*i) + 1];
+        forces[(3*i) + 2] = forces[(3*i) + 2] + dragCoeff*vel[(3*i) + 2];
+    }
+}
+
+void ParticleSystem::processFloorForce(vector<float> &q, vector<float> &qprev, vector<float> &forces)
+{
+    int nparticles = particles.size();
+    for(int i=0; i<nparticles; i++)
+    {
+        if(q[3*i+1] < 0.05)
+        {
+            double vel = (q[3*i+1]-qprev[3*i+1])/timeStep;
+            if (vel > 0)
+            {
+            	continue;
+            }
+            double dist = 0.05 - q[3*i+1];
+            float stiffForce = floorStiff*dist;
+            // float dragForce = floorDrag*dist*vel;
+            float dragForce = stiffForce * -0.7;
+            forces[3*i+1] = forces[3*i + 1] + stiffForce + dragForce;
+        }
+    }
 }
 
 /** Emitting Particles **/
 void ParticleSystem::emitParticles()
 {
 	int noOfPart = rand() % maxPartPerFrame + 1;
+	// noOfPart = 1;
+	// if (particles.size() >= 1)
+	// {
+	// 	return;
+	// }
 	for (int i = 0; i < noOfPart; i++)
 	{
 		float x = rand()/float(RAND_MAX) - 0.5;
@@ -175,13 +250,14 @@ void ParticleSystem::emitParticles()
 		// cout << "Pos : " << pos[0] << "\t" << pos[1] << "\t" << pos[2] << "\n";
 		pos = pos + emitPosition;
 		// cout << "Emit Pos : " << emitPosition[0] << "\t" << emitPosition[1] << "\t" << emitPosition[2] << "\n";
-		Vec3f vel = getRandomVelocity(maxVelocity*2, -maxVelocity);
+		Vec3f vel = getRandomVelocity(maxVelocityChimney*2, -maxVelocityChimney);
 		// Vec3f vel = Vec3f(7, 7, 0.0);
 		Vec4f color = Vec4f(1.0, 0.0, 0.0, 1.0);
-	    double mass = rand() % 8 + 1;
-	    double size = rand() % 10 + 2;
-	    float lifespan = rand() % 100 + 0;
-	    Particle p = Particle(pos, mass, size, color, lifespan, vel);
+	    double mass = rand() % 5 + 2;
+	    // double mass = 1;
+	    float lifespan = rand() % 200 + 1;
+	    // float lifespan = 1000;
+	    Particle p = Particle(pos, mass, color, lifespan, vel);
 	    particles.push_back(p);
 	}
 	totalNoOfParticles += noOfPart;
@@ -215,6 +291,57 @@ void ParticleSystem::setEmitterPosition(Vec3f _emitPos)
 	// emitPosition[0] = -5.0;
 	// emitPosition[1] = 3.0;
 	// emitPosition[2] = 0.0;
+}
+
+void ParticleSystem::buildConfiguration(vector<float> &q, vector<float> &qprev, vector<float> &vel)
+{
+	int ndofs = 3*particles.size();
+	q.clear();
+	qprev.clear();
+	vel.clear();
+    q.resize(ndofs);
+    qprev.resize(ndofs);
+    vel.resize(ndofs);
+
+    // cout << "In buildConfiguration : \n";
+    for(int i=0; i<particles.size(); i++)
+    {
+        q[3*i] = particles[i].pos[0];
+        q[(3*i) + 1] = particles[i].pos[1];
+        q[(3*i) + 2] = particles[i].pos[2];
+
+        qprev[3*i] = particles[i].prevPos[0];
+        qprev[(3*i) + 1] = particles[i].prevPos[1];
+        qprev[(3*i) + 2] = particles[i].prevPos[2];
+
+        // cout << 3*i << "v : " << particles[i].vel[0] << "\n";
+        // cout << (3*i) + 1<< "v : " << particles[i].vel[1] << "\n";
+        // cout << (3*i) + 2<< "v : " << particles[i].vel[2] << "\n";
+        vel[3*i] = particles[i].vel[0];
+        vel[(3*i) + 1] = particles[i].vel[1];
+        vel[(3*i) + 2] = particles[i].vel[2];
+        // cout << 3*i << "vel : " << vel[3*i] << "\n";
+        // cout << (3*i) + 1<< "vel : " << vel[(3*i) + 1] << "\n";
+        // cout << (3*i) + 2<< "vel : " << vel[(3*i) + 2] << "\n";
+    }
+}
+
+void ParticleSystem::unbuildConfiguration(vector<float> &q, vector<float> &vel)
+{
+    int ndofs = q.size();
+    assert(ndofs == int(3*particles.size()));
+    for(int i=0; i<ndofs/3; i++)
+    {
+        particles[i].prevPos[0] = particles[i].pos[0];
+        particles[i].prevPos[1] = particles[i].pos[1];
+        particles[i].prevPos[2] = particles[i].pos[2];
+        particles[i].pos[0] = q[3*i];
+        particles[i].pos[1] = q[(3*i) + 1];
+        particles[i].pos[2] = q[(3*i) + 2];
+        particles[i].vel[0] = vel[3*i];
+        particles[i].vel[1] = vel[(3*i) + 1];
+        particles[i].vel[2] = vel[(3*i) + 2];
+    }
 }
 
 /** Adds the current configuration of particles to

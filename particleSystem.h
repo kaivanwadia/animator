@@ -19,6 +19,7 @@
 #include "vec.h"
 #include "Particle.h"
 #include "mat.h"
+#include <string>
 
 class ParticleSystem {
 
@@ -70,9 +71,17 @@ public:
 
 	void setEmitParticles();
 	void setEmitterPosition(Vec3f _emitPos);
-	void emitParticles();
+	void emitParticles(); 
 	Vec3f getRandomVelocity(int max, int min);
-	void numericalIntegration(float timeStep);
+	void buildConfiguration(std::vector<float> &q, std::vector<float> &qprev, std::vector<float> &vel);
+	void unbuildConfiguration(std::vector<float> &q, std::vector<float> &vel);
+	void numericalIntegration(std::vector<float> &q, std::vector<float> &qprev, std::vector<float> &vel);
+	void computeForceAndHessian(std::vector<float> &q, std::vector<float> &qprev, std::vector<float> &vel, std::vector<float> &forces);
+	void processGravityForce(std::vector<float> &forces);
+	void processDragForce(std::vector<float> &vel, std::vector<float> &forces);
+	void processFloorForce(std::vector<float> &q, std::vector<float> &qprev, std::vector<float> &forces);
+
+	void printVector(std::vector<float> &v, std::string name) const;
 
 
 protected:
@@ -96,11 +105,13 @@ protected:
 	int maxPartPerFrame;
 	int totalNoOfParticles;
 
+	int maxVelocityChimney;
+	int maxVelocityClaw;
+	float timeStep;
 	float gravity;
 	float dragCoeff;
-	int maxVelocity;
-	bool gravityForce;
-	bool dragForce;
+	float floorStiff;
+	float floorDrag;
 };
 
 
