@@ -33,6 +33,7 @@
 #include "dcjaucurveevaluator.h"
 #include "qbsplinecurveevaluator.h"
 #include "lreisencurveevaluator.h"
+#include "c1bezcurveevaluator.h"
 
 #define LEFT		1
 #define MIDDLE		2
@@ -131,6 +132,8 @@ m_flcCurrCurve(FL_BLACK)
 	m_ppceCurveEvaluators[CURVE_TYPE_DCJAU] = new DCJauCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_QUAD] = new QBSplineCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_LREISEN] = new LReisenCurveEvaluator();
+	m_ppceCurveEvaluators[CURVE_TYPE_C0BEZ] = new LReisenCurveEvaluator();
+	m_ppceCurveEvaluators[CURVE_TYPE_C1BEZ] = new C1BezCurveEvaluator();
 }
 
 GraphWidget::~GraphWidget()

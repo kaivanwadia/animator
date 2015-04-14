@@ -21,7 +21,7 @@ void BezierCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,
 		newCtrlPoints.insert(newCtrlPoints.begin(), temp);
 	}
 
-	if (!(bWrap && (numCtrlPoints%3 == 0))) // Not wrapping and not multiple of 3
+	if (!(bWrap && (numCtrlPoints%3 == 0))) // Not wrapping or not multiple of 3
 	{
 		Point temp  = Point(ptvCtrlPts[0].x, ptvCtrlPts[0].y);
 		newCtrlPoints.insert(newCtrlPoints.begin(), temp);

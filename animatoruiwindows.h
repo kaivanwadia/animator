@@ -73,6 +73,11 @@ public:
   Fl_Window *m_pwndModelerWnd;
   ModelerView *m_pwndModelerView;
 
+  Fl_Choice* m_bezCurveTypeChoice;
+  static Fl_Menu_Item menu_m_bezierCurveType[];
+  static double m_nBezierCurveType;
+  static void cb_bezierCurveType(Fl_Widget* o, void* v);
+
   Fl_Value_Slider* m_tauSlider;
   static double m_nTAU;
   static void cb_tauSlider(Fl_Widget* o, void* v);

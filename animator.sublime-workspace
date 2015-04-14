@@ -4,8 +4,84 @@
 		"selected_items":
 		[
 			[
+				"sti",
+				"stiffForce"
+			],
+			[
+				"Sti",
+				"stiffForce"
+			],
+			[
+				"drag",
+				"dragForce"
+			],
+			[
+				"floo",
+				"floorDrag"
+			],
+			[
+				"flo",
+				"floorStiff"
+			],
+			[
+				"draw",
+				"drawSphere"
+			],
+			[
 				"m_nfl",
-				"m_nFlStiff"
+				"m_nFlDrag"
+			],
+			[
+				"Vec",
+				"Vec3f"
+			],
+			[
+				"Bu",
+				"buildConfiguration"
+			],
+			[
+				"print",
+				"printVector"
+			],
+			[
+				"ve",
+				"vector	std::vector"
+			],
+			[
+				"s",
+				"size"
+			],
+			[
+				"cou",
+				"cout"
+			],
+			[
+				"vel",
+				"vel"
+			],
+			[
+				"Part",
+				"ParticleSystem"
+			],
+			[
+				"q",
+				"q"
+			],
+			[
+				"mas",
+				"mass"
+			],
+			[
+				"time",
+				"timeStep"
+			],
+			[
+				"Par",
+				"ParticleSystem"
+			],
+			[
+				"v",
+				"vector	std::vector"
 			],
 			[
 				"temp",
@@ -92,10 +168,6 @@
 				"include"
 			],
 			[
-				"Vec",
-				"Vec4f"
-			],
-			[
 				"GL",
 				"GL_MODELVIEW_MATRIX"
 			],
@@ -112,10 +184,6 @@
 				"noOfPart"
 			],
 			[
-				"Part",
-				"Particle"
-			],
-			[
 				"part",
 				"particles"
 			],
@@ -128,16 +196,8 @@
 				"forces"
 			],
 			[
-				"ve",
-				"vel"
-			],
-			[
 				"tim",
 				"timeStep"
-			],
-			[
-				"drag",
-				"dragCoeff"
 			],
 			[
 				"gra",
@@ -170,10 +230,6 @@
 			[
 				"bot",
 				"bottomRadius"
-			],
-			[
-				"draw",
-				"drawCylinder"
 			],
 			[
 				"grou",
@@ -250,10 +306,6 @@
 			[
 				"In",
 				"Interval"
-			],
-			[
-				"print",
-				"println"
 			],
 			[
 				"LM",
@@ -400,10 +452,6 @@
 				"pixelIntensity"
 			],
 			[
-				"cou",
-				"count"
-			],
-			[
 				"pix",
 				"pixelIntensities"
 			],
@@ -466,72 +514,16 @@
 			[
 				"fa",
 				"FALL_RATE"
-			],
-			[
-				"fall",
-				"fallRate"
-			],
-			[
-				"fal",
-				"fallFactor"
-			],
-			[
-				"shad",
-				"shadowDirection"
-			],
-			[
-				"pos",
-				"position"
-			],
-			[
-				"att",
-				"atten_angle"
-			],
-			[
-				"has",
-				"hasPosition"
-			],
-			[
-				"parseSca",
-				"parseScalarExpression"
-			],
-			[
-				"toke",
-				"tokenNames"
-			],
-			[
-				"rese",
-				"reservedWords"
-			],
-			[
-				"bg",
-				"bgSize"
-			],
-			[
-				"bg_buf",
-				"bg_buffer_width"
-			],
-			[
-				"buff",
-				"buffer"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "graphwidget.cpp",
+			"file": "/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
 			"settings":
 			{
-				"buffer_size": 33656,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "particleSystem.cpp",
-			"settings":
-			{
-				"buffer_size": 5701,
+				"buffer_size": 843,
 				"line_ending": "Unix"
 			}
 		}
@@ -560,9 +552,21 @@
 	},
 	"file_history":
 	[
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Particle.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/indicatorwindow.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.fl",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/vec.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.cpp",
@@ -572,9 +576,7 @@
 		"/u/kwadia/cs312/Moss/Script Instructions",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/qbsplinecurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/qbsplinecurveevaluator.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/dcjaucurveevaluator.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/beziercurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/dcjaucurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.h",
@@ -589,12 +591,7 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/linearcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Particle.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/vec.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/mat.h",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.h",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
@@ -682,12 +679,7 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/inverse.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/material.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/ray.sublime-project",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/ray.h",
-		"/u/kwadia/cs312/a4_clean/RockPaperScissors.java",
-		"/u/kwadia/cs312/a4_clean/turnin/geng--haoqing_4081329_36036082_RockPaperScissors.java",
-		"/u/kwadia/cs312/a4_clean/turnin/tran--tracy_3879181_36041139_RockPaperScissors.java",
-		"/u/kwadia/cs312/a4_clean/makefile",
-		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/SceneObjects/trimesh.cpp"
+		"/u/kwadia/CS384G - Computer Graphics/Project 2/ray/src/scene/ray.h"
 	],
 	"find":
 	{
@@ -706,6 +698,16 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Clear Sim.",
+			"C&lear Sim.",
+			"maxVelocity",
+			"3*i",
+			"2*i",
+			"particles",
+			"ParticleSystem",
+			"timeStep",
+			"2*i",
+			"std::",
 			"m_stepSlider",
 			"m_tauSlider",
 			"m_stepSlider",
@@ -823,17 +825,7 @@
 			"bb",
 			"bb8",
 			"bb6",
-			"bb4",
-			"bb2",
-			"bb",
-			"tmp7",
-			"tmp",
-			"tmp3",
-			"bb8",
-			"bb4",
-			"bb2",
-			"entry",
-			"bb"
+			"bb4"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -857,54 +849,26 @@
 			[
 				{
 					"buffer": 0,
-					"file": "graphwidget.cpp",
+					"file": "/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
 					"settings":
 					{
-						"buffer_size": 33656,
+						"buffer_size": 843,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2973,
-								2973
+								327,
+								327
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1683.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "particleSystem.cpp",
-					"settings":
-					{
-						"buffer_size": 5701,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4265,
-								4265
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2499.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -958,28 +922,40 @@
 		"selected_items":
 		[
 			[
-				"card",
-				"cardcurveevaluator.cpp"
+				"gra",
+				"graphwidget.h"
 			],
 			[
-				"part",
-				"particleSystem.cpp"
+				"ani",
+				"animatoruiwindows.cpp"
 			],
 			[
-				"ma",
-				"Makefile"
+				"ro",
+				"robotarm.cpp"
 			],
 			[
 				"anim",
 				"animatoruiwindows.cpp"
 			],
 			[
-				"bs",
-				"bsplinecurveevaluator.cpp"
+				"vec",
+				"vec.h"
 			],
 			[
-				"ro",
-				"robotarm.cpp"
+				"part",
+				"Particle.h"
+			],
+			[
+				"card",
+				"cardcurveevaluator.cpp"
+			],
+			[
+				"ma",
+				"Makefile"
+			],
+			[
+				"bs",
+				"bsplinecurveevaluator.cpp"
 			],
 			[
 				"bez",
@@ -1020,10 +996,6 @@
 			[
 				"grap",
 				"graphwidget.cpp"
-			],
-			[
-				"vec",
-				"vec.h"
 			],
 			[
 				"mat",
@@ -1100,10 +1072,6 @@
 			[
 				"rayt",
 				"src/RayTracer.cpp"
-			],
-			[
-				"gra",
-				"src/ui/GraphicalUI.cpp"
 			],
 			[
 				"sc",

@@ -369,6 +369,15 @@ inline void ModelerUI::cb_curveType_i(Fl_Choice*, void*)
 {
 	m_pwndGraphWidget->currCurveType(m_pchoCurveType->value());
 	m_pwndGraphWidget->redraw();
+	if (m_pwndGraphWidget->currCurveType() == 2) 
+	{
+		m_bezCurveTypeChoice->activate();
+		m_bezCurveTypeChoice->value(0);
+	}
+	else
+	{
+		m_bezCurveTypeChoice->deactivate();
+	}
 }
 
 void ModelerUI::cb_curveType(Fl_Choice* o, void* v) 
