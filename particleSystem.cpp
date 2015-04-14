@@ -252,7 +252,7 @@ void ParticleSystem::emitParticles()
 		// cout << "Emit Pos : " << emitPosition[0] << "\t" << emitPosition[1] << "\t" << emitPosition[2] << "\n";
 		Vec3f vel = getRandomVelocity(maxVelocityChimney*2, -maxVelocityChimney);
 		// Vec3f vel = Vec3f(7, 7, 0.0);
-		Vec4f color = Vec4f(1.0, 0.0, 0.0, 1.0);
+		Vec3f color = Vec3f(ModelerUIWindows::m_nRed, ModelerUIWindows::m_nGreen, ModelerUIWindows::m_nBlue);
 	    double mass = rand() % 5 + 2;
 	    // double mass = 1;
 	    float lifespan = rand() % 200 + 1;

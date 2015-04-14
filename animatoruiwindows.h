@@ -101,5 +101,17 @@ public:
   Fl_Value_Slider* m_flStiffSlider;
   static double m_nFlStiff;
   static void cb_flStiffSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_redSlider;
+  static double m_nRed;
+  static void cb_redSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_greenSlider;
+  static double m_nGreen;
+  static void cb_greenSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_blueSlider;
+  static double m_nBlue;
+  static void cb_blueSlider(Fl_Widget* o, void* v);
 };
 #endif

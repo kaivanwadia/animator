@@ -9,7 +9,7 @@ static int idGenerator = 0;
 class Particle
 {
 public:
-    Particle(Vec3f _pos, double _mass, Vec4f _color, float _lifespan, Vec3f _vel)
+    Particle(Vec3f _pos, double _mass, Vec3f _color, float _lifespan, Vec3f _vel)
     {
     	id = idGenerator;
         idGenerator++;
@@ -27,7 +27,7 @@ public:
     Vec3f pos;
     Vec3f prevPos;
     Vec3f vel;
-    Vec4f color;
+    Vec3f color;
     double mass;
     double massInv;
     double size;
@@ -36,8 +36,8 @@ public:
     Vec3f forces;
     void draw()
     {
-        setDiffuseColor(0.0, 0.4, 1.0);
-        setAmbientColor(0.0, 0.4, 1.0);
+        setDiffuseColor(color[0], color[1], color[2]);
+        setAmbientColor(color[0], color[1], color[2]);
         glPushMatrix();
             glTranslatef(pos[0], pos[1], pos[2]);
             drawSphere(0.05 * mass);

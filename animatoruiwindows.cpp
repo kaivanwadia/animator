@@ -65,9 +65,12 @@ double ModelerUIWindows::m_nSteps;
 
 double ModelerUIWindows::m_nGravity;
 double ModelerUIWindows::m_nDragCoeff;
-
 double ModelerUIWindows::m_nFlDrag;
 double ModelerUIWindows::m_nFlStiff;
+
+double ModelerUIWindows::m_nRed;
+double ModelerUIWindows::m_nGreen;
+double ModelerUIWindows::m_nBlue;
 
 void ModelerUIWindows::cb_bezierCurveType(Fl_Widget* o, void* v)
 {
@@ -133,6 +136,21 @@ void ModelerUIWindows::cb_flDragSlider(Fl_Widget* o, void* v)
 void ModelerUIWindows::cb_flStiffSlider(Fl_Widget* o, void* v)
 {
   ((ModelerUIWindows*)(o->user_data()))->m_nFlStiff = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_redSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nRed = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_greenSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nGreen = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_blueSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nBlue = ((Fl_Slider*)o)->value();
 }
 
 ModelerUIWindows::ModelerUIWindows() {
@@ -263,16 +281,16 @@ ModelerUIWindows::ModelerUIWindows() {
       m_stepSlider->align(FL_ALIGN_RIGHT);
       m_stepSlider->callback(cb_stepSlider);
     }
-    { Fl_Group* o = new Fl_Group(155, 560, 430, 100, "Particle System Values");//5, 510, 580, 190,
+    { Fl_Group* o = new Fl_Group(155, 550, 430, 135, "Particle System Values");//5, 510, 580, 190,
       o->box(FL_ENGRAVED_BOX);
       o->labeltype(FL_NO_LABEL);
-      { Fl_Box* o = new Fl_Box(165, 565, 135, 20, "Particle System Values");
+      { Fl_Box* o = new Fl_Box(165, 555, 135, 20, "Particle System Values");
         o->labelsize(12);
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-      } 
+      }
       { 
         m_nGravity = 9.8;
-        m_gravitySlider = new Fl_Value_Slider(165,590,100,20,"Gravity");
+        m_gravitySlider = new Fl_Value_Slider(165,575,100,20,"Gravity");
         m_gravitySlider->user_data((void*)this);
         m_gravitySlider->type(FL_HOR_NICE_SLIDER);
         m_gravitySlider->labelfont(FL_COURIER);
@@ -286,7 +304,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_nDragCoeff = 0.48;
-        m_dragSlider = new Fl_Value_Slider(320,590,100,20,"Drag Coeff");
+        m_dragSlider = new Fl_Value_Slider(165,600,100,20,"Drag Coeff");
         m_dragSlider->user_data((void*)this);
         m_dragSlider->type(FL_HOR_NICE_SLIDER);
         m_dragSlider->labelfont(FL_COURIER);
@@ -300,7 +318,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_nFlStiff = 9000;
-        m_flStiffSlider = new Fl_Value_Slider(165,620,100,20,"FloorSt");
+        m_flStiffSlider = new Fl_Value_Slider(165,625,100,20,"FloorSt");
         m_flStiffSlider->user_data((void*)this);
         m_flStiffSlider->type(FL_HOR_NICE_SLIDER);
         m_flStiffSlider->labelfont(FL_COURIER);
@@ -311,6 +329,48 @@ ModelerUIWindows::ModelerUIWindows() {
         m_flStiffSlider->value(m_nFlStiff);
         m_flStiffSlider->align(FL_ALIGN_RIGHT);
         m_flStiffSlider->callback(cb_flStiffSlider);
+      }
+      { 
+        m_nRed = 0.0;
+        m_redSlider = new Fl_Value_Slider(350,575,80,20,"Red");
+        m_redSlider->user_data((void*)this);
+        m_redSlider->type(FL_HOR_NICE_SLIDER);
+        m_redSlider->labelfont(FL_COURIER);
+        m_redSlider->labelsize(12);
+        m_redSlider->minimum(0);
+        m_redSlider->maximum(1.0);
+        m_redSlider->step(0.1);
+        m_redSlider->value(m_nRed);
+        m_redSlider->align(FL_ALIGN_RIGHT);
+        m_redSlider->callback(cb_redSlider);
+      }
+      { 
+        m_nGreen = 0.8;
+        m_greenSlider = new Fl_Value_Slider(350,600,80,20,"Green");
+        m_greenSlider->user_data((void*)this);
+        m_greenSlider->type(FL_HOR_NICE_SLIDER);
+        m_greenSlider->labelfont(FL_COURIER);
+        m_greenSlider->labelsize(12);
+        m_greenSlider->minimum(0);
+        m_greenSlider->maximum(1.0);
+        m_greenSlider->step(0.1);
+        m_greenSlider->value(m_nGreen);
+        m_greenSlider->align(FL_ALIGN_RIGHT);
+        m_greenSlider->callback(cb_greenSlider);
+      }
+      { 
+        m_nBlue = 0.2;
+        m_blueSlider = new Fl_Value_Slider(350,625,80,20,"Blue");
+        m_blueSlider->user_data((void*)this);
+        m_blueSlider->type(FL_HOR_NICE_SLIDER);
+        m_blueSlider->labelfont(FL_COURIER);
+        m_blueSlider->labelsize(12);
+        m_blueSlider->minimum(0);
+        m_blueSlider->maximum(1.0);
+        m_blueSlider->step(0.1);
+        m_blueSlider->value(m_nBlue);
+        m_blueSlider->align(FL_ALIGN_RIGHT);
+        m_blueSlider->callback(cb_blueSlider);
       }
       o->end();
     }
