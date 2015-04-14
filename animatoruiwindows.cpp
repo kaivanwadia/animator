@@ -67,10 +67,14 @@ double ModelerUIWindows::m_nGravity;
 double ModelerUIWindows::m_nDragCoeff;
 double ModelerUIWindows::m_nFlDrag;
 double ModelerUIWindows::m_nFlStiff;
+double ModelerUIWindows::m_nPenaltyStiffness;
 
 double ModelerUIWindows::m_nRed;
 double ModelerUIWindows::m_nGreen;
 double ModelerUIWindows::m_nBlue;
+int ModelerUIWindows::m_nPartPerFrame;
+int ModelerUIWindows::m_nLifespan;
+bool ModelerUIWindows::m_bCollisions;
 
 void ModelerUIWindows::cb_bezierCurveType(Fl_Widget* o, void* v)
 {
@@ -138,6 +142,11 @@ void ModelerUIWindows::cb_flStiffSlider(Fl_Widget* o, void* v)
   ((ModelerUIWindows*)(o->user_data()))->m_nFlStiff = ((Fl_Slider*)o)->value();
 }
 
+void ModelerUIWindows::cb_penStiffSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nPenaltyStiffness = ((Fl_Slider*)o)->value() * 1000;
+}
+
 void ModelerUIWindows::cb_redSlider(Fl_Widget* o, void* v)
 {
   ((ModelerUIWindows*)(o->user_data()))->m_nRed = ((Fl_Slider*)o)->value();
@@ -153,9 +162,24 @@ void ModelerUIWindows::cb_blueSlider(Fl_Widget* o, void* v)
   ((ModelerUIWindows*)(o->user_data()))->m_nBlue = ((Fl_Slider*)o)->value();
 }
 
+void ModelerUIWindows::cb_ppfSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nPartPerFrame = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_lifeSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nLifespan = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_collisionBtn(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_bCollisions = ((Fl_Slider*)o)->value() == 0 ? false : true;
+}
+
 ModelerUIWindows::ModelerUIWindows() {
   Fl_Window* w;
-  { Fl_Window* o = m_pwndMainWnd = new Fl_Window(589, 855, "CS384g Animator Fall 2005");
+  { Fl_Window* o = m_pwndMainWnd = new Fl_Window(640, 855, "CS384g Animator Fall 2005");
     w = o;
     o->color(185);
     o->labeltype(FL_NORMAL_LABEL);
@@ -281,10 +305,10 @@ ModelerUIWindows::ModelerUIWindows() {
       m_stepSlider->align(FL_ALIGN_RIGHT);
       m_stepSlider->callback(cb_stepSlider);
     }
-    { Fl_Group* o = new Fl_Group(155, 550, 430, 135, "Particle System Values");//5, 510, 580, 190,
+    { Fl_Group* o = new Fl_Group(155, 550, 470, 135, "Particle System Values");//5, 510, 580, 190,
       o->box(FL_ENGRAVED_BOX);
       o->labeltype(FL_NO_LABEL);
-      { Fl_Box* o = new Fl_Box(165, 555, 135, 20, "Particle System Values");
+      { Fl_Box* o = new Fl_Box(165, 555, 175, 20, "Particle System Values");
         o->labelsize(12);
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
@@ -304,7 +328,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_nDragCoeff = 0.48;
-        m_dragSlider = new Fl_Value_Slider(165,600,100,20,"Drag Coeff");
+        m_dragSlider = new Fl_Value_Slider(165,600,100,20,"Drag");
         m_dragSlider->user_data((void*)this);
         m_dragSlider->type(FL_HOR_NICE_SLIDER);
         m_dragSlider->labelfont(FL_COURIER);
@@ -331,8 +355,31 @@ ModelerUIWindows::ModelerUIWindows() {
         m_flStiffSlider->callback(cb_flStiffSlider);
       }
       { 
+        m_bCollisions = 0;
+        m_collisionBtn = new Fl_Light_Button(165,655,100,20," Collisions");
+        m_collisionBtn->labelfont(FL_COURIER);
+        m_collisionBtn->labelsize(12);
+        m_collisionBtn->user_data((void*)this);
+        m_collisionBtn->value(m_bCollisions);
+        m_collisionBtn->callback(cb_collisionBtn);
+      }
+      { 
+        m_nPenaltyStiffness = 100;
+        m_penaltyStiffSlider = new Fl_Value_Slider(280,655,100,20,"PenaltyStns(x1000)");
+        m_penaltyStiffSlider->user_data((void*)this);
+        m_penaltyStiffSlider->type(FL_HOR_NICE_SLIDER);
+        m_penaltyStiffSlider->labelfont(FL_COURIER);
+        m_penaltyStiffSlider->labelsize(12);
+        m_penaltyStiffSlider->minimum(1);
+        m_penaltyStiffSlider->maximum(1000);
+        m_penaltyStiffSlider->step(50);
+        m_penaltyStiffSlider->value(m_nPenaltyStiffness);
+        m_penaltyStiffSlider->align(FL_ALIGN_RIGHT);
+        m_penaltyStiffSlider->callback(cb_penStiffSlider);
+      }
+      { 
         m_nRed = 0.0;
-        m_redSlider = new Fl_Value_Slider(350,575,80,20,"Red");
+        m_redSlider = new Fl_Value_Slider(325,555,80,20,"Red");
         m_redSlider->user_data((void*)this);
         m_redSlider->type(FL_HOR_NICE_SLIDER);
         m_redSlider->labelfont(FL_COURIER);
@@ -346,7 +393,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_nGreen = 0.8;
-        m_greenSlider = new Fl_Value_Slider(350,600,80,20,"Green");
+        m_greenSlider = new Fl_Value_Slider(325,580,80,20,"Green");
         m_greenSlider->user_data((void*)this);
         m_greenSlider->type(FL_HOR_NICE_SLIDER);
         m_greenSlider->labelfont(FL_COURIER);
@@ -360,7 +407,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_nBlue = 0.2;
-        m_blueSlider = new Fl_Value_Slider(350,625,80,20,"Blue");
+        m_blueSlider = new Fl_Value_Slider(325,605,80,20,"Blue");
         m_blueSlider->user_data((void*)this);
         m_blueSlider->type(FL_HOR_NICE_SLIDER);
         m_blueSlider->labelfont(FL_COURIER);
@@ -371,6 +418,34 @@ ModelerUIWindows::ModelerUIWindows() {
         m_blueSlider->value(m_nBlue);
         m_blueSlider->align(FL_ALIGN_RIGHT);
         m_blueSlider->callback(cb_blueSlider);
+      }
+      { 
+        m_nPartPerFrame = 2;
+        m_ppfSlider = new Fl_Value_Slider(460,555,80,20,"Max PtPerFr");
+        m_ppfSlider->user_data((void*)this);
+        m_ppfSlider->type(FL_HOR_NICE_SLIDER);
+        m_ppfSlider->labelfont(FL_COURIER);
+        m_ppfSlider->labelsize(12);
+        m_ppfSlider->minimum(1);
+        m_ppfSlider->maximum(10);
+        m_ppfSlider->step(1);
+        m_ppfSlider->value(m_nPartPerFrame);
+        m_ppfSlider->align(FL_ALIGN_RIGHT);
+        m_ppfSlider->callback(cb_ppfSlider);
+      }
+      { 
+        m_nLifespan = 200;
+        m_lifeSlider = new Fl_Value_Slider(460,580,80,20,"Max life");
+        m_lifeSlider->user_data((void*)this);
+        m_lifeSlider->type(FL_HOR_NICE_SLIDER);
+        m_lifeSlider->labelfont(FL_COURIER);
+        m_lifeSlider->labelsize(12);
+        m_lifeSlider->minimum(50);
+        m_lifeSlider->maximum(1000);
+        m_lifeSlider->step(1);
+        m_lifeSlider->value(m_nLifespan);
+        m_lifeSlider->align(FL_ALIGN_RIGHT);
+        m_lifeSlider->callback(cb_lifeSlider);
       }
       o->end();
     }

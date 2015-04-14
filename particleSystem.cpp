@@ -29,6 +29,7 @@ ParticleSystem::ParticleSystem()
 	dragCoeff = -ModelerUIWindows::m_nDragCoeff;
 	floorStiff = ModelerUIWindows::m_nFlStiff;
 	floorDrag = ModelerUIWindows::m_nFlDrag;
+	penaltyStiffness = ModelerUIWindows::m_nPenaltyStiffness;
 	maxVelocityChimney = 4; //5
 	maxVelocityClaw = 3;
 	timeStep = 0;
@@ -90,6 +91,7 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 	dragCoeff = -ModelerUIWindows::m_nDragCoeff;
 	floorStiff = ModelerUIWindows::m_nFlStiff;
 	floorDrag = ModelerUIWindows::m_nFlDrag;
+	penaltyStiffness = ModelerUIWindows::m_nPenaltyStiffness;
 	timeStep = t-prevT;
     
     int numberErased = 0;
@@ -175,6 +177,10 @@ void ParticleSystem::computeForceAndHessian(vector<float> &q, vector<float> &qpr
     processGravityForce(forces);
     processDragForce(vel, forces);
     processFloorForce(q, qprev, forces);
+    if (ModelerUIWindows::m_bCollisions)
+    {
+    	cout << "Collisions enabled \n";
+    }
 
     // if(params_.activeForces & SimParameters::F_SPRINGS)
     //     processSpringForce(q, F, Hcoeffs);
@@ -235,7 +241,7 @@ void ParticleSystem::processFloorForce(vector<float> &q, vector<float> &qprev, v
 /** Emitting Particles **/
 void ParticleSystem::emitParticles()
 {
-	int noOfPart = rand() % maxPartPerFrame + 1;
+	int noOfPart = rand() % ModelerUIWindows::m_nPartPerFrame + 1;
 	// noOfPart = 1;
 	// if (particles.size() >= 1)
 	// {
@@ -255,7 +261,7 @@ void ParticleSystem::emitParticles()
 		Vec3f color = Vec3f(ModelerUIWindows::m_nRed, ModelerUIWindows::m_nGreen, ModelerUIWindows::m_nBlue);
 	    double mass = rand() % 5 + 2;
 	    // double mass = 1;
-	    float lifespan = rand() % 200 + 1;
+	    float lifespan = rand() % ModelerUIWindows::m_nLifespan + 1;
 	    // float lifespan = 1000;
 	    Particle p = Particle(pos, mass, color, lifespan, vel);
 	    particles.push_back(p);
@@ -288,9 +294,6 @@ void ParticleSystem::setEmitterPosition(Vec3f _emitPos)
 	emitPosition[0] = _emitPos[0];
 	emitPosition[1] = _emitPos[1];
 	emitPosition[2] = _emitPos[2];
-	// emitPosition[0] = -5.0;
-	// emitPosition[1] = 3.0;
-	// emitPosition[2] = 0.0;
 }
 
 void ParticleSystem::buildConfiguration(vector<float> &q, vector<float> &qprev, vector<float> &vel)

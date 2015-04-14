@@ -112,6 +112,7 @@ protected:
 	float dragCoeff;
 	float floorStiff;
 	float floorDrag;
+	float penaltyStiffness;
 };
 
 

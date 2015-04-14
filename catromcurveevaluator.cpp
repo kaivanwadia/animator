@@ -64,7 +64,7 @@ void CatRomCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,
         //     continue;
         // }
 
-        // if (abs(newCtrlPoints[i].x - newCtrlPoints[i+1].x) < 1+s_fFlatnessEpsilon)
+        // if (abs(newCtrlPoints[i].x - newCtrlPoints[i+1].x) < 1)
         // {
         //     std::cout << "dsadsasa\n";
         //     ptvEvaluatedCurvePts.push_back(newCtrlPoints[i]);

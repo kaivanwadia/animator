@@ -113,5 +113,21 @@ public:
   Fl_Value_Slider* m_blueSlider;
   static double m_nBlue;
   static void cb_blueSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_ppfSlider;
+  static int m_nPartPerFrame;
+  static void cb_ppfSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_lifeSlider;
+  static int m_nLifespan;
+  static void cb_lifeSlider(Fl_Widget* o, void* v);
+
+  Fl_Light_Button *m_collisionBtn;
+  static bool m_bCollisions;
+  static void cb_collisionBtn(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_penaltyStiffSlider;
+  static double m_nPenaltyStiffness;
+  static void cb_penStiffSlider(Fl_Widget* o, void* v);
 };
 #endif
