@@ -19,6 +19,7 @@
 #include "vec.h"
 #include "Particle.h"
 #include "mat.h"
+#include <map>
 #include <string>
 
 class ParticleSystem {
@@ -106,7 +107,8 @@ protected:
 	
 	// Particle Stuff
 	std::vector<Particle> particles;
-	Mat4f worldMatrix;
+	std::map<float, std::vector<Particle>> bakedParticleMap;
+
 	std::vector<Vec3f> emitPositions;
 	int maxPartPerFrame;
 	int totalNoOfParticles;

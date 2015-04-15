@@ -20,7 +20,7 @@ static float prevT;
 /***************
  * Constructors
  ***************/
-
+static int timeStepcount = 0;
 ParticleSystem::ParticleSystem() 
 {
 	totalNoOfParticles = 0;
@@ -70,6 +70,8 @@ void ParticleSystem::startSimulation(float t)
 void ParticleSystem::stopSimulation(float t)
 {
 	// These values are used by the UI
+	particles.clear();
+	bakeParticles(t);
 	simulate = false;
 	dirty = true;
 }
@@ -78,6 +80,9 @@ void ParticleSystem::stopSimulation(float t)
 void ParticleSystem::resetSimulation(float t)
 {
 	// These values are used by the UI
+	cout << "In resetSimulation\n";
+	particles.clear();
+	clearBaked();
 	simulate = false;
 	dirty = true;
 }
@@ -101,6 +106,8 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 	if (simulate) {
 
 		// Kill dead particles
+		timeStepcount++;
+		bakeParticles(t);
 		std::set<int> particlesToDelete;
 		for(int i=0; i<(int)particles.size(); i++)
 	    {
@@ -140,8 +147,6 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 	if( t - prevT > .04 )
 		printf("(!!) Dropped Frame %lf (!!)\n", t-prevT);
 	prevT = t;
-	//cout << "Erased: " << numberErased << endl;
-	//fcout << "Particles: " << particles.size() << endl;
 }
 
 void ParticleSystem::printVector(vector<float> &v, string name) const
@@ -188,9 +193,6 @@ void ParticleSystem::computeForceAndHessian(vector<float> &q, vector<float> &qpr
     //     processSpringForce(q, F, Hcoeffs);
     // if(params_.activeForces & SimParameters::F_DAMPING)
     //     processDampingForce(q, qprev, F, Hcoeffs);
-
-    // H.setFromTriplets(Hcoeffs.begin(), Hcoeffs.end());
-
 }
 
 void ParticleSystem::processCollisionForce(vector<float> &q, vector<float> &vel, vector<float> &forces)
@@ -215,7 +217,6 @@ void ParticleSystem::processCollisionForce(vector<float> &q, vector<float> &vel,
 			float currentDistSq = distSquared(p1Pos, p2Pos);
 			if (currentDistSq < minDist) // Collision has occured. Apply a force
 			{
-				// cout << "Colliding\n";
 				Vec3f forceP1 = penaltyStiffness * sqrt(currentDistSq) * 2 * (p1Pos - p2Pos); // This force should be negative
 				forces[p1id*3 + 0] = forces[p1id*3 + 0] + forceP1[0];
 				forces[p1id*3 + 1] = forces[p1id*3 + 1] + forceP1[1];
@@ -227,7 +228,6 @@ void ParticleSystem::processCollisionForce(vector<float> &q, vector<float> &vel,
 			}
 		}
 	}
-	// cout << "==================\n";
 }
 
 void ParticleSystem::processGravityForce(vector<float> &forces)
@@ -277,8 +277,6 @@ void ParticleSystem::emitParticles()
 	int noOfPart = rand() % ModelerUIWindows::m_nPartPerFrame + 1;
 	// noOfPart = 1;
 	int totPartEmitted = 0;
-	// cout << "In Size : " << particles.size() << "\n";
-	// cout << "No of emitters : " << emitPositions.size() << "\n";
 	if (particles.size() >= ModelerUIWindows::m_nMaxParticles)
 	{
 		return;
@@ -329,7 +327,6 @@ void ParticleSystem::emitParticles()
 		}
 	}
 	totalNoOfParticles += totPartEmitted;
-	// cout << "Out Size : " << particles.size() << "\n";
 }
 
 void ParticleSystem::emitChimneyParticle()
@@ -411,9 +408,58 @@ void ParticleSystem::emitClawParticle()
 /** Render particles */
 void ParticleSystem::drawParticles(float t)
 {
-    for(auto partItr = particles.begin(); partItr != particles.end(); ++partItr) {
-        partItr->draw();
-    }
+	// cout << "In drawParticles() \n";
+	if (!simulate)
+	{
+		// Then draw baked if baked exists for time t
+		if (bakedParticleMap.empty())
+		{
+			return;
+		}
+		else if (bake_start_time > t || bake_end_time < t)
+		{
+			return;
+		}
+		else if (t >= bake_start_time && t <= bake_end_time)
+		{
+			vector<Particle> bakedParticles = (*(--bakedParticleMap.end())).second;
+	        for(auto itr = bakedParticleMap.begin(); itr != bakedParticleMap.end(); ++itr)
+	        {
+	        	float mapTime = (*itr).first;
+	            if(t == mapTime)
+	            {
+	                bakedParticles = (*itr).second;
+	                break;
+	            }
+	            else if(t<mapTime)
+	            {
+	            	bakedParticles = (*(--itr)).second;
+	                // if(itr!=bakedParticleMap.begin())
+                	// {
+                		
+                	// }
+	                // else
+	                // {
+	                // 	bakedParticles = (*itr).second;
+	                // }
+	                break;
+	            }
+	        }
+	        for(auto partItr = bakedParticles.begin(); partItr != bakedParticles.end(); ++partItr) {
+		        partItr->draw();
+		    }
+		}
+		else
+		{
+			cout << " Should never come here \n";
+		}
+	}
+	else
+	{
+		for(auto partItr = particles.begin(); partItr != particles.end(); ++partItr) {
+	        partItr->draw();
+	    }
+	}
 }
 
 void ParticleSystem::setEmitterPosition(Vec3f _emitPos, int index)
@@ -497,10 +543,19 @@ float ParticleSystem::distSquared(Vec3f p1Pos, Vec3f p2Pos)
 void ParticleSystem::bakeParticles(float t) 
 {
 	// TODO
+	// cout << "In bakeParticles() \n";
+	if (bakedParticleMap.size() == 0)
+	{
+		bake_start_time = t;
+	}
+	bake_end_time = t;
+	bakedParticleMap[t] = particles;
 }
 
 /** Clears out your data structure of baked particles */
 void ParticleSystem::clearBaked()
 {
 	// TODO
+	cout << "In clearBaked() \n";
+	bakedParticleMap.clear();
 }
