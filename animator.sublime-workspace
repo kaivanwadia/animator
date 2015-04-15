@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"num",
+				"numOfPoints"
+			],
+			[
+				"noo",
+				"numOfPoints"
+			],
+			[
 				"bak",
 				"bakedParticles"
 			],
@@ -222,10 +230,6 @@
 			[
 				"tem",
 				"tempEvalPoints"
-			],
-			[
-				"num",
-				"numCtrlPoints"
 			],
 			[
 				"m",
@@ -510,10 +514,6 @@
 			[
 				"dim",
 				"dimen"
-			],
-			[
-				"righ",
-				"rightObjects"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
 			"settings":
 			{
-				"buffer_size": 947,
+				"buffer_size": 1022,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "particleSystem.cpp",
 			"settings":
 			{
-				"buffer_size": 14728,
+				"buffer_size": 14535,
 				"line_ending": "Unix"
 			}
 		},
@@ -556,6 +556,22 @@
 			"settings":
 			{
 				"buffer_size": 2553,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "animatoruiwindows.cpp",
+			"settings":
+			{
+				"buffer_size": 26200,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dcjaucurveevaluator.cpp",
+			"settings":
+			{
+				"buffer_size": 5163,
 				"line_ending": "Unix"
 			}
 		},
@@ -770,6 +786,13 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"clearBak",
+			"clearbake",
+			"0.00",
+			"vel",
+			";\n",
+			"size",
+			"floorDrag",
 			"drawPa",
 			"particles",
 			"(*itr).first",
@@ -890,14 +913,7 @@
 			"CURVE_TYPE_DECAS",
 			"m_t_Slider",
 			"cb_tauSlides",
-			"m_tau_Slider",
-			"m_ntau",
-			"iCtrlPtCount",
-			"g_y",
-			"g_x",
-			"CatmullRomBasis",
-			"iCtrlPtCountB",
-			"-1"
+			"m_tau_Slider"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -916,7 +932,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -924,15 +940,15 @@
 					"file": "/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
 					"settings":
 					{
-						"buffer_size": 947,
+						"buffer_size": 1022,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								576,
-								576
+								617,
+								617
 							]
 						],
 						"settings":
@@ -950,15 +966,15 @@
 					"file": "particleSystem.cpp",
 					"settings":
 					{
-						"buffer_size": 14728,
+						"buffer_size": 14535,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9605,
-								9605
+								11050,
+								11050
 							]
 						],
 						"settings":
@@ -966,7 +982,7 @@
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 5712.0,
+						"translation.y": 6821.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1010,8 +1026,8 @@
 						"selection":
 						[
 							[
-								709,
-								709
+								356,
+								356
 							]
 						],
 						"settings":
@@ -1038,8 +1054,8 @@
 						"selection":
 						[
 							[
-								696,
-								696
+								328,
+								328
 							]
 						],
 						"settings":
@@ -1049,7 +1065,63 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 595.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "animatoruiwindows.cpp",
+					"settings":
+					{
+						"buffer_size": 26200,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18913,
+								18913
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 8058.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "dcjaucurveevaluator.cpp",
+					"settings":
+					{
+						"buffer_size": 5163,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4544,
+								4544
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 998.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1061,7 +1133,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
 					"settings":
 					{
@@ -1089,7 +1161,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "animatoruiwindows.h",
 					"settings":
 					{
@@ -1117,7 +1189,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "vec.h",
 					"settings":
 					{
@@ -1144,7 +1216,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "modelerview.cpp",
 					"settings":
 					{
@@ -1171,7 +1243,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "modelerapp.cpp",
 					"settings":
 					{
@@ -1182,8 +1254,8 @@
 						"selection":
 						[
 							[
-								5023,
-								5023
+								5091,
+								5091
 							]
 						],
 						"settings":
@@ -1228,7 +1300,7 @@
 		"cols":
 		[
 			0.0,
-			0.659787735849,
+			0.566037735849,
 			1.0
 		],
 		"rows":
@@ -1253,6 +1325,14 @@
 		"selected_items":
 		[
 			[
+				"dcj",
+				"dcjaucurveevaluator.cpp"
+			],
+			[
+				"anim",
+				"animatoruiwindows.cpp"
+			],
+			[
 				"mode",
 				"modelerapp.cpp"
 			],
@@ -1267,10 +1347,6 @@
 			[
 				"vec",
 				"vec.h"
-			],
-			[
-				"anim",
-				"animatoruiwindows.cpp"
 			],
 			[
 				"c1",

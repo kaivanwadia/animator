@@ -493,7 +493,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_bChimEmit = 1;
-        m_chimEmitBtn = new Fl_Light_Button(560,650,100,20," Emitter 1");
+        m_chimEmitBtn = new Fl_Light_Button(560,655,100,20," Emitter 1");
         m_chimEmitBtn->labelfont(FL_COURIER);
         m_chimEmitBtn->labelsize(12);
         m_chimEmitBtn->user_data((void*)this);
@@ -502,7 +502,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_bClawEmit = 0;
-        m_clawEmitBtn = new Fl_Light_Button(560,675,100,20," Emitter 2");
+        m_clawEmitBtn = new Fl_Light_Button(560,680,100,20," Emitter 2");
         m_clawEmitBtn->labelfont(FL_COURIER);
         m_clawEmitBtn->labelsize(12);
         m_clawEmitBtn->user_data((void*)this);
@@ -511,7 +511,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_nMaxChimVel = 4; // To try 3000, previous was 5000
-        m_chimneyVelSlider = new Fl_Value_Slider(165,680,100,20,"MaxChimneyVel");
+        m_chimneyVelSlider = new Fl_Value_Slider(165,680,100,20,"Max Emit1 Vel");
         m_chimneyVelSlider->user_data((void*)this);
         m_chimneyVelSlider->type(FL_HOR_NICE_SLIDER);
         m_chimneyVelSlider->labelfont(FL_COURIER);
@@ -525,7 +525,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_nMaxClawVel = 4; // To try 3000, previous was 5000
-        m_clawVelSlider = new Fl_Value_Slider(275,680,100,20,"MaxClawVel");
+        m_clawVelSlider = new Fl_Value_Slider(360,680,100,20,"Max Emit2 Vel");
         m_clawVelSlider->user_data((void*)this);
         m_clawVelSlider->type(FL_HOR_NICE_SLIDER);
         m_clawVelSlider->labelfont(FL_COURIER);

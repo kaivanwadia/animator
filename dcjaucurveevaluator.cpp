@@ -83,12 +83,12 @@ void DCJauCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,
     }
     
     //  handle linear case when we aren't wrapping a curve around the end
-    if((numCtrlPoints % 3 == 0) && !bWrap) 
+    if((numCtrlPoints % 3 == 0) && !bWrap)
     {
         ptvEvaluatedCurvePts.push_back(ptvCtrlPts[numCtrlPoints - 2]);
         ptvEvaluatedCurvePts.push_back(ptvCtrlPts[numCtrlPoints-1]);
         ptvEvaluatedCurvePts.push_back(Point(fAniLength + 4.0, ptvEvaluatedCurvePts.back().y));
-        // numOfPoints = numOfPoints + 3;
+        numOfPoints = numOfPoints + 3;
     }
     if (numCtrlPoints%3 == 2)
     {
@@ -101,6 +101,7 @@ void DCJauCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,
         {
             ptvEvaluatedCurvePts.push_back(Point(ptvCtrlPts[numCtrlPoints-1].x + wrapLength, ptvCtrlPts[0].y));
         }
+        numOfPoints = numOfPoints + 2;
     }
     else if (numCtrlPoints%3 == 1)
     {
@@ -112,6 +113,7 @@ void DCJauCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,
         {
             ptvEvaluatedCurvePts.push_back(Point(ptvCtrlPts[numCtrlPoints-1].x + wrapLength, ptvCtrlPts[0].y));
         }
+        numOfPoints = numOfPoints + 1;
     }
     std::cout<<"DECASTELJAU POINTS:"<<numOfPoints<<"\n";
 }

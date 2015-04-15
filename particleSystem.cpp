@@ -434,14 +434,6 @@ void ParticleSystem::drawParticles(float t)
 	            else if(t<mapTime)
 	            {
 	            	bakedParticles = (*(--itr)).second;
-	                // if(itr!=bakedParticleMap.begin())
-                	// {
-                		
-                	// }
-	                // else
-	                // {
-	                // 	bakedParticles = (*itr).second;
-	                // }
 	                break;
 	            }
 	        }
