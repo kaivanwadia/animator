@@ -114,6 +114,14 @@ public:
   static double m_nBlue;
   static void cb_blueSlider(Fl_Widget* o, void* v);
 
+  Fl_Light_Button *m_clawEmitBtn;
+  static bool m_bClawEmit;
+  static void cb_clawEmitBtn(Fl_Widget* o, void* v);
+
+  Fl_Light_Button *m_chimEmitBtn;
+  static bool m_bChimEmit;
+  static void cb_chimEmitBtn(Fl_Widget* o, void* v);
+
   Fl_Value_Slider* m_ppfSlider;
   static int m_nPartPerFrame;
   static void cb_ppfSlider(Fl_Widget* o, void* v);
@@ -122,6 +130,10 @@ public:
   static int m_nLifespan;
   static void cb_lifeSlider(Fl_Widget* o, void* v);
 
+  Fl_Value_Slider* m_maxPartSlider;
+  static int m_nMaxParticles;
+  static void cb_maxPartSlider(Fl_Widget* o, void* v);
+
   Fl_Light_Button *m_collisionBtn;
   static bool m_bCollisions;
   static void cb_collisionBtn(Fl_Widget* o, void* v);
@@ -129,5 +141,13 @@ public:
   Fl_Value_Slider* m_penaltyStiffSlider;
   static double m_nPenaltyStiffness;
   static void cb_penStiffSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_chimneyVelSlider;
+  static double m_nMaxChimVel;
+  static void cb_chimneyVelSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_clawVelSlider;
+  static double m_nMaxClawVel;
+  static void cb_clawVelSlider(Fl_Widget* o, void* v);
 };
 #endif

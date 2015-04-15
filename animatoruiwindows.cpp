@@ -53,7 +53,6 @@ Fl_Menu_Item ModelerUIWindows::menu_m_pchoCurveType[] = {
 };
 
 Fl_Menu_Item ModelerUIWindows::menu_m_bezierCurveType[] = {
- {"Normal", 0,  0, 0, 0, 0, 0, 12, 0},
  {"C0 Continuity", 0,  0, 0, 0, 0, 0, 12, 0},
  {"C1 Continuity", 0,  0, 0, 0, 0, 0, 12, 0},
  // {"C2 Continuity", 0,  0, 0, 0, 0, 0, 12, 0},
@@ -74,7 +73,13 @@ double ModelerUIWindows::m_nGreen;
 double ModelerUIWindows::m_nBlue;
 int ModelerUIWindows::m_nPartPerFrame;
 int ModelerUIWindows::m_nLifespan;
+int ModelerUIWindows::m_nMaxParticles;
 bool ModelerUIWindows::m_bCollisions;
+bool ModelerUIWindows::m_bClawEmit;
+bool ModelerUIWindows::m_bChimEmit;
+
+double ModelerUIWindows::m_nMaxChimVel;
+double ModelerUIWindows::m_nMaxClawVel;
 
 void ModelerUIWindows::cb_bezierCurveType(Fl_Widget* o, void* v)
 {
@@ -82,19 +87,19 @@ void ModelerUIWindows::cb_bezierCurveType(Fl_Widget* o, void* v)
   int choice = ((Fl_Choice*)o)->value();
   if (choice == 0)
   {
-    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_BEZIER);// Normal bezier
+    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_BEZIER);// Normal bezier C0 Continuity
     ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
   }
   else if (choice == 1)
   {
-    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_C0BEZ); // C0 Continuity Bezier
+    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_C1BEZ); // C1 Continuity Bezier
     ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
   }
-  else if (choice == 2)
-  {
-    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_C1BEZ); // Catmull Rom
-    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
-  }
+  // else if (choice == 2)
+  // {
+  //   ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_C1BEZ); // Catmull Rom
+  //   ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
+  // }
   // else if (choice == 3)
   // {
   //   ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_C2INTERPOLATING); // C2 curve
@@ -144,7 +149,7 @@ void ModelerUIWindows::cb_flStiffSlider(Fl_Widget* o, void* v)
 
 void ModelerUIWindows::cb_penStiffSlider(Fl_Widget* o, void* v)
 {
-  ((ModelerUIWindows*)(o->user_data()))->m_nPenaltyStiffness = ((Fl_Slider*)o)->value() * 1000;
+  ((ModelerUIWindows*)(o->user_data()))->m_nPenaltyStiffness = ((Fl_Slider*)o)->value();
 }
 
 void ModelerUIWindows::cb_redSlider(Fl_Widget* o, void* v)
@@ -172,14 +177,39 @@ void ModelerUIWindows::cb_lifeSlider(Fl_Widget* o, void* v)
   ((ModelerUIWindows*)(o->user_data()))->m_nLifespan = ((Fl_Slider*)o)->value();
 }
 
+void ModelerUIWindows::cb_maxPartSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nMaxParticles = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_clawEmitBtn(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_bClawEmit = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
+}
+
+void ModelerUIWindows::cb_chimEmitBtn(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_bChimEmit = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
+}
+
 void ModelerUIWindows::cb_collisionBtn(Fl_Widget* o, void* v)
 {
-  ((ModelerUIWindows*)(o->user_data()))->m_bCollisions = ((Fl_Slider*)o)->value() == 0 ? false : true;
+  ((ModelerUIWindows*)(o->user_data()))->m_bCollisions = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
+}
+
+void ModelerUIWindows::cb_chimneyVelSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nMaxChimVel = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_clawVelSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nMaxClawVel = ((Fl_Slider*)o)->value();
 }
 
 ModelerUIWindows::ModelerUIWindows() {
   Fl_Window* w;
-  { Fl_Window* o = m_pwndMainWnd = new Fl_Window(640, 855, "CS384g Animator Fall 2005");
+  { Fl_Window* o = m_pwndMainWnd = new Fl_Window(700, 1000, "CS384g Animator Fall 2005");
     w = o;
     o->color(185);
     o->labeltype(FL_NORMAL_LABEL);
@@ -305,10 +335,10 @@ ModelerUIWindows::ModelerUIWindows() {
       m_stepSlider->align(FL_ALIGN_RIGHT);
       m_stepSlider->callback(cb_stepSlider);
     }
-    { Fl_Group* o = new Fl_Group(155, 550, 470, 135, "Particle System Values");//5, 510, 580, 190,
+    { Fl_Group* o = new Fl_Group(155, 550, 530, 235, "Particle System Values");//5, 510, 580, 190,
       o->box(FL_ENGRAVED_BOX);
       o->labeltype(FL_NO_LABEL);
-      { Fl_Box* o = new Fl_Box(165, 555, 175, 20, "Particle System Values");
+      { Fl_Box* o = new Fl_Box(165, 555, 235, 20, "Particle System Values");
         o->labelsize(12);
         o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
       }
@@ -354,7 +384,7 @@ ModelerUIWindows::ModelerUIWindows() {
         m_flStiffSlider->align(FL_ALIGN_RIGHT);
         m_flStiffSlider->callback(cb_flStiffSlider);
       }
-      { 
+      {
         m_bCollisions = 0;
         m_collisionBtn = new Fl_Light_Button(165,655,100,20," Collisions");
         m_collisionBtn->labelfont(FL_COURIER);
@@ -364,64 +394,22 @@ ModelerUIWindows::ModelerUIWindows() {
         m_collisionBtn->callback(cb_collisionBtn);
       }
       { 
-        m_nPenaltyStiffness = 100;
-        m_penaltyStiffSlider = new Fl_Value_Slider(280,655,100,20,"PenaltyStns(x1000)");
+        m_nPenaltyStiffness = 2500; // To try 3000, previous was 5000
+        m_penaltyStiffSlider = new Fl_Value_Slider(280,655,100,20,"PenaltyStiffness");
         m_penaltyStiffSlider->user_data((void*)this);
         m_penaltyStiffSlider->type(FL_HOR_NICE_SLIDER);
         m_penaltyStiffSlider->labelfont(FL_COURIER);
         m_penaltyStiffSlider->labelsize(12);
-        m_penaltyStiffSlider->minimum(1);
-        m_penaltyStiffSlider->maximum(1000);
+        m_penaltyStiffSlider->minimum(1000);
+        m_penaltyStiffSlider->maximum(6000);
         m_penaltyStiffSlider->step(50);
         m_penaltyStiffSlider->value(m_nPenaltyStiffness);
         m_penaltyStiffSlider->align(FL_ALIGN_RIGHT);
         m_penaltyStiffSlider->callback(cb_penStiffSlider);
       }
-      { 
-        m_nRed = 0.0;
-        m_redSlider = new Fl_Value_Slider(325,555,80,20,"Red");
-        m_redSlider->user_data((void*)this);
-        m_redSlider->type(FL_HOR_NICE_SLIDER);
-        m_redSlider->labelfont(FL_COURIER);
-        m_redSlider->labelsize(12);
-        m_redSlider->minimum(0);
-        m_redSlider->maximum(1.0);
-        m_redSlider->step(0.1);
-        m_redSlider->value(m_nRed);
-        m_redSlider->align(FL_ALIGN_RIGHT);
-        m_redSlider->callback(cb_redSlider);
-      }
-      { 
-        m_nGreen = 0.8;
-        m_greenSlider = new Fl_Value_Slider(325,580,80,20,"Green");
-        m_greenSlider->user_data((void*)this);
-        m_greenSlider->type(FL_HOR_NICE_SLIDER);
-        m_greenSlider->labelfont(FL_COURIER);
-        m_greenSlider->labelsize(12);
-        m_greenSlider->minimum(0);
-        m_greenSlider->maximum(1.0);
-        m_greenSlider->step(0.1);
-        m_greenSlider->value(m_nGreen);
-        m_greenSlider->align(FL_ALIGN_RIGHT);
-        m_greenSlider->callback(cb_greenSlider);
-      }
-      { 
-        m_nBlue = 0.2;
-        m_blueSlider = new Fl_Value_Slider(325,605,80,20,"Blue");
-        m_blueSlider->user_data((void*)this);
-        m_blueSlider->type(FL_HOR_NICE_SLIDER);
-        m_blueSlider->labelfont(FL_COURIER);
-        m_blueSlider->labelsize(12);
-        m_blueSlider->minimum(0);
-        m_blueSlider->maximum(1.0);
-        m_blueSlider->step(0.1);
-        m_blueSlider->value(m_nBlue);
-        m_blueSlider->align(FL_ALIGN_RIGHT);
-        m_blueSlider->callback(cb_blueSlider);
-      }
-      { 
+      {
         m_nPartPerFrame = 2;
-        m_ppfSlider = new Fl_Value_Slider(460,555,80,20,"Max PtPerFr");
+        m_ppfSlider = new Fl_Value_Slider(330,575,80,20,"Max PtPerFr");
         m_ppfSlider->user_data((void*)this);
         m_ppfSlider->type(FL_HOR_NICE_SLIDER);
         m_ppfSlider->labelfont(FL_COURIER);
@@ -435,7 +423,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_nLifespan = 200;
-        m_lifeSlider = new Fl_Value_Slider(460,580,80,20,"Max life");
+        m_lifeSlider = new Fl_Value_Slider(330,600,80,20,"Max life");
         m_lifeSlider->user_data((void*)this);
         m_lifeSlider->type(FL_HOR_NICE_SLIDER);
         m_lifeSlider->labelfont(FL_COURIER);
@@ -447,40 +435,142 @@ ModelerUIWindows::ModelerUIWindows() {
         m_lifeSlider->align(FL_ALIGN_RIGHT);
         m_lifeSlider->callback(cb_lifeSlider);
       }
+      { 
+        m_nMaxParticles = 50;//here
+        m_maxPartSlider = new Fl_Value_Slider(330,625,80,20,"Max Particles");
+        m_maxPartSlider->user_data((void*)this);
+        m_maxPartSlider->type(FL_HOR_NICE_SLIDER);
+        m_maxPartSlider->labelfont(FL_COURIER);
+        m_maxPartSlider->labelsize(12);
+        m_maxPartSlider->minimum(10);
+        m_maxPartSlider->maximum(150);
+        m_maxPartSlider->step(1);
+        m_maxPartSlider->value(m_nMaxParticles);
+        m_maxPartSlider->align(FL_ALIGN_RIGHT);
+        m_maxPartSlider->callback(cb_maxPartSlider);
+      }
+      { 
+        m_nRed = 0.0;
+        m_redSlider = new Fl_Value_Slider(560,575,80,20,"Red");
+        m_redSlider->user_data((void*)this);
+        m_redSlider->type(FL_HOR_NICE_SLIDER);
+        m_redSlider->labelfont(FL_COURIER);
+        m_redSlider->labelsize(12);
+        m_redSlider->minimum(0);
+        m_redSlider->maximum(1.0);
+        m_redSlider->step(0.1);
+        m_redSlider->value(m_nRed);
+        m_redSlider->align(FL_ALIGN_RIGHT);
+        m_redSlider->callback(cb_redSlider);
+      }
+      { 
+        m_nGreen = 0.8;
+        m_greenSlider = new Fl_Value_Slider(560,600,80,20,"Green");
+        m_greenSlider->user_data((void*)this);
+        m_greenSlider->type(FL_HOR_NICE_SLIDER);
+        m_greenSlider->labelfont(FL_COURIER);
+        m_greenSlider->labelsize(12);
+        m_greenSlider->minimum(0);
+        m_greenSlider->maximum(1.0);
+        m_greenSlider->step(0.1);
+        m_greenSlider->value(m_nGreen);
+        m_greenSlider->align(FL_ALIGN_RIGHT);
+        m_greenSlider->callback(cb_greenSlider);
+      }
+      { 
+        m_nBlue = 0.2;
+        m_blueSlider = new Fl_Value_Slider(560,625,80,20,"Blue");
+        m_blueSlider->user_data((void*)this);
+        m_blueSlider->type(FL_HOR_NICE_SLIDER);
+        m_blueSlider->labelfont(FL_COURIER);
+        m_blueSlider->labelsize(12);
+        m_blueSlider->minimum(0);
+        m_blueSlider->maximum(1.0);
+        m_blueSlider->step(0.1);
+        m_blueSlider->value(m_nBlue);
+        m_blueSlider->align(FL_ALIGN_RIGHT);
+        m_blueSlider->callback(cb_blueSlider);
+      }
+      { 
+        m_bClawEmit = 0;
+        m_clawEmitBtn = new Fl_Light_Button(560,650,100,20," Claw Emit");
+        m_clawEmitBtn->labelfont(FL_COURIER);
+        m_clawEmitBtn->labelsize(12);
+        m_clawEmitBtn->user_data((void*)this);
+        m_clawEmitBtn->value(m_bClawEmit);
+        m_clawEmitBtn->callback(cb_clawEmitBtn);
+      }
+      { 
+        m_bChimEmit = 1;
+        m_chimEmitBtn = new Fl_Light_Button(560,675,100,20," Chim Emit");
+        m_chimEmitBtn->labelfont(FL_COURIER);
+        m_chimEmitBtn->labelsize(12);
+        m_chimEmitBtn->user_data((void*)this);
+        m_chimEmitBtn->value(m_bChimEmit);
+        m_chimEmitBtn->callback(cb_chimEmitBtn);
+      }
+      { 
+        m_nMaxChimVel = 4; // To try 3000, previous was 5000
+        m_chimneyVelSlider = new Fl_Value_Slider(165,680,100,20,"MaxChimneyVel");
+        m_chimneyVelSlider->user_data((void*)this);
+        m_chimneyVelSlider->type(FL_HOR_NICE_SLIDER);
+        m_chimneyVelSlider->labelfont(FL_COURIER);
+        m_chimneyVelSlider->labelsize(12);
+        m_chimneyVelSlider->minimum(1);
+        m_chimneyVelSlider->maximum(10);
+        m_chimneyVelSlider->step(1);
+        m_chimneyVelSlider->value(m_nMaxChimVel);
+        m_chimneyVelSlider->align(FL_ALIGN_RIGHT);
+        m_chimneyVelSlider->callback(cb_chimneyVelSlider);
+      }
+      { 
+        m_nMaxClawVel = 4; // To try 3000, previous was 5000
+        m_clawVelSlider = new Fl_Value_Slider(275,680,100,20,"MaxClawVel");
+        m_clawVelSlider->user_data((void*)this);
+        m_clawVelSlider->type(FL_HOR_NICE_SLIDER);
+        m_clawVelSlider->labelfont(FL_COURIER);
+        m_clawVelSlider->labelsize(12);
+        m_clawVelSlider->minimum(1);
+        m_clawVelSlider->maximum(10);
+        m_clawVelSlider->step(1);
+        m_clawVelSlider->value(m_nMaxClawVel);
+        m_clawVelSlider->align(FL_ALIGN_RIGHT);
+        m_clawVelSlider->callback(cb_clawVelSlider);
+      }
       o->end();
     }
 
-    { Fl_Group* o = new Fl_Group(5, 650, 580, 190, "Animation Controls");//5, 510, 580, 190,
+    { Fl_Group* o = new Fl_Group(5, 750, 580, 190, "Animation Controls");//5, 510, 580, 190,
       o->labeltype(FL_NO_LABEL);
-      { Fl_Group* o = new Fl_Group(95, 690, 490, 150, "Playback");
+      { Fl_Group* o = new Fl_Group(95, 790, 490, 150, "Playback");
         o->labeltype(FL_NO_LABEL);
-        { Fl_Group* o = new Fl_Group(155, 690, 430, 55, "Playback Controls");
+        { Fl_Group* o = new Fl_Group(155, 790, 430, 55, "Playback Controls");
           o->box(FL_ENGRAVED_BOX);
           o->labeltype(FL_NO_LABEL);
-          { Fl_Button* o = m_pbtStepBack = new Fl_Button(165, 720, 20, 20, "@|<");
+          { Fl_Button* o = m_pbtStepBack = new Fl_Button(165, 820, 20, 20, "@|<");
             o->shortcut(0x7a);
             o->labeltype(FL_SYMBOL_LABEL);
             o->user_data((void*)(this));
           }
-          { Fl_Button* o = m_pbtPlay = new Fl_Button(185, 720, 40, 20, "@>");
+          { Fl_Button* o = m_pbtPlay = new Fl_Button(185, 820, 40, 20, "@>");
             o->shortcut(0x78);
             o->labeltype(FL_SYMBOL_LABEL);
             o->user_data((void*)(this));
           }
-          { Fl_Button* o = m_pbtStepForw = new Fl_Button(225, 720, 20, 20, "@>|");
+          { Fl_Button* o = m_pbtStepForw = new Fl_Button(225, 820, 20, 20, "@>|");
             o->shortcut(0x63);
             o->labeltype(FL_SYMBOL_LABEL);
             o->user_data((void*)(this));
           }
-          { Fl_Light_Button* o = m_pbtLoop = new Fl_Light_Button(250, 720, 50, 20, "&Loop");
+          { Fl_Light_Button* o = m_pbtLoop = new Fl_Light_Button(250, 820, 50, 20, "&Loop");
             o->labelsize(12);
             o->user_data((void*)(this));
           }
-          { Fl_Light_Button* o = m_pbtSimulate = new Fl_Light_Button(335, 720, 70, 20, "&Simulate");
+          { Fl_Light_Button* o = m_pbtSimulate = new Fl_Light_Button(335, 820, 70, 20, "&Simulate");
             o->labelsize(12);
             o->user_data((void*)(this));
           }
-          { Fl_Value_Slider* o = m_psldrFPS = new Fl_Value_Slider(470, 720, 100, 20, "FPS");
+          { Fl_Value_Slider* o = m_psldrFPS = new Fl_Value_Slider(470, 820, 100, 20, "FPS");
             o->type(5);
             o->labelsize(12);
             o->minimum(5);
@@ -491,13 +581,13 @@ ModelerUIWindows::ModelerUIWindows() {
             o->align(FL_ALIGN_LEFT);
             Fl_Group::current()->resizable(o);
           }
-          { Fl_Box* o = new Fl_Box(165, 695, 135, 20, "Playback Controls");
+          { Fl_Box* o = new Fl_Box(165, 795, 135, 20, "Playback Controls");
             o->labelsize(12);
             o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
           }
           o->end();
         }
-        { IndicatorWindow* o = m_pwndIndicatorWnd = new IndicatorWindow(190, 750, 375, 20);
+        { IndicatorWindow* o = m_pwndIndicatorWnd = new IndicatorWindow(190, 850, 375, 20);
           o->box(FL_ENGRAVED_BOX);
           o->user_data((void*)(this));
           o->align(FL_ALIGN_LEFT);
@@ -505,46 +595,46 @@ ModelerUIWindows::ModelerUIWindows() {
           o->end();
           Fl_Group::current()->resizable(o);
         }
-        { Fl_Slider* o = m_psldrTimeSlider = new Fl_Slider(185, 775, 390, 20);
+        { Fl_Slider* o = m_psldrTimeSlider = new Fl_Slider(185, 875, 390, 20);
           o->type(5);
           o->user_data((void*)(this));
         }
-        { Fl_Slider* o = m_psldrPlayStart = new Fl_Slider(185, 795, 390, 20);
+        { Fl_Slider* o = m_psldrPlayStart = new Fl_Slider(185, 895, 390, 20);
           o->type(5);
           o->color(10);
           o->user_data((void*)(this));
         }
-        { Fl_Slider* o = m_psldrPlayEnd = new Fl_Slider(185, 815, 390, 20);
+        { Fl_Slider* o = m_psldrPlayEnd = new Fl_Slider(185, 915, 390, 20);
           o->type(5);
           o->color(80);
           o->user_data((void*)(this));
         }
-        { Fl_Box* o = new Fl_Box(95, 775, 90, 20, "Time:");
+        { Fl_Box* o = new Fl_Box(95, 875, 90, 20, "Time:");
           o->labelsize(12);
           o->labelcolor(7);
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
-        { Fl_Box* o = new Fl_Box(95, 795, 90, 20, "Start:");
+        { Fl_Box* o = new Fl_Box(95, 895, 90, 20, "Start:");
           o->labelsize(12);
           o->labelcolor(7);
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
-        { Fl_Box* o = new Fl_Box(95, 815, 90, 20, "End:");
+        { Fl_Box* o = new Fl_Box(95, 915, 90, 20, "End:");
           o->labelsize(12);
           o->labelcolor(7);
           o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
         }
-        { Fl_Output* o = m_poutTime = new Fl_Output(130, 775, 55, 20, "Time:");
+        { Fl_Output* o = m_poutTime = new Fl_Output(130, 875, 55, 20, "Time:");
           o->labeltype(FL_NO_LABEL);
           o->labelsize(12);
           o->textsize(12);
         }
-        { Fl_Output* o = m_poutPlayStart = new Fl_Output(130, 795, 55, 20, "Time:");
+        { Fl_Output* o = m_poutPlayStart = new Fl_Output(130, 895, 55, 20, "Time:");
           o->labeltype(FL_NO_LABEL);
           o->labelsize(12);
           o->textsize(12);
         }
-        { Fl_Output* o = m_poutPlayEnd = new Fl_Output(130, 815, 55, 20, "Time:");
+        { Fl_Output* o = m_poutPlayEnd = new Fl_Output(130, 915, 55, 20, "Time:");
           o->labeltype(FL_NO_LABEL);
           o->labelsize(12);
           o->textsize(12);
@@ -552,36 +642,36 @@ ModelerUIWindows::ModelerUIWindows() {
         o->end();
         Fl_Group::current()->resizable(o);
       }
-      { Fl_Group* o = new Fl_Group(15, 650, 125, 95, "partical system");
+      { Fl_Group* o = new Fl_Group(15, 750, 125, 95, "partical system");
         o->box(FL_ENGRAVED_BOX);
         o->labeltype(FL_NO_LABEL);
-       { Fl_Box* o = new Fl_Box(20, 650, 90, 20, "Particle System");
+       { Fl_Box* o = new Fl_Box(20, 750, 90, 20, "Particle System");
           o->labelsize(12);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
         }
-        { Fl_Button* o = m_pbtClearSim = new Fl_Button(60, 675, 70, 20, "C&lear Sim.");
+        { Fl_Button* o = m_pbtClearSim = new Fl_Button(60, 775, 70, 20, "C&lear Sim.");
           o->labelsize(12);
           o->user_data((void*)(this));
         }
         o->end();
       }
-      { Fl_Group* o = new Fl_Group(10, 760, 80, 80, "Camera");
+      { Fl_Group* o = new Fl_Group(10, 860, 80, 80, "Camera");
         o->box(FL_ENGRAVED_BOX);
         o->labeltype(FL_NO_LABEL);
-        { Fl_Box* o = new Fl_Box(15, 760, 70, 15, "Camera");
+        { Fl_Box* o = new Fl_Box(15, 860, 70, 15, "Camera");
           o->labelsize(12);
           o->align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
         }
-        { Fl_Button* o = m_pbtSetCamKeyFrame = new Fl_Button(15, 775, 70, 20, "&Set");
+        { Fl_Button* o = m_pbtSetCamKeyFrame = new Fl_Button(15, 875, 70, 20, "&Set");
           o->labelsize(12);
           o->user_data((void*)(this));
         }
-        { Fl_Button* o = m_pbtRemoveCamKeyFrame = new Fl_Button(15, 795, 70, 20, "&Remove");
+        { Fl_Button* o = m_pbtRemoveCamKeyFrame = new Fl_Button(15, 895, 70, 20, "&Remove");
           o->labelsize(12);
           o->user_data((void*)(this));
           o->deactivate();
         }
-        { Fl_Button* o = m_pbtRemoveAllCamKeyFrames = new Fl_Button(15, 815, 70, 20, "R&emove All");
+        { Fl_Button* o = m_pbtRemoveAllCamKeyFrames = new Fl_Button(15, 915, 70, 20, "R&emove All");
           o->labelsize(12);
           o->user_data((void*)(this));
         }

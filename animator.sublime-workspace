@@ -4,16 +4,52 @@
 		"selected_items":
 		[
 			[
+				"for",
+				"forceP1"
+			],
+			[
+				"p1",
+				"p1id"
+			],
+			[
+				"cur",
+				"currentDistSq"
+			],
+			[
+				"cu",
+				"currentDistSq"
+			],
+			[
+				"min",
+				"minDist"
+			],
+			[
+				"p2",
+				"p2Pos"
+			],
+			[
+				"dis",
+				"distSquared"
+			],
+			[
+				"z",
+				"zSq"
+			],
+			[
+				"m_b",
+				"m_bCollisions"
+			],
+			[
+				"Mod",
+				"ModelerUIWindows"
+			],
+			[
 				"m_nGr",
 				"m_nGreen"
 			],
 			[
 				"ptv",
 				"ptvEvaluatedCurvePts"
-			],
-			[
-				"dis",
-				"dist3"
 			],
 			[
 				"newct",
@@ -204,10 +240,6 @@
 				"particles"
 			],
 			[
-				"for",
-				"forces"
-			],
-			[
 				"tim",
 				"timeStep"
 			],
@@ -226,10 +258,6 @@
 			[
 				"vec",
 				"vector	std::vector"
-			],
-			[
-				"cur",
-				"currentColor"
 			],
 			[
 				"glP",
@@ -486,34 +514,6 @@
 			[
 				"thr",
 				"threadNo"
-			],
-			[
-				"noOf",
-				"noOfCols"
-			],
-			[
-				"noo",
-				"noOfCols"
-			],
-			[
-				"nof",
-				"noOfRows"
-			],
-			[
-				"thre",
-				"threadNo"
-			],
-			[
-				"threa",
-				"threadNo"
-			],
-			[
-				"go",
-				"goingIn"
-			],
-			[
-				"cosT",
-				"cosThetaI"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
 			"settings":
 			{
-				"buffer_size": 969,
+				"buffer_size": 930,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +531,15 @@
 			"file": "particleSystem.cpp",
 			"settings":
 			{
-				"buffer_size": 9553,
+				"buffer_size": 12199,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "particleSystem.h",
+			"settings":
+			{
+				"buffer_size": 4062,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,7 +547,7 @@
 			"file": "Particle.h",
 			"settings":
 			{
-				"buffer_size": 1401,
+				"buffer_size": 1025,
 				"line_ending": "Unix"
 			}
 		},
@@ -547,7 +555,7 @@
 			"file": "animatoruiwindows.cpp",
 			"settings":
 			{
-				"buffer_size": 19855,
+				"buffer_size": 22714,
 				"line_ending": "Unix"
 			}
 		},
@@ -555,7 +563,15 @@
 			"file": "animatoruiwindows.h",
 			"settings":
 			{
-				"buffer_size": 3466,
+				"buffer_size": 3946,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
+			"settings":
+			{
+				"buffer_size": 23657,
 				"line_ending": "Unix"
 			}
 		}
@@ -584,33 +600,34 @@
 	},
 	"file_history":
 	[
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/resources/sphere.obj",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/vec.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
+		"/u/kwadia/public_html/springcapstone3d/index.html",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.fl",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catromcurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/lreisencurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catromcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/curveevaluator.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Makefile",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c1bezcurveevaluator.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c1bezcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c0bezcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c0bezcurveevaluator.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/beziercurveevaluator.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/lreisencurveevaluator.cpp",
-		"/u/kwadia/public_html/springcapstone3d/index.html",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Particle.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/indicatorwindow.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.fl",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/vec.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/lreisencurveevaluator.h",
@@ -710,8 +727,7 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistDoc.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/stb/stb_image.h",
 		"/u/kwadia/Downloads/10_cartoon.frag",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/00_red.frag",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/include/Cg/vector.hpp"
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/00_red.frag"
 	],
 	"find":
 	{
@@ -730,6 +746,35 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"p1id",
+			"size",
+			"processCollisionForce",
+			".z",
+			".y",
+			".x",
+			"p1Pos.y - p2Pos.y",
+			"p1Pos.x - p2Pos.x",
+			"p2id",
+			"computeForces",
+			"550",
+			"600",
+			"500",
+			"480",
+			"460",
+			"760",
+			"650",
+			"750",
+			"720",
+			"m_redSlider",
+			"m_nRed",
+			"m_flStiffSlider",
+			"wrap",
+			"computeSignedDistancePointToBody",
+			"impulses_",
+			"Impulse",
+			"m_ppfSlider",
+			"m_nPartPerFrame",
+			"m_blueSlider",
 			"red",
 			"m_redSlider",
 			"m_nBlue",
@@ -828,36 +873,7 @@
 			"LINEAR",
 			"Vec4f",
 			"m",
-			"pos",
-			"RAND_MAX",
-			"particlestodelete",
-			"particlesToDelete",
-			"newparticles",
-			"particles_",
-			"+",
-			"particlesList",
-			"qprev",
-			"erased",
-			"processGravityForce",
-			"0.5",
-			"ParticleSystem::",
-			"particlesList",
-			"p",
-			"Eigen::Vector2d",
-			"int",
-			"setDiffuseColor",
-			"2",
-			"1",
-			"gl",
-			"flgl",
-			"flg",
-			"redrawModelerView",
-			"75",
-			"0.25,",
-			"0.25",
-			"h",
-			"matCam",
-			"VAL"
+			"pos"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -884,15 +900,15 @@
 					"file": "/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
 					"settings":
 					{
-						"buffer_size": 969,
+						"buffer_size": 930,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								677,
-								677
+								459,
+								459
 							]
 						],
 						"settings":
@@ -910,15 +926,15 @@
 					"file": "particleSystem.cpp",
 					"settings":
 					{
-						"buffer_size": 9553,
+						"buffer_size": 12199,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5929,
-								5929
+								5720,
+								5720
 							]
 						],
 						"settings":
@@ -926,25 +942,52 @@
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 4029.0,
+						"translation.y": 3193.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "Particle.h",
+					"file": "particleSystem.h",
 					"settings":
 					{
-						"buffer_size": 1401,
+						"buffer_size": 4062,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								915,
-								915
+								3129,
+								3129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 969.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Particle.h",
+					"settings":
+					{
+						"buffer_size": 1025,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								384,
+								384
 							]
 						],
 						"settings":
@@ -954,35 +997,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 357.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "animatoruiwindows.cpp",
-					"settings":
-					{
-						"buffer_size": 19855,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13577,
-								13577
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 5610.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -995,18 +1010,18 @@
 			[
 				{
 					"buffer": 4,
-					"file": "animatoruiwindows.h",
+					"file": "animatoruiwindows.cpp",
 					"settings":
 					{
-						"buffer_size": 3466,
+						"buffer_size": 22714,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2714,
-								2714
+								13728,
+								13728
 							]
 						],
 						"settings":
@@ -1016,7 +1031,63 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1163.0,
+						"translation.y": 5777.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "animatoruiwindows.h",
+					"settings":
+					{
+						"buffer_size": 3946,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3344,
+								3344
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1530.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
+					"settings":
+					{
+						"buffer_size": 23657,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15176,
+								15176
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6117.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1052,7 +1123,7 @@
 		"cols":
 		[
 			0.0,
-			0.5,
+			0.541273584906,
 			1.0
 		],
 		"rows":
@@ -1077,6 +1148,22 @@
 		"selected_items":
 		[
 			[
+				"vec",
+				"vec.h"
+			],
+			[
+				"mod",
+				"modelerui.cpp"
+			],
+			[
+				"lr",
+				"lreisencurveevaluator.cpp"
+			],
+			[
+				"card",
+				"cardcurveevaluator.cpp"
+			],
+			[
 				"catm",
 				"catromcurveevaluator.cpp"
 			],
@@ -1093,16 +1180,8 @@
 				"Makefile"
 			],
 			[
-				"card",
-				"cardcurveevaluator.h"
-			],
-			[
 				"gra",
 				"graphwidget.h"
-			],
-			[
-				"lr",
-				"lreisencurveevaluator.cpp"
 			],
 			[
 				"anim",
@@ -1123,10 +1202,6 @@
 			[
 				"ro",
 				"robotarm.cpp"
-			],
-			[
-				"vec",
-				"vec.h"
 			],
 			[
 				"ma",

@@ -49,6 +49,9 @@ void y_box(float h);
 Mat4f glGetMatrix(GLenum pname);
 Vec3f getWorldPoint(Mat4f matCamXforms);
 
+ParticleSystem* ps;
+Mat4f matCamInverse;
+
 // To make a RobotArm, we inherit off of ModelerView
 class RobotArm : public ModelerView 
 {
@@ -85,10 +88,6 @@ Mat4f glGetMatrix(GLenum pname)
     return matCam.transpose();
 }
 
-
-
-
-
 // We are going to override (is that the right word?) the draw()
 // method of ModelerView to draw out RobotArm
 void RobotArm::draw()
@@ -113,7 +112,7 @@ void RobotArm::draw()
     // While we're at it, save an inverted copy of this matrix.  We'll
     // need it later.
     Mat4f matCam = glGetMatrix( GL_MODELVIEW_MATRIX );
-    //Mat4f matCamInverse = matCam.inverse();
+    matCamInverse = matCam.inverse();
 
 
 
@@ -144,31 +143,13 @@ void RobotArm::draw()
 	glTranslatef( 0.0, h3, 0.0 );
 	glRotatef( cr, 0.0, 0.0, 1.0 );
 
-	// glPushMatrix();
-	// Mat4f mvMatrix = glGetMatrix(GL_MODELVIEW_MATRIX);
-	// glPopMatrix();
-	// cout << "\n\nmatrix : \n";
-	// for (int i = 1; i <= 16; i++) {
-	// 	cout << *(mvMatrix[i-1]) << "\t";
-	// 	if (i%4 == 0)
-	// 	{
-	// 		cout<< "\n";
-	// 	}
-	// }
-
-	// Vec3f point = mvMatrix * Vec3f(0.5, 1.0, 0.5);
-	// point[0] *= -1;
-	// point[2] = point[2] + 27.5;
-	// ModelerApplication::Instance()->clawPoint = point;
-	// cout<< "\n\nvector : \n";
-	// for (int i = 0; i < 3; i++)
-	// {
-	// 	cout << (point[i]) << "\t";
-	// }
-	// cout << "\n";
-	// for (int i = 0; i < 16; i++) {
-	// 	mvMatrix[i] = modelViewMatrix[i];
-	// }
+	Mat4f mvMatrix = glGetMatrix(GL_MODELVIEW_MATRIX);
+	Vec4f clawEmitPos = matCamInverse * mvMatrix * Vec4f(0.0, 0.0, 0.0, 1.0);
+	if (ps != NULL)
+	{
+		Vec3f clawPos = Vec3f(clawEmitPos[0], clawEmitPos[1], clawEmitPos[2]);
+		ps->setEmitterPosition(clawPos, 1);
+	}
 	claw(1.0);
 
 
@@ -234,6 +215,14 @@ void rotation_base(float h) {
 		glPushMatrix();
 			glTranslatef( 0.5, h, 0.6 );
 			glRotatef( -90.0, 1.0, 0.0, 0.0 );
+			Mat4f mvMatrix = glGetMatrix(GL_MODELVIEW_MATRIX);
+			Mat4f matCamInverse = mvMatrix.inverse();
+			Vec4f chimEmitPos = matCamInverse * mvMatrix * Vec4f(0.5, 2.5 * h, 0.6, 1.0);
+			if (ps != NULL)
+			{
+				Vec3f chimPos = Vec3f(chimEmitPos[0], chimEmitPos[1], chimEmitPos[2]);
+				ps->setEmitterPosition(chimPos, 0);
+			}
 			drawCylinder( h, 0.05, 0.05 ); // the pipe
 		glPopMatrix();
 	glPopMatrix();
@@ -349,7 +338,8 @@ int main()
 	// You should create a ParticleSystem object ps here and then
 	// call ModelerApplication::Instance()->SetParticleSystem(ps)
 	// to hook it up to the animator interface.
-	ParticleSystem* ps = new ParticleSystem();
+	// ParticleSystem* ps = new ParticleSystem();
+	ps = new ParticleSystem();
 	ModelerApplication::Instance()->SetParticleSystem(ps);
 
     ModelerApplication::Instance()->Init(&createRobotArm, controls, NUMCONTROLS);

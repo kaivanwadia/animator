@@ -293,6 +293,12 @@ public:
 		n[0] /= len; n[1] /= len; n[2] /= len;
 	}
 
+	void direction() {
+		n[0] = n[0] < 0 ? -1 : 1;
+		n[1] = n[1] < 0 ? -1 : 1;
+		n[2] = n[2] < 0 ? -1 : 1;
+	}
+
 	void clamp() {
 /*		n[0] = max(0.0, min((double)n[0], 1.0));
 		n[1] = max(0.0, min((double)n[1], 1.0));
