@@ -188,12 +188,6 @@ void ParticleSystem::computeForceAndHessian(vector<float> &q, vector<float> &qpr
     //     processSpringForce(q, F, Hcoeffs);
     // if(params_.activeForces & SimParameters::F_DAMPING)
     //     processDampingForce(q, qprev, F, Hcoeffs);
-    // if(params_.activeForces & SimParameters::F_FLOOR)
-    //     processFloorForce(q, qprev, F, Hcoeffs);
-    // if(params_.activeForces & SimParameters::F_ELASTIC)
-    //     processElasticBendingForce(q, F);
-    // if(params_.constraint == SimParameters::CH_PENALTY_FORCE)
-    //     processPenaltyForce(q, F);
 
     // H.setFromTriplets(Hcoeffs.begin(), Hcoeffs.end());
 
