@@ -30,7 +30,7 @@ ParticleSystem::ParticleSystem()
 	floorStiff = ModelerUIWindows::m_nFlStiff;
 	floorDrag = ModelerUIWindows::m_nFlDrag;
 	penaltyStiffness = ModelerUIWindows::m_nPenaltyStiffness;
-	maxVelocityChimney = ModelerUIWindows::m_nMaxChimVel; //5
+	maxVelocityChimney = ModelerUIWindows::m_nMaxChimVel;
 	maxVelocityClaw = ModelerUIWindows::m_nMaxClawVel;
 	timeStep = 0;
 }
@@ -255,14 +255,14 @@ void ParticleSystem::processFloorForce(vector<float> &q, vector<float> &qprev, v
     int nparticles = particles.size();
     for(int i=0; i<nparticles; i++)
     {
-        if(q[3*i+1] < 0.05)
+        if(q[3*i+1] < 0.05 + particles[i].radius)
         {
             double vel = (q[3*i+1]-qprev[3*i+1])/timeStep;
             if (vel > 0)
             {
             	continue;
             }
-            double dist = 0.05 - q[3*i+1];
+            double dist = (0.05 + particles[i].radius) - q[3*i+1];
             float stiffForce = floorStiff*dist;
             // float dragForce = floorDrag*dist*vel;
             float dragForce = stiffForce * -0.7;

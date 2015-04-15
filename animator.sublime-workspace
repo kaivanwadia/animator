@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"bak",
+				"bakedParticles"
+			],
+			[
+				"map",
+				"mapTime"
+			],
+			[
+				"bake",
+				"bakedParticleMap"
+			],
+			[
+				"Pa",
+				"Particle"
+			],
+			[
+				"Part",
+				"Particle"
+			],
+			[
+				"draw",
+				"drawParticles"
+			],
+			[
+				"clear",
+				"clearBaked"
+			],
+			[
 				"cb_chi",
 				"cb_chimEmitBtn"
 			],
@@ -140,10 +168,6 @@
 				"floorStiff"
 			],
 			[
-				"draw",
-				"drawSphere"
-			],
-			[
 				"m_nfl",
 				"m_nFlDrag"
 			],
@@ -170,10 +194,6 @@
 			[
 				"vel",
 				"vel"
-			],
-			[
-				"Part",
-				"ParticleSystem"
 			],
 			[
 				"q",
@@ -494,26 +514,6 @@
 			[
 				"righ",
 				"rightObjects"
-			],
-			[
-				"fin",
-				"finalCost"
-			],
-			[
-				"lef",
-				"leftObjects"
-			],
-			[
-				"left",
-				"leftArea"
-			],
-			[
-				"rig",
-				"rightArea"
-			],
-			[
-				"sec",
-				"second"
 			]
 		]
 	},
@@ -531,7 +531,7 @@
 			"file": "particleSystem.cpp",
 			"settings":
 			{
-				"buffer_size": 13345,
+				"buffer_size": 14728,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,7 +539,7 @@
 			"file": "particleSystem.h",
 			"settings":
 			{
-				"buffer_size": 4139,
+				"buffer_size": 4193,
 				"line_ending": "Unix"
 			}
 		},
@@ -556,14 +556,6 @@
 			"settings":
 			{
 				"buffer_size": 2553,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "animatoruiwindows.cpp",
-			"settings":
-			{
-				"buffer_size": 26197,
 				"line_ending": "Unix"
 			}
 		},
@@ -588,6 +580,22 @@
 			"settings":
 			{
 				"buffer_size": 28442,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "modelerview.cpp",
+			"settings":
+			{
+				"buffer_size": 4081,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "modelerapp.cpp",
+			"settings":
+			{
+				"buffer_size": 5736,
 				"line_ending": "Unix"
 			}
 		}
@@ -616,11 +624,12 @@
 	},
 	"file_history":
 	[
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/animator/particleSystem.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/vec.h",
 		"/u/kwadia/Downloads/Decrypt.java",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/resources/sphere.obj",
@@ -742,8 +751,7 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/12_toon_texture.frag",
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/stb/stb_image.c",
 		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistDoc.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/stb/stb_image.h",
-		"/u/kwadia/Downloads/10_cartoon.frag"
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/stb/stb_image.h"
 	],
 	"find":
 	{
@@ -762,6 +770,15 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"drawPa",
+			"particles",
+			"(*itr).first",
+			"it",
+			"timeStampedParticles",
+			"thisParticles",
+			"timeStampedParticles",
+			"particles",
+			"worldMatrix",
 			"m_clawEmitBtn",
 			"m_bClawEmit",
 			"min",
@@ -880,16 +897,7 @@
 			"g_x",
 			"CatmullRomBasis",
 			"iCtrlPtCountB",
-			"-1",
-			"ptvCtrlPtsB",
-			"stepping",
-			"BSPLINE",
-			"phantomCtrlPoints",
-			"newCtrlPoints",
-			"dWrap",
-			"numCtrlPoints",
-			"newCtrlPoints",
-			"numNewCtrlPoints"
+			"-1"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -942,15 +950,15 @@
 					"file": "particleSystem.cpp",
 					"settings":
 					{
-						"buffer_size": 13345,
+						"buffer_size": 14728,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7371,
-								7371
+								9605,
+								9605
 							]
 						],
 						"settings":
@@ -958,7 +966,7 @@
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 5168.0,
+						"translation.y": 5712.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -968,15 +976,15 @@
 					"file": "particleSystem.h",
 					"settings":
 					{
-						"buffer_size": 4139,
+						"buffer_size": 4193,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2436,
-								2436
+								3860,
+								3860
 							]
 						],
 						"settings":
@@ -985,7 +993,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 969.0,
+						"translation.y": 1168.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1002,8 +1010,8 @@
 						"selection":
 						[
 							[
-								582,
-								582
+								709,
+								709
 							]
 						],
 						"settings":
@@ -1013,7 +1021,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 51.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1041,35 +1049,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "animatoruiwindows.cpp",
-					"settings":
-					{
-						"buffer_size": 26197,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								18522,
-								18522
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 8007.0,
+						"translation.y": 595.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1077,11 +1057,11 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
 					"settings":
 					{
@@ -1109,7 +1089,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "animatoruiwindows.h",
 					"settings":
 					{
@@ -1120,8 +1100,8 @@
 						"selection":
 						[
 							[
-								3378,
-								3378
+								3450,
+								3450
 							]
 						],
 						"settings":
@@ -1137,7 +1117,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "vec.h",
 					"settings":
 					{
@@ -1159,6 +1139,60 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 4539.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "modelerview.cpp",
+					"settings":
+					{
+						"buffer_size": 4081,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3178,
+								3178
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1428.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "modelerapp.cpp",
+					"settings":
+					{
+						"buffer_size": 5736,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5023,
+								5023
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2902.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1194,7 +1228,7 @@
 		"cols":
 		[
 			0.0,
-			0.634433962264,
+			0.659787735849,
 			1.0
 		],
 		"rows":
@@ -1219,6 +1253,14 @@
 		"selected_items":
 		[
 			[
+				"mode",
+				"modelerapp.cpp"
+			],
+			[
+				"model",
+				"modelerview.cpp"
+			],
+			[
 				"ani",
 				"animatoruiwindows.cpp"
 			],
@@ -1237,10 +1279,6 @@
 			[
 				"robo",
 				"robotarm.cpp"
-			],
-			[
-				"model",
-				"modelerapp.cpp"
 			],
 			[
 				"mod",
@@ -1321,10 +1359,6 @@
 			[
 				"mat",
 				"mat.h"
-			],
-			[
-				"mode",
-				"modelerapp.cpp"
 			],
 			[
 				"robot",

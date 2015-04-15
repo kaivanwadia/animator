@@ -492,22 +492,22 @@ ModelerUIWindows::ModelerUIWindows() {
         m_blueSlider->callback(cb_blueSlider);
       }
       { 
-        m_bClawEmit = 0;
-        m_clawEmitBtn = new Fl_Light_Button(560,650,100,20," Claw Emit");
-        m_clawEmitBtn->labelfont(FL_COURIER);
-        m_clawEmitBtn->labelsize(12);
-        m_clawEmitBtn->user_data((void*)this);
-        m_clawEmitBtn->value(m_bClawEmit);
-        m_clawEmitBtn->callback(cb_clawEmitBtn);
-      }
-      { 
         m_bChimEmit = 1;
-        m_chimEmitBtn = new Fl_Light_Button(560,675,100,20," Chim Emit");
+        m_chimEmitBtn = new Fl_Light_Button(560,650,100,20," Emitter 1");
         m_chimEmitBtn->labelfont(FL_COURIER);
         m_chimEmitBtn->labelsize(12);
         m_chimEmitBtn->user_data((void*)this);
         m_chimEmitBtn->value(m_bChimEmit);
         m_chimEmitBtn->callback(cb_chimEmitBtn);
+      }
+      { 
+        m_bClawEmit = 0;
+        m_clawEmitBtn = new Fl_Light_Button(560,675,100,20," Emitter 2");
+        m_clawEmitBtn->labelfont(FL_COURIER);
+        m_clawEmitBtn->labelsize(12);
+        m_clawEmitBtn->user_data((void*)this);
+        m_clawEmitBtn->value(m_bClawEmit);
+        m_clawEmitBtn->callback(cb_clawEmitBtn);
       }
       { 
         m_nMaxChimVel = 4; // To try 3000, previous was 5000
