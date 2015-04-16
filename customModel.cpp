@@ -38,10 +38,15 @@ enum RobotArmControls
         BASE_LENGTH, LOWER_LENGTH, UPPER_LENGTH, PARTICLE_COUNT, NUMCONTROLS, 
 };
 
-void ground(float h);
-void groundBox(float len, float wid);
+enum TANK_CONTROLS
+{
+	CHASIS_ROTATION = 0, TANK_SCALE, NUM_CONTROLS
+};
 
-void lampBase(float h, float bottomRadius, float topRadius, float scale);
+void ground(float h);
+void drawCube(float len, float wid, float hei);
+
+void tankChasis(float len, float wid, float hei);
 
 void base(float h);
 void rotation_base(float h);
@@ -98,14 +103,17 @@ void RobotArm::draw()
 {
 	/* pick up the slider values */
 
-	float theta = VAL( BASE_ROTATION );
-	float phi = VAL( LOWER_TILT );
-	float psi = VAL( UPPER_TILT );
-	float cr = VAL( CLAW_ROTATION );
-	float h1 = VAL( BASE_LENGTH );
-	float h2 = VAL( LOWER_LENGTH );
-	float h3 = VAL( UPPER_LENGTH );
-	float pc = VAL( PARTICLE_COUNT );
+	// float theta = VAL( BASE_ROTATION );
+	// float phi = VAL( LOWER_TILT );
+	// float psi = VAL( UPPER_TILT );
+	// float cr = VAL( CLAW_ROTATION );
+	// float h1 = VAL( BASE_LENGTH );
+	// float h2 = VAL( LOWER_LENGTH );
+	// float h3 = VAL( UPPER_LENGTH );
+	// float pc = VAL( PARTICLE_COUNT );
+
+	float theta = VAL( CHASIS_ROTATION );
+	float tankScale = VAL( TANK_SCALE );
 
     // This call takes care of a lot of the nasty projection 
     // matrix stuff
@@ -125,9 +133,9 @@ void RobotArm::draw()
 	// define the model
 
 	ground(-0.2);
-
+	glScalef(tankScale, tankScale, tankScale);
 	glTranslatef(0.0, 0.1, 0.0);
-	lampBase(0.1, 2, 1.9, 1.0);
+	tankChasis(2.5, 1.5, 1);
 
 	// base(0.8);
 
@@ -158,22 +166,13 @@ void RobotArm::draw()
 	endDraw();
 }
 
-void lampBase(float h, float bottomRadius, float topRadius, float scale)
+void tankChasis(float len, float wid, float hei)
 {
-	setDiffuseColor( 0.85, 0.85, 0.85 );
-	setAmbientColor( 0.85, 0.85, 0.85 );
+	setDiffuseColor( 1, 0, 0 );
+	setAmbientColor( 1, 0, 0 );
 	glPushMatrix();
 		glPushMatrix();
-			glScalef(scale, 2.0, scale);
-			glRotatef(-90.0, 1.0, 0.0, 0.0);
-			drawCylinder(h, bottomRadius, topRadius);
-			setDiffuseColor( 0.25, 0.25, 0.25 );
-			setAmbientColor( 0.25, 0.25, 0.25 );
-			glPushMatrix();
-				glTranslatef(0.0, 0.0, 0.1);
-				glScalef(0.8, 0.8, 0.8);
-				drawCylinder(h, bottomRadius, topRadius);
-			glPopMatrix();
+			drawCube(len, wid ,hei);
 		glPopMatrix();
 	glPopMatrix();
 }
@@ -181,47 +180,47 @@ void lampBase(float h, float bottomRadius, float topRadius, float scale)
 void ground(float h) 
 {
 	glDisable(GL_LIGHTING);
-	glColor3f(0.5,0.5,0);
+	glColor3f(0.65,0.45,0.2);
 	glPushMatrix();
 	glScalef(30,0,30);
-	groundBox(0.5, 0.5);
+	drawCube(0.5, 0.5, h);
 	glPopMatrix();
 	glEnable(GL_LIGHTING);
 }
 
-void groundBox(float len, float wid)
+void drawCube(float len, float wid, float hei)
 {
 	glBegin( GL_QUADS );
 
 	glNormal3d( 1.0 ,0.0, 0.0);			// +x side
 	glVertex3d( len/2,0.0, wid/2);
 	glVertex3d( len/2,0.0,-wid/2);
-	glVertex3d( len/2,0.0,-wid/2);
-	glVertex3d( len/2,0.0, wid/2);
+	glVertex3d( len/2,hei,-wid/2);
+	glVertex3d( len/2,hei, wid/2);
 
 	glNormal3d( 0.0 ,0.0, -1.0);		// -z side
 	glVertex3d( len/2,0.0,-wid/2);
 	glVertex3d(-len/2,0.0,-wid/2);
-	glVertex3d(-len/2,0.0,-wid/2);
-	glVertex3d( len/2,0.0,-wid/2);
+	glVertex3d(-len/2,hei,-wid/2);
+	glVertex3d( len/2,hei,-wid/2);
 
 	glNormal3d(-1.0, 0.0, 0.0);			// -x side
 	glVertex3d(-len/2,0.0,-wid/2);
 	glVertex3d(-len/2,0.0, wid/2);
-	glVertex3d(-len/2,0.0, wid/2);
-	glVertex3d(-len/2,0.0,-wid/2);
+	glVertex3d(-len/2,hei, wid/2);
+	glVertex3d(-len/2,hei,-wid/2);
 
 	glNormal3d( 0.0, 0.0, 1.0);			// +z side
 	glVertex3d(-len/2,0.0, wid/2);
 	glVertex3d( len/2,0.0, wid/2);
-	glVertex3d( len/2,0.0, wid/2);
-	glVertex3d(-len/2,0.0, wid/2);
+	glVertex3d( len/2,hei, wid/2);
+	glVertex3d(-len/2,hei, wid/2);
 
 	glNormal3d( 0.0, 1.0, 0.0);			// top (+y)
-	glVertex3d( len/2,0.0, wid/2);
-	glVertex3d( len/2,0.0,-wid/2);
-	glVertex3d(-len/2,0.0,-wid/2);
-	glVertex3d(-len/2,0.0, wid/2);
+	glVertex3d( len/2,hei, wid/2);
+	glVertex3d( len/2,hei,-wid/2);
+	glVertex3d(-len/2,hei,-wid/2);
+	glVertex3d(-len/2,hei, wid/2);
 
 	glNormal3d( 0.0,-1.0, 0.0);			// bottom (-y)
 	glVertex3d( len/2,0.0, wid/2);
@@ -282,117 +281,27 @@ void rotation_base(float h) {
 	glPopMatrix();
 }
 
-void lower_arm(float h) {					// draw the lower arm
-	setDiffuseColor( 0.85, 0.75, 0.25 );
-	setAmbientColor( 0.95, 0.75, 0.25 );
-	y_box(h);
-}
-
-void upper_arm(float h) {					// draw the upper arm
-	setDiffuseColor( 0.85, 0.75, 0.25 );
-	setAmbientColor( 0.95, 0.75, 0.25 );
-	glPushMatrix();
-	glScalef( 1.0, 1.0, 0.7 );
-	y_box(h);
-	glPopMatrix();
-}
-
-void claw(float h) {
-	setDiffuseColor( 0.25, 0.25, 0.85 );
-	setAmbientColor( 0.25, 0.25, 0.85 );
-
-	glBegin( GL_TRIANGLES );
-
-	glNormal3d( 0.0, 0.0, 1.0);		// +z side
-	glVertex3d( 0.5, 0.0, 0.5);
-	glVertex3d(-0.5, 0.0, 0.5);
-	glVertex3d( 0.5,   h, 0.5);
-
-	glNormal3d( 0.0, 0.0, -1.0);	// -z side
-	glVertex3d( 0.5, 0.0, -0.5);
-	glVertex3d(-0.5, 0.0, -0.5);
-	glVertex3d( 0.5,   h, -0.5);
-
-	glEnd();
-
-	glBegin( GL_QUADS );
-
-	glNormal3d( 1.0,  0.0,  0.0);	// +x side
-	glVertex3d( 0.5, 0.0,-0.5);
-	glVertex3d( 0.5, 0.0, 0.5);
-	glVertex3d( 0.5,   h, 0.5);
-	glVertex3d( 0.5,   h,-0.5);
-
-	glNormal3d( 0.0,-1.0, 0.0);		// -y side
-	glVertex3d( 0.5, 0.0, 0.5);
-	glVertex3d( 0.5, 0.0,-0.5);
-	glVertex3d(-0.5, 0.0,-0.5);
-	glVertex3d(-0.5, 0.0, 0.5);
-
-	glEnd();
-}
-
-void y_box(float h) {
-
-	glBegin( GL_QUADS );
-
-	glNormal3d( 1.0 ,0.0, 0.0);			// +x side
-	glVertex3d( 0.25,0.0, 0.25);
-	glVertex3d( 0.25,0.0,-0.25);
-	glVertex3d( 0.25,  h,-0.25);
-	glVertex3d( 0.25,  h, 0.25);
-
-	glNormal3d( 0.0 ,0.0, -1.0);		// -z side
-	glVertex3d( 0.25,0.0,-0.25);
-	glVertex3d(-0.25,0.0,-0.25);
-	glVertex3d(-0.25,  h,-0.25);
-	glVertex3d( 0.25,  h,-0.25);
-
-	glNormal3d(-1.0, 0.0, 0.0);			// -x side
-	glVertex3d(-0.25,0.0,-0.25);
-	glVertex3d(-0.25,0.0, 0.25);
-	glVertex3d(-0.25,  h, 0.25);
-	glVertex3d(-0.25,  h,-0.25);
-
-	glNormal3d( 0.0, 0.0, 1.0);			// +z side
-	glVertex3d(-0.25,0.0, 0.25);
-	glVertex3d( 0.25,0.0, 0.25);
-	glVertex3d( 0.25,  h, 0.25);
-	glVertex3d(-0.25,  h, 0.25);
-
-	glNormal3d( 0.0, 1.0, 0.0);			// top (+y)
-	glVertex3d( 0.25,  h, 0.25);
-	glVertex3d( 0.25,  h,-0.25);
-	glVertex3d(-0.25,  h,-0.25);
-	glVertex3d(-0.25,  h, 0.25);
-
-	glNormal3d( 0.0,-1.0, 0.0);			// bottom (-y)
-	glVertex3d( 0.25,0.0, 0.25);
-	glVertex3d(-0.25,0.0, 0.25);
-	glVertex3d(-0.25,0.0,-0.25);
-	glVertex3d( 0.25,0.0,-0.25);
-
-	glEnd();
-}
-
 int main()
 {
-    ModelerControl controls[NUMCONTROLS ];
+    // ModelerControl controls[NUMCONTROLS ];
+    ModelerControl controls[NUM_CONTROLS];
 
-	controls[BASE_ROTATION] = ModelerControl("base rotation (theta)", -180.0, 180.0, 0.1, 0.0 );
-    controls[LOWER_TILT] = ModelerControl("lower arm tilt (phi)", 15.0, 95.0, 0.1, 55.0 );
-    controls[UPPER_TILT] = ModelerControl("upper arm tilt (psi)", 0.0, 135.0, 0.1, 30.0 );
-	controls[CLAW_ROTATION] = ModelerControl("claw rotation (cr)", -30.0, 180.0, 0.1, 0.0 );
-    controls[BASE_LENGTH] = ModelerControl("base height (h1)", 0.5, 10.0, 0.1, 0.8 );
-    controls[LOWER_LENGTH] = ModelerControl("lower arm length (h2)", 1, 10.0, 0.1, 3.0 );
-    controls[UPPER_LENGTH] = ModelerControl("upper arm length (h3)", 1, 10.0, 0.1, 2.5 );
-    controls[PARTICLE_COUNT] = ModelerControl("particle count (pc)", 0.0, 5.0, 0.1, 5.0 );
+	controls[CHASIS_ROTATION] = ModelerControl("Chasis rotation (theta)", -180.0, 180.0, 0.1, 0.0 );
+	controls[TANK_SCALE] = ModelerControl("Tank scale (tankScale)", 0.1, 10.0, 0.1, 1 );
+ //    controls[LOWER_TILT] = ModelerControl("lower arm tilt (phi)", 15.0, 95.0, 0.1, 55.0 );
+ //    controls[UPPER_TILT] = ModelerControl("upper arm tilt (psi)", 0.0, 135.0, 0.1, 30.0 );
+	// controls[CLAW_ROTATION] = ModelerControl("claw rotation (cr)", -30.0, 180.0, 0.1, 0.0 );
+ //    controls[BASE_LENGTH] = ModelerControl("base height (h1)", 0.5, 10.0, 0.1, 0.8 );
+ //    controls[LOWER_LENGTH] = ModelerControl("lower arm length (h2)", 1, 10.0, 0.1, 3.0 );
+ //    controls[UPPER_LENGTH] = ModelerControl("upper arm length (h3)", 1, 10.0, 0.1, 2.5 );
+ //    controls[PARTICLE_COUNT] = ModelerControl("particle count (pc)", 0.0, 5.0, 0.1, 5.0 );
     
 
 	// You should create a ParticleSystem object ps here and then
 	// call ModelerApplication::Instance()->SetParticleSystem(ps)
 	// to hook it up to the animator interface.
 
-    ModelerApplication::Instance()->Init(&createRobotArm, controls, NUMCONTROLS);
+    // ModelerApplication::Instance()->Init(&createRobotArm, controls, NUMCONTROLS);
+    ModelerApplication::Instance()->Init(&createRobotArm, controls, NUM_CONTROLS);
     return ModelerApplication::Instance()->Run();
 }

@@ -69,7 +69,7 @@ void CatRomCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,
         //     std::cout << "dsadsasa\n";
         //     ptvEvaluatedCurvePts.push_back(newCtrlPoints[i]);
         //     ptvEvaluatedCurvePts.push_back(newCtrlPoints[i+1]);
-        //     continue;    
+        //     continue;
         // }
         xCoords = Vec4f(newCtrlPoints[i-1].x, newCtrlPoints[i].x, newCtrlPoints[i+1].x, newCtrlPoints[i+2].x);
         yCoords = Vec4f(newCtrlPoints[i-1].y, newCtrlPoints[i].y, newCtrlPoints[i+1].y, newCtrlPoints[i+2].y);

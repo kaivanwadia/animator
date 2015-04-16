@@ -443,7 +443,7 @@ ModelerUIWindows::ModelerUIWindows() {
         m_maxPartSlider->labelfont(FL_COURIER);
         m_maxPartSlider->labelsize(12);
         m_maxPartSlider->minimum(10);
-        m_maxPartSlider->maximum(150);
+        m_maxPartSlider->maximum(250);
         m_maxPartSlider->step(1);
         m_maxPartSlider->value(m_nMaxParticles);
         m_maxPartSlider->align(FL_ALIGN_RIGHT);

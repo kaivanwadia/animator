@@ -552,14 +552,6 @@
 			}
 		},
 		{
-			"file": "c1bezcurveevaluator.cpp",
-			"settings":
-			{
-				"buffer_size": 2553,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "animatoruiwindows.cpp",
 			"settings":
 			{
@@ -568,10 +560,10 @@
 			}
 		},
 		{
-			"file": "dcjaucurveevaluator.cpp",
+			"file": "catromcurveevaluator.cpp",
 			"settings":
 			{
-				"buffer_size": 5163,
+				"buffer_size": 3391,
 				"line_ending": "Unix"
 			}
 		},
@@ -588,30 +580,6 @@
 			"settings":
 			{
 				"buffer_size": 4550,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "vec.h",
-			"settings":
-			{
-				"buffer_size": 28442,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "modelerview.cpp",
-			"settings":
-			{
-				"buffer_size": 4081,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "modelerapp.cpp",
-			"settings":
-			{
-				"buffer_size": 5736,
 				"line_ending": "Unix"
 			}
 		}
@@ -640,16 +608,19 @@
 	},
 	"file_history":
 	[
+		"/u/kwadia/public_html/springcapstone3d/index.html",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/vec.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/dcjaucurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c1bezcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/animator/particleSystem.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/vec.h",
 		"/u/kwadia/Downloads/Decrypt.java",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/resources/sphere.obj",
-		"/u/kwadia/public_html/springcapstone3d/index.html",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.fl",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catromcurveevaluator.cpp",
@@ -660,7 +631,6 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/curveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Makefile",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c1bezcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c1bezcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c0bezcurveevaluator.h",
@@ -676,7 +646,6 @@
 		"/u/kwadia/cs312/Moss/Script Instructions",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/qbsplinecurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/qbsplinecurveevaluator.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/dcjaucurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/dcjaucurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catromcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catmullromcurveevaluator.h",
@@ -686,7 +655,6 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/linearcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/linearcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/mat.h",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.h",
@@ -786,6 +754,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"dist",
 			"clearBak",
 			"clearbake",
 			"0.00",
@@ -912,8 +881,7 @@
 			"CATMULLROM",
 			"CURVE_TYPE_DECAS",
 			"m_t_Slider",
-			"cb_tauSlides",
-			"m_tau_Slider"
+			"cb_tauSlides"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -932,7 +900,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -947,8 +915,8 @@
 						"selection":
 						[
 							[
-								617,
-								617
+								636,
+								636
 							]
 						],
 						"settings":
@@ -1044,34 +1012,6 @@
 				},
 				{
 					"buffer": 4,
-					"file": "c1bezcurveevaluator.cpp",
-					"settings":
-					{
-						"buffer_size": 2553,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								328,
-								328
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "animatoruiwindows.cpp",
 					"settings":
 					{
@@ -1082,8 +1022,8 @@
 						"selection":
 						[
 							[
-								18913,
-								18913
+								18388,
+								18388
 							]
 						],
 						"settings":
@@ -1099,19 +1039,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "dcjaucurveevaluator.cpp",
+					"buffer": 5,
+					"file": "catromcurveevaluator.cpp",
 					"settings":
 					{
-						"buffer_size": 5163,
+						"buffer_size": 3391,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4544,
-								4544
+								174,
+								174
 							]
 						],
 						"settings":
@@ -1121,7 +1061,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 998.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1129,11 +1069,11 @@
 			]
 		},
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
 					"settings":
 					{
@@ -1161,7 +1101,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "animatoruiwindows.h",
 					"settings":
 					{
@@ -1172,8 +1112,8 @@
 						"selection":
 						[
 							[
-								3450,
-								3450
+								3570,
+								3570
 							]
 						],
 						"settings":
@@ -1184,87 +1124,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 1632.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "vec.h",
-					"settings":
-					{
-						"buffer_size": 28442,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9358,
-								9358
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4539.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "modelerview.cpp",
-					"settings":
-					{
-						"buffer_size": 4081,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3178,
-								3178
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1428.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "modelerapp.cpp",
-					"settings":
-					{
-						"buffer_size": 5736,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5091,
-								5091
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2902.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1325,6 +1184,14 @@
 		"selected_items":
 		[
 			[
+				"catm",
+				"catromcurveevaluator.cpp"
+			],
+			[
+				"robo",
+				"robotarm.cpp"
+			],
+			[
 				"dcj",
 				"dcjaucurveevaluator.cpp"
 			],
@@ -1353,10 +1220,6 @@
 				"c1bezcurveevaluator.cpp"
 			],
 			[
-				"robo",
-				"robotarm.cpp"
-			],
-			[
 				"mod",
 				"modelerui.cpp"
 			],
@@ -1367,10 +1230,6 @@
 			[
 				"card",
 				"cardcurveevaluator.cpp"
-			],
-			[
-				"catm",
-				"catromcurveevaluator.cpp"
 			],
 			[
 				"cur",
