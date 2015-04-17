@@ -170,5 +170,13 @@ public:
   Fl_Value_Slider* m_springRestLenSlider;
   static double m_nSpringRestLen;
   static void cb_springRestLenSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_springStrainSlider;
+  static double m_nMaxSpringStrain;
+  static void cb_springStrainSlider(Fl_Widget* o, void* v);
+
+  Fl_Value_Slider* m_springDampStiffSlider;
+  static double m_nDampStiffness;
+  static void cb_springDampStiffSlider(Fl_Widget* o, void* v);
 };
 #endif

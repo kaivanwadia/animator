@@ -4,28 +4,224 @@
 		"selected_items":
 		[
 			[
+				"for",
+				"force"
+			],
+			[
+				"p1",
+				"p1Index"
+			],
+			[
+				"p2",
+				"p2Pos"
+			],
+			[
+				"spr",
+				"springs"
+			],
+			[
+				"par",
+				"particles"
+			],
+			[
+				"sprin",
+				"springsToDelete"
+			],
+			[
+				"part",
+				"particlesToDelete"
+			],
+			[
+				"pa",
+				"particlesToDelete"
+			],
+			[
+				"bake",
+				"bakedSprings"
+			],
+			[
+				"bas",
+				"bakedSpringMap"
+			],
+			[
+				"clea",
+				"clear"
+			],
+			[
+				"sri",
+				"spring"
+			],
+			[
+				"new",
+				"newPos"
+			],
+			[
+				"m_b",
+				"m_bSprings"
+			],
+			[
+				"Mode",
+				"ModelerUIWindows"
+			],
+			[
+				"procece",
+				"processSpringForce"
+			],
+			[
+				"pos",
+				"pos1"
+			],
+			[
+				"st",
+				"stiffness"
+			],
+			[
+				"emit",
+				"emitPositions"
+			],
+			[
+				"max",
+				"maxVelocityTank2"
+			],
+			[
+				"maxVe",
+				"maxVelocityTank1"
+			],
+			[
+				"maxV",
+				"maxVelocityTank1"
+			],
+			[
+				"m_nMaxT",
+				"m_nMaxTank2Vel"
+			],
+			[
+				"m_nMax",
+				"m_nMaxTank1Vel"
+			],
+			[
+				"m_nma",
+				"m_nMaxTank2Vel"
+			],
+			[
+				"m_nta",
+				"m_nMaxTank1Vel"
+			],
+			[
+				"cb_tan",
+				"cb_tank2VelSlider"
+			],
+			[
+				"tank",
+				"tankNo"
+			],
+			[
+				"m_bt1",
+				"m_bt1GunEmit"
+			],
+			[
+				"cb_t1",
+				"cb_t1GunEmitBtn"
+			],
+			[
+				"m_t1T",
+				"m_bt1TurEmit"
+			],
+			[
+				"tan",
+				"tankNo"
+			],
+			[
+				"dr",
+				"drawCylinder"
+			],
+			[
+				"tur",
+				"turretLength"
+			],
+			[
+				"d",
+				"drawCylinder"
+			],
+			[
+				"turr",
+				"turretZRot"
+			],
+			[
+				"draw",
+				"drawTurret"
+			],
+			[
+				"t1t",
+				"t1TurretZRot"
+			],
+			[
+				"tu",
+				"turretYRot"
+			],
+			[
 				"glP",
 				"glPopMatrix"
 			],
 			[
-				"set",
-				"setDiffuseColor"
+				"t1tur",
+				"t1TurretLength"
 			],
 			[
-				"draw",
-				"drawWheels"
+				"T1_T",
+				"T1_TURRET_LENGTH"
+			],
+			[
+				"t1tu",
+				"t1TurretLength"
+			],
+			[
+				"t1Tu",
+				"t1TurretYRot"
+			],
+			[
+				"T1_Tu",
+				"T1_TURRET_YROT"
 			],
 			[
 				"t1",
-				"t1ChasScale"
+				"t1Z"
+			],
+			[
+				"T1",
+				"T1_X"
+			],
+			[
+				"T1_To",
+				"T1_TOPGUN_ROT"
+			],
+			[
+				"T1_Top",
+				"T1_TOPGUN_LENGTH"
+			],
+			[
+				"gun",
+				"gunLength"
+			],
+			[
+				"t1to",
+				"t1TopGunLength"
+			],
+			[
+				"glp",
+				"glPopMatrix"
+			],
+			[
+				"dra",
+				"drawMiniChasis"
 			],
 			[
 				"gl",
-				"glRotatef"
+				"glTranslatef"
 			],
 			[
-				"tan",
-				"tankScale"
+				"set",
+				"setDiffuseColor"
 			],
 			[
 				"TAN",
@@ -60,10 +256,6 @@
 				"mapTime"
 			],
 			[
-				"bake",
-				"bakedParticleMap"
-			],
-			[
 				"Pa",
 				"Particle"
 			],
@@ -88,24 +280,8 @@
 				"emitPositions"
 			],
 			[
-				"max",
-				"maxVelocityChimney"
-			],
-			[
-				"m_nMax",
-				"m_nMaxClawVel"
-			],
-			[
-				"m_nma",
-				"m_nMaxChimVel"
-			],
-			[
 				"maxv",
 				"maxVelocityClaw"
-			],
-			[
-				"emit",
-				"emitterNo"
 			],
 			[
 				"claw",
@@ -140,18 +316,6 @@
 				"continue"
 			],
 			[
-				"p2",
-				"p2id"
-			],
-			[
-				"p1",
-				"p1Pos"
-			],
-			[
-				"for",
-				"forceP1"
-			],
-			[
 				"cur",
 				"currentDistSq"
 			],
@@ -170,10 +334,6 @@
 			[
 				"z",
 				"zSq"
-			],
-			[
-				"m_b",
-				"m_bCollisions"
 			],
 			[
 				"Mod",
@@ -344,10 +504,6 @@
 				"noOfPart"
 			],
 			[
-				"part",
-				"particles"
-			],
-			[
 				"particles",
 				"particles"
 			],
@@ -358,162 +514,6 @@
 			[
 				"gra",
 				"gravity"
-			],
-			[
-				"dra",
-				"dragForce"
-			],
-			[
-				"g",
-				"getRandomVelocity"
-			],
-			[
-				"vec",
-				"vector	std::vector"
-			],
-			[
-				"bot",
-				"bottomRadius"
-			],
-			[
-				"grou",
-				"groundBox"
-			],
-			[
-				"gro",
-				"groundBox"
-			],
-			[
-				"E",
-				"EqualT"
-			],
-			[
-				"Supe",
-				"SuperEqual"
-			],
-			[
-				"int",
-				"interval"
-			],
-			[
-				"prot",
-				"proteinIndex"
-			],
-			[
-				"pro",
-				"proteinIndex"
-			],
-			[
-				"cal",
-				"calcFinalAns"
-			],
-			[
-				"ca",
-				"calcFinalAns"
-			],
-			[
-				"pers",
-				"personNo"
-			],
-			[
-				"per",
-				"percAns"
-			],
-			[
-				"answe",
-				"answerSet"
-			],
-			[
-				"an",
-				"answerNo"
-			],
-			[
-				"ans",
-				"answerNo"
-			],
-			[
-				"pat",
-				"_patternIndex"
-			],
-			[
-				"patt",
-				"patternIndex"
-			],
-			[
-				"up",
-				"_updated"
-			],
-			[
-				"_",
-				"_e"
-			],
-			[
-				"In",
-				"Interval"
-			],
-			[
-				"LM",
-				"LMa"
-			],
-			[
-				"make",
-				"makeCapital"
-			],
-			[
-				"GL_ON",
-				"GL_ONE_MINUS_SRC_ALPHA"
-			],
-			[
-				"ver",
-				"verbose"
-			],
-			[
-				"sha",
-				"shader_list"
-			],
-			[
-				"norma",
-				"normalNorm"
-			],
-			[
-				"float",
-				"float3"
-			],
-			[
-				"height",
-				"height-1"
-			],
-			[
-				"prin",
-				"printKdTree"
-			],
-			[
-				"obje",
-				"objectID"
-			],
-			[
-				"tri",
-				"trimesh"
-			],
-			[
-				"trac",
-				"TraceUI"
-			],
-			[
-				"ref",
-				"reflectedDirection"
-			],
-			[
-				"refracted",
-				"refractedDirection"
-			],
-			[
-				"cos",
-				"cosineAngle"
-			],
-			[
-				"sin",
-				"sinT"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
 			"settings":
 			{
-				"buffer_size": 1022,
+				"buffer_size": 998,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "customModel.cpp",
 			"settings":
 			{
-				"buffer_size": 8106,
+				"buffer_size": 14878,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,15 +539,47 @@
 			"file": "particleSystem.cpp",
 			"settings":
 			{
-				"buffer_size": 14535,
+				"buffer_size": 18214,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "catromcurveevaluator.cpp",
+			"file": "animatoruiwindows.cpp",
 			"settings":
 			{
-				"buffer_size": 3381,
+				"buffer_size": 28990,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "particleSystem.h",
+			"settings":
+			{
+				"buffer_size": 4614,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
+			"settings":
+			{
+				"buffer_size": 47266,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.h",
+			"settings":
+			{
+				"buffer_size": 4981,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "animatoruiwindows.h",
+			"settings":
+			{
+				"buffer_size": 5189,
 				"line_ending": "Unix"
 			}
 		},
@@ -601,6 +633,9 @@
 	"file_history":
 	[
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catromcurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Particle.h",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.cpp",
 		"/u/kwadia/public_html/springcapstone3d/index.html",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Makefile",
@@ -608,7 +643,6 @@
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Particle.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
@@ -617,7 +651,6 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/dcjaucurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c1bezcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/animator/particleSystem.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
 		"/u/kwadia/Downloads/Decrypt.java",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/resources/sphere.obj",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.fl",
@@ -652,7 +685,6 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/mat.h",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.h",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
-		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.h",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/customModel.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/rulerwindow.cpp",
@@ -746,6 +778,103 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"p1Index",
+			"remainingparticlemap",
+			"springs_",
+			"newsprings",
+			"remainingspringmap",
+			"springs_",
+			"springstodelete",
+			"remainingparticlemap",
+			"springs_",
+			"particlestodelete",
+			"detectSawedParticles",
+			"particles",
+			"springs",
+			"bakedParticles",
+			"m_nSpringStiffness",
+			"m_nSpringRestLen",
+			"m_tank2VelSlider",
+			"m_tank1VelSlider",
+			"m_collisionBtn",
+			"m_nMaxTank2Vel",
+			"m_nMaxTank1Vel",
+			"m_bCollisions",
+			"Stiff",
+			"std::",
+			"SpringComponent",
+			"180",
+			"gunLength",
+			"pos",
+			"Pos",
+			"pos",
+			"clawEmitPos",
+			"_emitPos",
+			"emitPosition",
+			"max",
+			"m_nMaxChimVel",
+			"m_nMaxClawVel",
+			"m_clawVelSlider",
+			"m_chimneyVelSlider",
+			"t1",
+			"emitPosition",
+			"emitPositions",
+			"emitPosition",
+			"_emitPos",
+			"t1",
+			"m_clawEmitBtn",
+			"m_bClawEmit",
+			"m_chimEmitBtn",
+			"m_bChimEmit",
+			"t1",
+			"T1",
+			"Tank1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"T1",
+			"t1",
+			"0",
+			"t1TopGunRotation",
+			"t1ChasScale",
+			"drawDoor",
+			"15",
+			"drawMiniChasis",
+			"tankChasis",
+			"T1_TOP_SCALE",
+			" * t1ChasScale",
+			"drawTankFront",
+			"15",
+			"-cWid",
 			"scale/2",
 			"TANK1_SCALE",
 			"TANK1_ROTATION",
@@ -776,104 +905,7 @@
 			"it",
 			"timeStampedParticles",
 			"thisParticles",
-			"timeStampedParticles",
-			"particles",
-			"worldMatrix",
-			"m_clawEmitBtn",
-			"m_bClawEmit",
-			"min",
-			"double",
-			"m_chimneyVelSlider",
-			"m_nMaxChimVel",
-			"m_penaltyStiffSlider",
-			"m_nPenaltyStiffness",
-			"clawPos",
-			"clawEmitPos",
-			"getWorldPoint",
-			"ptvCtrlPts",
-			"m_lifeSlider",
-			"m_nLifespan",
-			"eNo",
-			"m_bCollisions",
-			"m_collisionBtn",
-			"emitPositions[index]",
-			"emitChimneyParticles",
-			"emitParticles",
-			"p1id",
-			"size",
-			"processCollisionForce",
-			".z",
-			".y",
-			".x",
-			"p1Pos.y - p2Pos.y",
-			"p1Pos.x - p2Pos.x",
-			"p2id",
-			"computeForces",
-			"550",
-			"600",
-			"500",
-			"480",
-			"460",
-			"760",
-			"650",
-			"750",
-			"720",
-			"m_redSlider",
-			"m_nRed",
-			"m_flStiffSlider",
-			"wrap",
-			"computeSignedDistancePointToBody",
-			"impulses_",
-			"Impulse",
-			"m_ppfSlider",
-			"m_nPartPerFrame",
-			"m_blueSlider",
-			"red",
-			"m_redSlider",
-			"m_nBlue",
-			"m_flStiffSlider",
-			"m_nFlStiff",
-			"assert",
-			"CARD",
-			"m_ContinuityType",
-			"m_bezierCurveType",
-			"o",
-			"600",
-			"h6",
-			"id=\"sub-heading\" ",
-			"1</h",
-			"1<",
-			"Clear Sim.",
-			"C&lear Sim.",
-			"maxVelocity",
-			"3*i",
-			"2*i",
-			"particles",
-			"ParticleSystem",
-			"timeStep",
-			"2*i",
-			"std::",
-			"m_stepSlider",
-			"m_tauSlider",
-			"m_stepSlider",
-			"m_tauSlider",
-			"700",
-			"600",
-			"550",
-			"Gravity",
-			"m_",
-			"490",
-			"680",
-			"650",
-			"580",
-			"i",
-			"tempEvalPoints",
-			"g_y",
-			"g_x",
-			"bSplineBasis",
-			"step",
-			"phantomCtrlPoints",
-			"g_y"
+			"timeStampedParticles"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -892,7 +924,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 10,
 			"sheets":
 			[
 				{
@@ -900,15 +932,15 @@
 					"file": "/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
 					"settings":
 					{
-						"buffer_size": 1022,
+						"buffer_size": 998,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								300,
-								300
+								806,
+								806
 							]
 						],
 						"settings":
@@ -926,15 +958,15 @@
 					"file": "customModel.cpp",
 					"settings":
 					{
-						"buffer_size": 8106,
+						"buffer_size": 14878,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5142,
-								5142
+								12554,
+								12554
 							]
 						],
 						"settings":
@@ -943,7 +975,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2766.0,
+						"translation.y": 7220.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -953,15 +985,15 @@
 					"file": "particleSystem.cpp",
 					"settings":
 					{
-						"buffer_size": 14535,
+						"buffer_size": 18214,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								7348,
+								7348
 							]
 						],
 						"settings":
@@ -969,25 +1001,80 @@
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 3927.0,
+						"translation.y": 4415.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "catromcurveevaluator.cpp",
+					"file": "animatoruiwindows.cpp",
 					"settings":
 					{
-						"buffer_size": 3381,
+						"buffer_size": 28990,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2478,
-								2478
+								21815,
+								21815
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 9639.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "particleSystem.h",
+					"settings":
+					{
+						"buffer_size": 4614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								294,
+								294
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
+					"settings":
+					{
+						"buffer_size": 47266,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23957,
+								23957
 							]
 						],
 						"settings":
@@ -997,19 +1084,69 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 459.0,
+						"translation.y": 10537.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 2,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 4,
+					"buffer": 6,
+					"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.h",
+					"settings":
+					{
+						"buffer_size": 4981,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1659,
+								1659
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1071.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "animatoruiwindows.h",
+					"settings":
+					{
+						"buffer_size": 5189,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4980,
+								4980
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2397.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "robotarm.cpp",
 					"settings":
 					{
@@ -1020,8 +1157,8 @@
 						"selection":
 						[
 							[
-								3641,
-								3641
+								3942,
+								3942
 							]
 						],
 						"settings":
@@ -1030,13 +1167,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3417.0,
+						"translation.y": 2040.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 9,
 					"file": "modelerapp.cpp",
 					"settings":
 					{
@@ -1063,7 +1200,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 10,
 					"file": "modelerdraw.cpp",
 					"settings":
 					{
@@ -1074,8 +1211,8 @@
 						"selection":
 						[
 							[
-								8593,
-								8593
+								874,
+								874
 							]
 						],
 						"settings":
@@ -1085,7 +1222,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4998.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1110,18 +1247,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.585495283018,
 			1.0
 		],
 		"rows":
@@ -1146,16 +1276,28 @@
 		"selected_items":
 		[
 			[
+				"catm",
+				"catromcurveevaluator.cpp"
+			],
+			[
+				"par",
+				"Particle.h"
+			],
+			[
+				"ani",
+				"animatoruiwindows.cpp"
+			],
+			[
+				"part",
+				"particleSystem.cpp"
+			],
+			[
 				"catmu",
 				"catromcurveevaluator.cpp"
 			],
 			[
 				"card",
 				"cardcurveevaluator.cpp"
-			],
-			[
-				"part",
-				"particleSystem.cpp"
 			],
 			[
 				"robo",
@@ -1186,20 +1328,12 @@
 				"robotarm.cpp"
 			],
 			[
-				"catm",
-				"catromcurveevaluator.cpp"
-			],
-			[
 				"dcj",
 				"dcjaucurveevaluator.cpp"
 			],
 			[
 				"mode",
 				"modelerapp.cpp"
-			],
-			[
-				"ani",
-				"animatoruiwindows.cpp"
 			],
 			[
 				"vec",
@@ -1432,10 +1566,6 @@
 			[
 				"sphe",
 				"src/SceneObjects/Sphere.h"
-			],
-			[
-				"par",
-				"src/parser/Parser.cpp"
 			],
 			[
 				"ryt",

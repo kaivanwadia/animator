@@ -87,6 +87,8 @@ double ModelerUIWindows::m_nMaxTank2Vel;
 bool ModelerUIWindows::m_bSprings;
 double ModelerUIWindows::m_nSpringStiffness;
 double ModelerUIWindows::m_nSpringRestLen;
+double ModelerUIWindows::m_nMaxSpringStrain;
+double ModelerUIWindows::m_nDampStiffness;
 
 void ModelerUIWindows::cb_bezierCurveType(Fl_Widget* o, void* v)
 {
@@ -224,9 +226,19 @@ void ModelerUIWindows::cb_springStiffSlider(Fl_Widget* o, void* v)
   ((ModelerUIWindows*)(o->user_data()))->m_nSpringStiffness = ((Fl_Slider*)o)->value();
 }
 
+void ModelerUIWindows::cb_springDampStiffSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nDampStiffness = ((Fl_Slider*)o)->value();
+}
+
 void ModelerUIWindows::cb_springRestLenSlider(Fl_Widget* o, void* v)
 {
   ((ModelerUIWindows*)(o->user_data()))->m_nSpringRestLen = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_springStrainSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nMaxSpringStrain = ((Fl_Slider*)o)->value();
 }
 
 ModelerUIWindows::ModelerUIWindows() {
@@ -589,7 +601,7 @@ ModelerUIWindows::ModelerUIWindows() {
       }
       { 
         m_nSpringStiffness = 100;
-        m_springStiffSlider = new Fl_Value_Slider(165,730,100,20,"Spring Stiffness");
+        m_springStiffSlider = new Fl_Value_Slider(165,730,100,20,"SprStiffness");
         m_springStiffSlider->user_data((void*)this);
         m_springStiffSlider->type(FL_HOR_NICE_SLIDER);
         m_springStiffSlider->labelfont(FL_COURIER);
@@ -602,8 +614,22 @@ ModelerUIWindows::ModelerUIWindows() {
         m_springStiffSlider->callback(cb_springStiffSlider);
       }
       { 
+        m_nDampStiffness = 1;
+        m_springDampStiffSlider = new Fl_Value_Slider(365,730,100,20,"DampStiffness");
+        m_springDampStiffSlider->user_data((void*)this);
+        m_springDampStiffSlider->type(FL_HOR_NICE_SLIDER);
+        m_springDampStiffSlider->labelfont(FL_COURIER);
+        m_springDampStiffSlider->labelsize(12);
+        m_springDampStiffSlider->minimum(0.0);
+        m_springDampStiffSlider->maximum(10);
+        m_springDampStiffSlider->step(1);
+        m_springDampStiffSlider->value(m_nDampStiffness);
+        m_springDampStiffSlider->align(FL_ALIGN_RIGHT);
+        m_springDampStiffSlider->callback(cb_springDampStiffSlider);
+      }
+      { 
         m_nSpringRestLen = 1;
-        m_springRestLenSlider = new Fl_Value_Slider(165,755,100,20,"Spring Rest Length");
+        m_springRestLenSlider = new Fl_Value_Slider(165,755,100,20,"SpringRLen");
         m_springRestLenSlider->user_data((void*)this);
         m_springRestLenSlider->type(FL_HOR_NICE_SLIDER);
         m_springRestLenSlider->labelfont(FL_COURIER);
@@ -614,6 +640,20 @@ ModelerUIWindows::ModelerUIWindows() {
         m_springRestLenSlider->value(m_nSpringRestLen);
         m_springRestLenSlider->align(FL_ALIGN_RIGHT);
         m_springRestLenSlider->callback(cb_springRestLenSlider);
+      }
+      { 
+        m_nMaxSpringStrain = 0.5;
+        m_springStrainSlider = new Fl_Value_Slider(365,755,100,20,"MaxSprStrain");
+        m_springStrainSlider->user_data((void*)this);
+        m_springStrainSlider->type(FL_HOR_NICE_SLIDER);
+        m_springStrainSlider->labelfont(FL_COURIER);
+        m_springStrainSlider->labelsize(12);
+        m_springStrainSlider->minimum(0.1);
+        m_springStrainSlider->maximum(1);
+        m_springStrainSlider->step(0.1);
+        m_springStrainSlider->value(m_nMaxSpringStrain);
+        m_springStrainSlider->align(FL_ALIGN_RIGHT);
+        m_springStrainSlider->callback(cb_springStrainSlider);
       }
       o->end();
     }

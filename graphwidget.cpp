@@ -34,6 +34,7 @@
 #include "qbsplinecurveevaluator.h"
 #include "lreisencurveevaluator.h"
 #include "c1bezcurveevaluator.h"
+#include "c2curveevaluator.h"
 
 #define LEFT		1
 #define MIDDLE		2
@@ -122,17 +123,15 @@ m_flcCurrCurve(FL_BLACK)
 	m_ppceCurveEvaluators = new CurveEvaluator*[CURVE_TYPE_COUNT];
 
 	m_ppceCurveEvaluators[CURVE_TYPE_LINEAR] = new LinearCurveEvaluator();
-	// TODO: replace these linear evaluators
 	m_ppceCurveEvaluators[CURVE_TYPE_BSPLINE] = new BSplineCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_BEZIER] = new BezierCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_CATMULLROM] = new CatRomCurveEvaluator();
-	// Note that C2-Interpolating curve is not a requirement
-	m_ppceCurveEvaluators[CURVE_TYPE_C2INTERPOLATING] = new LinearCurveEvaluator();
+	m_ppceCurveEvaluators[CURVE_TYPE_C2INTERPOLATING] = new C2InterCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_CARDINAL] = new CardCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_DCJAU] = new DCJauCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_QUAD] = new QBSplineCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_LREISEN] = new LReisenCurveEvaluator();
-	m_ppceCurveEvaluators[CURVE_TYPE_C0BEZ] = new LReisenCurveEvaluator();
+	m_ppceCurveEvaluators[CURVE_TYPE_C0BEZ] = new BezierCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_C1BEZ] = new C1BezCurveEvaluator();
 }
 

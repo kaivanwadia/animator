@@ -33,6 +33,8 @@ ParticleSystem::ParticleSystem()
 	penaltyStiffness = ModelerUIWindows::m_nPenaltyStiffness;
 	maxVelocityTank1 = ModelerUIWindows::m_nMaxTank1Vel;
 	maxVelocityTank2 = ModelerUIWindows::m_nMaxTank2Vel;
+	springMaxStrain = ModelerUIWindows::m_nMaxSpringStrain;
+	springDampingStiffness = ModelerUIWindows::m_nDampStiffness;
 	emitPositions.resize(4, Vec3f(0,0,0));
 	emitDirections.resize(4, Vec3f(0,0,0));
 	timeStep = 0;
@@ -104,6 +106,8 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 	penaltyStiffness = ModelerUIWindows::m_nPenaltyStiffness;
 	maxVelocityTank1 = ModelerUIWindows::m_nMaxTank1Vel;
 	maxVelocityTank2 = ModelerUIWindows::m_nMaxTank2Vel;
+	springMaxStrain = ModelerUIWindows::m_nMaxSpringStrain;
+	springDampingStiffness = ModelerUIWindows::m_nDampStiffness;
 	timeStep = t-prevT;
 
 	if (simulate) {
@@ -114,6 +118,7 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 
 		// Killing particles
 		deleteParticles();
+		pruneOverstrainedSprings();
 
 	    //EMIT new particles
 		emitParticles();
@@ -204,6 +209,36 @@ void ParticleSystem::deleteParticles()
     }
 }
 
+void ParticleSystem::pruneOverstrainedSprings()
+{
+    set<int> springsToDelete;
+
+    vector<Spring> newsprings;
+    vector<int> remainingSpringMap;
+    for(int i=0; i<springs.size(); i++)
+    {
+    	Vec3f p1Pos = particles[springs[i].p1Id].pos;
+    	Vec3f p2Pos = particles[springs[i].p2Id].pos;
+    	double dist = (p2Pos - p1Pos).length();
+    	double strain = (dist - springs[i].restLength)/springs[i].restLength;
+    	if (strain > springMaxStrain)
+    	{
+    		springsToDelete.insert(i);
+    	}
+    }
+    if (!springsToDelete.empty())
+    {
+    	for(int i=0; i<springs.size(); i++)
+    	{
+    		if (springsToDelete.count(i) == 0)
+    		{
+    			newsprings.push_back(springs[i]);
+    		}
+    	}
+    	springs = newsprings;
+    }
+}
+
 void ParticleSystem::printVector(vector<float> &v, string name) const
 {
 	cout << name << " : \n";
@@ -246,7 +281,31 @@ void ParticleSystem::computeForceAndHessian(vector<float> &q, vector<float> &qpr
     if (ModelerUIWindows::m_bSprings)
     {
     	processSpringForce(q, forces);
+    	processDampingForce(q, qprev, forces);
     }
+}
+
+void ParticleSystem::processDampingForce(vector<float> &q, vector<float> &qprev, vector<float> &forces)
+{
+	for (int i = 0; i < springs.size(); i++)
+	{
+		int p1Index = springs[i].p1Id;
+		int p2Index = springs[i].p2Id;
+		Vec3f p1Pos = Vec3f(q[3*p1Index], q[3*p1Index + 1], q[3*p1Index + 2]);
+		Vec3f p2Pos = Vec3f(q[3*p2Index], q[3*p2Index + 1], q[3*p2Index + 2]);
+		Vec3f p1PrevPos = Vec3f(qprev[3*p1Index], qprev[3*p1Index + 1], qprev[3*p1Index + 2]);
+		Vec3f p2PrevPos = Vec3f(qprev[3*p2Index], qprev[3*p2Index + 1], qprev[3*p2Index + 2]);
+		Vec3f relVel = (p2Pos - p2PrevPos)/timeStep - (p1Pos - p1PrevPos)/timeStep;
+		Vec3f force = springDampingStiffness * relVel;
+		forces[3*p1Index + 0] = forces[3*p1Index + 0] + force[0];
+		forces[3*p1Index + 1] = forces[3*p1Index + 1] + force[1];
+		forces[3*p1Index + 2] = forces[3*p1Index + 2] + force[2];
+
+		forces[3*p2Index + 0] = forces[3*p2Index + 0] - force[0];
+		forces[3*p2Index + 1] = forces[3*p2Index + 1] - force[1];
+		forces[3*p2Index + 2] = forces[3*p2Index + 2] - force[2];
+
+	}
 }
 
 void ParticleSystem::processSpringForce(vector<float> &q, vector<float> &forces)
@@ -271,7 +330,6 @@ void ParticleSystem::processSpringForce(vector<float> &q, vector<float> &forces)
 
 void ParticleSystem::processCollisionForce(vector<float> &q, vector<float> &vel, vector<float> &forces)
 {
-	// cout << "Entering Collision Force : " << particles.size() << "\n";
 	for (int p1id = 0; p1id < particles.size(); p1id++)
 	{
 		Vec3f p1Pos = Vec3f(q[3*p1id + 0], q[3*p1id + 1], q[3*p1id + 2]);
@@ -429,9 +487,9 @@ void ParticleSystem::emitParticles()
 				int p1ID = particles.size()-1;
 				Vec3f newPos = pos;
 				double rLen = ModelerUIWindows::m_nSpringRestLen;
-				newPos[0] = newPos[0] + ((rand()/RAND_MAX) * rLen * 2 - rLen);
-				newPos[1] = newPos[1] + ((rand()/RAND_MAX) * rLen * 2 - rLen);
-				newPos[2] = newPos[2] + ((rand()/RAND_MAX) * rLen * 2 - rLen);
+				newPos[0] = newPos[0] + ((double(rand())/RAND_MAX) * rLen * 2 - rLen);
+				newPos[1] = newPos[1] + ((double(rand())/RAND_MAX) * rLen * 2 - rLen);
+				newPos[2] = newPos[2] + ((double(rand())/RAND_MAX) * rLen * 2 - rLen);
 				mass = rand() % 5 + 2;
 				lifespan = rand() % ModelerUIWindows::m_nLifespan + 1;
 				Particle p2 = Particle(newPos, mass, color, lifespan, vel, type);

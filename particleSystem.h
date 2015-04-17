@@ -82,6 +82,7 @@ public:
 	void setDirty(bool d) { dirty = d; }
 
 	void deleteParticles();
+	void pruneOverstrainedSprings();
 	void setEmitParticles();
 	void setEmitterPosition(Vec3f _emitPos, int index);
 	void setEmitterDirection(Vec3f _emitDir, int index);
@@ -97,6 +98,7 @@ public:
 	void processFloorForce(std::vector<float> &q, std::vector<float> &qprev, std::vector<float> &forces);
 	void processCollisionForce(std::vector<float> &q, std::vector<float> &vel, std::vector<float> &forces);
 	void processSpringForce(std::vector<float> &q, std::vector<float> &forces);
+	void processDampingForce(std::vector<float> &q, std::vector<float> &qprev, std::vector<float> &forces);
 
 	void printVector(std::vector<float> &v, std::string name) const;
 	float distSquared(Vec3f p1Pos, Vec3f p2Pos);
@@ -135,6 +137,8 @@ protected:
 	float floorStiff;
 	float floorDrag;
 	float penaltyStiffness;
+	float springMaxStrain;
+	float springDampingStiffness;
 };
 
 
