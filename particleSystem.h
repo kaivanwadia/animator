@@ -22,6 +22,17 @@
 #include <map>
 #include <string>
 
+struct Spring {
+public:
+    Spring(int p1, int p2, double restLength, double stiffness): p1Id(p1), p2Id(p2), restLength(restLength), stiffness(stiffness)
+    {
+    }
+    int p1Id;
+    int p2Id;
+    double restLength;
+    double stiffness;
+};
+
 class ParticleSystem {
 
 public:
@@ -70,12 +81,11 @@ public:
 	bool isDirty() { return dirty; }
 	void setDirty(bool d) { dirty = d; }
 
+	void deleteParticles();
 	void setEmitParticles();
 	void setEmitterPosition(Vec3f _emitPos, int index);
-	void addEmitterPosition(Vec3f _emitPos);
+	void setEmitterDirection(Vec3f _emitDir, int index);
 	void emitParticles();
-	void emitChimneyParticle();
-	void emitClawParticle();
 
 	void buildConfiguration(std::vector<float> &q, std::vector<float> &qprev, std::vector<float> &vel);
 	void unbuildConfiguration(std::vector<float> &q, std::vector<float> &vel);
@@ -86,6 +96,7 @@ public:
 	void processDragForce(std::vector<float> &vel, std::vector<float> &forces);
 	void processFloorForce(std::vector<float> &q, std::vector<float> &qprev, std::vector<float> &forces);
 	void processCollisionForce(std::vector<float> &q, std::vector<float> &vel, std::vector<float> &forces);
+	void processSpringForce(std::vector<float> &q, std::vector<float> &forces);
 
 	void printVector(std::vector<float> &v, std::string name) const;
 	float distSquared(Vec3f p1Pos, Vec3f p2Pos);
@@ -107,14 +118,17 @@ protected:
 	
 	// Particle Stuff
 	std::vector<Particle> particles;
+	std::vector<Spring> springs;
 	std::map<float, std::vector<Particle>> bakedParticleMap;
+	std::map<float, std::vector<Spring>> bakedSpringMap;
 
 	std::vector<Vec3f> emitPositions;
+	std::vector<Vec3f> emitDirections;
 	int maxPartPerFrame;
 	int totalNoOfParticles;
 
-	int maxVelocityChimney;
-	int maxVelocityClaw;
+	int maxVelocityTank1;
+	int maxVelocityTank2;
 	float timeStep;
 	float gravity;
 	float dragCoeff;

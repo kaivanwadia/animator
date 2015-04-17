@@ -16,6 +16,7 @@
 #include "mat.h"
 #include <FL/gl.h>
 #include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
@@ -40,13 +41,22 @@ enum RobotArmControls
 
 enum TANK_CONTROLS
 {
-	CHASIS_ROTATION = 0, TANK_SCALE, NUM_CONTROLS
+	T1_ROTATION = 0, T1_SCALE, T1_X, T1_Z, T1_TOP_ROTATION, T1_TOPGUN_LENGTH, 
+	T1_TOPGUN_ROT, T1_TURRET_LENGTH, T1_TURRET_ZROT, T2_ROTATION, T2_SCALE, T2_X, 
+	T2_Z, T2_TOP_ROTATION, T2_TOPGUN_LENGTH, T2_TOPGUN_ROT, T2_TURRET_LENGTH, 
+	T2_TURRET_ZROT, NUM_CONTROLS
 };
 
 void ground(float h);
 void drawCube(float len, float wid, float hei);
 
 void tankChasis(float len, float wid, float hei);
+void drawBumper(float len, float wid, float hei);
+void drawWheels(float cLen, float cWid, float cHei);
+void drawTurretBase(float len, float wid, float hei);
+void drawDoor(float len, float wid, float hei);
+void drawTopGun(float gunLength, float gunRotation, int tankNo);
+void drawTurret(float turretZRot, float turretLength, int tankNo);
 
 void base(float h);
 void rotation_base(float h);
@@ -56,6 +66,9 @@ void claw(float h);
 void y_box(float h);
 Mat4f glGetMatrix(GLenum pname);
 Vec3f getWorldPoint(Mat4f matCamXforms);
+
+ParticleSystem* ps;
+Mat4f matCamInverse;
 
 // To make a RobotArm, we inherit off of ModelerView
 class RobotArm : public ModelerView 
@@ -103,17 +116,25 @@ void RobotArm::draw()
 {
 	/* pick up the slider values */
 
-	// float theta = VAL( BASE_ROTATION );
-	// float phi = VAL( LOWER_TILT );
-	// float psi = VAL( UPPER_TILT );
-	// float cr = VAL( CLAW_ROTATION );
-	// float h1 = VAL( BASE_LENGTH );
-	// float h2 = VAL( LOWER_LENGTH );
-	// float h3 = VAL( UPPER_LENGTH );
-	// float pc = VAL( PARTICLE_COUNT );
+	float t1Theta = VAL( T1_ROTATION );
+	float t1Scale = VAL( T1_SCALE );
+	float t1X = VAL(T1_X);
+	float t1Z = VAL(T1_Z);
+	float t1TopRotation = VAL( T1_TOP_ROTATION );
+	float t1TopGunLength = VAL( T1_TOPGUN_LENGTH );
+	float t1TopGunRotation = VAL( T1_TOPGUN_ROT );
+	float t1TurretZRot = VAL ( T1_TURRET_ZROT );
+	float t1TurretLength = VAL ( T1_TURRET_LENGTH );
 
-	float theta = VAL( CHASIS_ROTATION );
-	float tankScale = VAL( TANK_SCALE );
+	float t2Theta = VAL( T2_ROTATION );
+	float t2Scale = VAL( T2_SCALE );
+	float t2X = VAL(T2_X);
+	float t2Z = VAL(T2_Z);
+	float t2TopRotation = VAL( T2_TOP_ROTATION );
+	float t2TopGunLength = VAL( T2_TOPGUN_LENGTH );
+	float t2TopGunRotation = VAL( T2_TOPGUN_ROT );
+	float t2TurretZRot = VAL ( T2_TURRET_ZROT );
+	float t2TurretLength = VAL ( T2_TURRET_LENGTH );
 
     // This call takes care of a lot of the nasty projection 
     // matrix stuff
@@ -124,7 +145,7 @@ void RobotArm::draw()
     // While we're at it, save an inverted copy of this matrix.  We'll
     // need it later.
     Mat4f matCam = glGetMatrix( GL_MODELVIEW_MATRIX );
-    //Mat4f matCamInverse = matCam.inverse();
+    matCamInverse = matCam.inverse();
 
 
 
@@ -133,37 +154,232 @@ void RobotArm::draw()
 	// define the model
 
 	ground(-0.2);
-	glScalef(tankScale, tankScale, tankScale);
-	glTranslatef(0.0, 0.1, 0.0);
-	tankChasis(2.5, 1.5, 1);
+	
+	
+	glPushMatrix(); // Tank 1
+		glScalef(t1Scale, t1Scale, t1Scale); // Scale the whole tank
+		glTranslatef(t1X, 0.5, t1Z); //Translate the whole tank
+		glRotatef(t1Theta, 0.0, 1.0, 0.0); // Rotate the whole tank
+		glPushMatrix();
+			tankChasis(2.5, 1.5, 1);
+			glPushMatrix(); // Drawing front of tank
+				glTranslatef(-(2.5)/2, (1.5)/3, -(1)/1.33);
+				drawBumper(2.5, 1, 1.5);
+			glPopMatrix();
+			glPushMatrix(); // Drawing back of tank
+				glTranslatef((2.5)/2, (1.5)/3, -(1)/1.33);
+				drawBumper(2.5, 1, 1.5);
+			glPopMatrix();
+			glPushMatrix(); // Draw Right wheels
+				drawWheels(2.5, 1, 1.5);
+			glPopMatrix();
+		glPopMatrix();
 
-	// base(0.8);
+		glTranslatef(0.2, 1, 0.0); // Move to the top of the Chasis
+		glRotatef(t1TopRotation, 0.0, 1.0, 0.0); // Rotation for top of tank
+		glPushMatrix();
+			drawTurretBase(2.5, 1, 1.5); // Draw the turret base cylinder
+			glPushMatrix(); // Draw opening of the tank
+				glTranslatef(0.0, 0.3, 0.0); // Move to top of turret base
+				drawDoor(2.5, 1, 1.5);
+				drawTopGun(t1TopGunLength, t1TopGunRotation, 0);
+			glPopMatrix();
+			glPushMatrix();
+				glTranslatef(-0.6, 0.15, 0.0);
+				glRotatef(-90.0, 0.0, 1.0, 0.0);
+				drawTurret(t1TurretZRot, t1TurretLength, 0);
+			glPopMatrix();
+		glPopMatrix();
+	glPopMatrix();
 
- //    glTranslatef( 0.0, 0.8, 0.0 );			// move to the top of the base
- //    glRotatef( theta, 0.0, 1.0, 0.0 );		// turn the whole assembly around the y-axis. 
-	// rotation_base(h1);						// draw the rotation base
+	glPushMatrix(); // Tank 2
+		glScalef(t2Scale, t2Scale, t2Scale); // Scale the whole tank
+		glTranslatef(t2X, 0.5, t2Z); //Translate the whole tank
+		glRotatef(t2Theta, 0.0, 1.0, 0.0); // Rotate the whole tank
+		glPushMatrix();
+			tankChasis(2.5, 1.5, 1);
+			glPushMatrix(); // Drawing front of tank
+				glTranslatef(-(2.5)/2, (1.5)/3, -(1)/1.33);
+				drawBumper(2.5, 1, 1.5);
+			glPopMatrix();
+			glPushMatrix(); // Drawing back of tank
+				glTranslatef((2.5)/2, (1.5)/3, -(1)/1.33);
+				drawBumper(2.5, 1, 1.5);
+			glPopMatrix();
+			glPushMatrix(); // Draw Right wheels
+				drawWheels(2.5, 1, 1.5);
+			glPopMatrix();
+		glPopMatrix();
 
- //    glTranslatef( 0.0, h1, 0.0 );			// move to the top of the base
-	// glPushMatrix();
-	// 		glTranslatef( 0.5, h1, 0.6 );	
-	// glPopMatrix();
- //    glRotatef( phi, 0.0, 0.0, 1.0 );		// rotate around the z-axis for the lower arm
-	// glTranslatef( -0.1, 0.0, 0.4 );
-	// lower_arm(h2);							// draw the lower arm
-
- //    glTranslatef( 0.0, h2, 0.0 );			// move to the top of the lower arm
- //    glRotatef( psi, 0.0, 0.0, 1.0 );		// rotate  around z-axis for the upper arm
-	// upper_arm(h3);							// draw the upper arm
-
-	// glTranslatef( 0.0, h3, 0.0 );
-	// glRotatef( cr, 0.0, 0.0, 1.0 );
-	// claw(1.0);
-
-
-
+		glTranslatef(0.2, 1, 0.0); // Move to the top of the Chasis
+		glRotatef(t2TopRotation, 0.0, 1.0, 0.0); // Rotation for top of tank
+		glPushMatrix();
+			drawTurretBase(2.5, 1, 1.5); // Draw the turret base cylinder
+			glPushMatrix(); // Draw opening of the tank
+				glTranslatef(0.0, 0.3, 0.0); // Move to top of turret base
+				drawDoor(2.5, 1, 1.5);
+				drawTopGun(t2TopGunLength, t2TopGunRotation, 1);
+			glPopMatrix();
+			glPushMatrix();
+				glTranslatef(-0.6, 0.15, 0.0);
+				glRotatef(-90.0, 0.0, 1.0, 0.0);
+				drawTurret(t2TurretZRot, t2TurretLength, 1);
+			glPopMatrix();
+		glPopMatrix();
+	glPopMatrix();
 
 	//*** DON'T FORGET TO PUT THIS IN YOUR OWN CODE **/
 	endDraw();
+}
+
+void drawTurret(float turretZRot, float turretLength, int tankNo)
+{
+	int emitNo = 2;
+	if (tankNo == 0)
+	{
+		emitNo = 0;
+	}
+	setDiffuseColor(0, 0, 1);
+	setDiffuseColor(0, 0, 1);
+	glPushMatrix();
+		glRotatef(turretZRot, 1.0, 0.0, 0.0);
+		Mat4f mvMatrix = glGetMatrix(GL_MODELVIEW_MATRIX);
+		Vec4f startPos = matCamInverse * mvMatrix * Vec4f(0.0, 0.0, 0.0, 1.0);
+		drawCylinder(turretLength*0.8, 0.14, 0.14);
+		glPushMatrix();
+			setDiffuseColor(0, 0, 0.75);
+			setDiffuseColor(0, 0, 0.75);
+			glTranslatef(0, 0, turretLength*0.8);
+			drawCylinder(turretLength, 0.08, 0.08);
+			glPushMatrix();
+				glTranslatef(0, 0, turretLength);
+				mvMatrix = glGetMatrix(GL_MODELVIEW_MATRIX);
+				Vec4f posT = matCamInverse * mvMatrix * Vec4f(0.0, 0.0, 0.15, 1.0);
+				if (ps != NULL)
+				{
+					Vec3f pos = Vec3f(posT[0], posT[1], posT[2]);
+					ps->setEmitterPosition(pos, emitNo);
+					Vec3f velDir = (pos - startPos);
+					velDir.normalize();
+					ps->setEmitterDirection(velDir, emitNo);
+				}
+				drawCylinder(0.1, 0.12, 0.12);
+			glPopMatrix();
+		glPopMatrix();
+	glPopMatrix();
+}
+
+void drawTopGun(float gunLength, float gunRotation, int tankNo)
+{
+	int emitNo = 3;
+	if (tankNo == 0)
+	{
+		emitNo = 1;
+	}
+	setDiffuseColor(1,1,0);
+	setAmbientColor(1,1,0);
+	glPushMatrix();
+		glTranslatef(-0.2, 0.0, 0.35); // Move to draw the base of the top gun
+		glRotatef(gunRotation, 0.0, 1.0, 0.0);
+		Mat4f mvMatrix = glGetMatrix(GL_MODELVIEW_MATRIX);
+		Vec4f startPos = matCamInverse * mvMatrix * Vec4f(0.0, 0.0, 0.0, 1.0);
+		drawCube(0.30, 0.30, 0.1); // Draw the base of the top gun
+		glPushMatrix();
+			setDiffuseColor(0,1,1);
+			setAmbientColor(0,1,1);
+			glTranslatef(0.0, 0.05, 0.0);
+			glRotatef(-90.0, 0.0, 1.0, 0.0);
+			mvMatrix = glGetMatrix(GL_MODELVIEW_MATRIX);
+			Vec4f posT = matCamInverse * mvMatrix * Vec4f(0.0, 0.0, gunLength + 0.05, 1.0);
+			if (ps != NULL)
+			{
+				Vec3f pos = Vec3f(posT[0], posT[1], posT[2]);
+				ps->setEmitterPosition(pos, emitNo);
+				Vec3f velDir = (pos - startPos);
+				velDir.normalize();
+				ps->setEmitterDirection(velDir, emitNo);
+			}
+			drawCylinder(gunLength, 0.05, 0.05);
+		glPopMatrix();
+	glPopMatrix();
+}
+
+void drawDoor(float len, float wid, float hei)
+{
+	setDiffuseColor(0,0,1);
+	setAmbientColor(0,0,1);
+	glPushMatrix();
+		glTranslatef(0.22, -0.08, -0.22);
+		drawSphere(0.2);
+	glPopMatrix();
+}
+
+void drawTurretBase(float len, float wid, float hei)
+{
+	setDiffuseColor(0, 1, 0);
+	setAmbientColor(0, 1, 0);
+	glPushMatrix();
+		glRotatef(-90.0, 1.0, 0.0, 0.0);
+		drawCylinder(0.3, 0.65, 0.65);
+	glPopMatrix();
+}
+
+void drawWheels(float cLen, float cWid, float cHei)
+{
+	double radius  = cLen/(5 * 2.5);
+	setDiffuseColor( 1, 1, 1);
+	setAmbientColor( 1, 1, 1);
+	// Right wheels
+	glPushMatrix(); // Rear wheel
+		glTranslatef(cLen/2.5, 0.0, -cWid/1.15);
+		drawCylinder(cWid/4, radius, radius);
+	glPopMatrix();
+	glPushMatrix(); // Rear - 1 wheel
+		glTranslatef(cLen/5, 0.0, -cWid/1.15);
+		drawCylinder(cWid/4, radius, radius);
+	glPopMatrix();
+	glPushMatrix(); // Center wheel
+		glTranslatef(0.0, 0.0, -cWid/1.15);
+		drawCylinder(cWid/4, radius, radius);
+	glPopMatrix();
+	glPushMatrix(); // Front - 1 wheel
+		glTranslatef(-cLen/5, 0.0, -cWid/1.15);
+		drawCylinder(cWid/4, radius, radius);
+	glPopMatrix();
+	glPushMatrix(); // Front wheel
+		glTranslatef(-cLen/2.5, 0.0, -cWid/1.15);
+		drawCylinder(cWid/4, radius, radius);
+	glPopMatrix();
+	// Left wheels
+	glPushMatrix(); // Rear wheel
+		glTranslatef(cLen/2.5, 0.0, cWid/1.55);
+		drawCylinder(cWid/4, radius, radius);
+	glPopMatrix();
+	glPushMatrix(); // Rear - 1 wheel
+		glTranslatef(cLen/5, 0.0, cWid/1.55);
+		drawCylinder(cWid/4, radius, radius);
+	glPopMatrix();
+	glPushMatrix(); // Center wheel
+		glTranslatef(0.0, 0.0, cWid/1.55);
+		drawCylinder(cWid/4, radius, radius);
+	glPopMatrix();
+	glPushMatrix(); // Front - 1 wheel
+		glTranslatef(-cLen/5, 0.0, cWid/1.55);
+		drawCylinder(cWid/4, radius, radius);
+	glPopMatrix();
+	glPushMatrix(); // Front wheel
+		glTranslatef(-cLen/2.5, 0.0, cWid/1.55);
+		drawCylinder(cWid/4, radius, radius);
+	glPopMatrix();
+}
+
+void drawBumper(float len, float wid, float hei)
+{
+	setDiffuseColor(1, 0, 0);
+	setAmbientColor(1, 0, 0);
+	glPushMatrix();
+		drawCylinder(wid*1.5, hei/3, hei/3);
+	glPopMatrix();
 }
 
 void tankChasis(float len, float wid, float hei)
@@ -171,9 +387,7 @@ void tankChasis(float len, float wid, float hei)
 	setDiffuseColor( 1, 0, 0 );
 	setAmbientColor( 1, 0, 0 );
 	glPushMatrix();
-		glPushMatrix();
-			drawCube(len, wid ,hei);
-		glPopMatrix();
+		drawCube(len, wid ,hei);
 	glPopMatrix();
 }
 
@@ -182,8 +396,8 @@ void ground(float h)
 	glDisable(GL_LIGHTING);
 	glColor3f(0.65,0.45,0.2);
 	glPushMatrix();
-	glScalef(30,0,30);
-	drawCube(0.5, 0.5, h);
+		glScalef(30,0,30);
+		drawCube(0.5, 0.5, h);
 	glPopMatrix();
 	glEnable(GL_LIGHTING);
 }
@@ -231,77 +445,39 @@ void drawCube(float len, float wid, float hei)
 	glEnd();
 }
 
-void base(float h) {
-	setDiffuseColor( 0.25, 0.25, 0.25 );
-	setAmbientColor( 0.25, 0.25, 0.25 );
-	glPushMatrix();
-		glPushMatrix();
-			glTranslatef(1.0, h / 2.0, 0.75);
-			drawCylinder(0.25, h / 2.0, h / 2.0);
-		glPopMatrix();
-		glPushMatrix();
-			glTranslatef(1.0, h / 2.0, -1.0);
-			drawCylinder(0.25, h / 2.0, h / 2.0);
-		glPopMatrix();
-		glPushMatrix();
-			glTranslatef(-1.0, h / 2.0, 0.75);
-			drawCylinder(0.25, h / 2.0, h / 2.0);
-		glPopMatrix();
-		glPushMatrix();
-			glTranslatef(-1.0, h / 2.0, -1.0);
-			drawCylinder(0.25, h / 2.0, h / 2.0);
-		glPopMatrix();
-	glScalef(4.0f, h, 4.0f);
-	y_box(1.0f);
-	glPopMatrix();
-}
-
-void rotation_base(float h) {
-	setDiffuseColor( 0.85, 0.75, 0.25 );
-	setAmbientColor( 0.95, 0.75, 0.25 );
-	glPushMatrix();
-		glPushMatrix();
-			glScalef(4.0, h, 4.0);
-			y_box(1.0f); // the rotation base
-		glPopMatrix();
-		setDiffuseColor( 0.15, 0.15, 0.65 );
-		setAmbientColor( 0.15, 0.15, 0.65 );
-		glPushMatrix();
-			glTranslatef(-0.5, h, -0.6);
-			glScalef(2.0, h, 1.6);
-			y_box(1.0f); // the console
-		glPopMatrix();
-		setDiffuseColor( 0.65, 0.65, 0.65 );
-		setAmbientColor( 0.65, 0.65, 0.65 );
-		glPushMatrix();
-			glTranslatef( 0.5, h, 0.6 );
-			glRotatef( -90.0, 1.0, 0.0, 0.0 );
-			drawCylinder( h, 0.05, 0.05 ); // the pipe
-		glPopMatrix();
-	glPopMatrix();
-}
-
 int main()
 {
     // ModelerControl controls[NUMCONTROLS ];
     ModelerControl controls[NUM_CONTROLS];
 
-	controls[CHASIS_ROTATION] = ModelerControl("Chasis rotation (theta)", -180.0, 180.0, 0.1, 0.0 );
-	controls[TANK_SCALE] = ModelerControl("Tank scale (tankScale)", 0.1, 10.0, 0.1, 1 );
- //    controls[LOWER_TILT] = ModelerControl("lower arm tilt (phi)", 15.0, 95.0, 0.1, 55.0 );
- //    controls[UPPER_TILT] = ModelerControl("upper arm tilt (psi)", 0.0, 135.0, 0.1, 30.0 );
-	// controls[CLAW_ROTATION] = ModelerControl("claw rotation (cr)", -30.0, 180.0, 0.1, 0.0 );
- //    controls[BASE_LENGTH] = ModelerControl("base height (h1)", 0.5, 10.0, 0.1, 0.8 );
- //    controls[LOWER_LENGTH] = ModelerControl("lower arm length (h2)", 1, 10.0, 0.1, 3.0 );
- //    controls[UPPER_LENGTH] = ModelerControl("upper arm length (h3)", 1, 10.0, 0.1, 2.5 );
- //    controls[PARTICLE_COUNT] = ModelerControl("particle count (pc)", 0.0, 5.0, 0.1, 5.0 );
+	controls[T1_ROTATION] = ModelerControl("Tank1 rotation (t1Theta)", -180.0, 180.0, 0.1, 0.0 );
+	controls[T1_SCALE] = ModelerControl("Tank1 scale (t1Scale)", 0.1, 5.0, 0.1, 0.8 );
+	controls[T1_X] = ModelerControl("Tank1 X (t1X)", -5.6, 5.6, 0.1, 3.0 );
+	controls[T1_Z] = ModelerControl("Tank1 Z (t1Z)", -5.6, 5.6, 0.1, 0.0 );
+	controls[T1_TOP_ROTATION] = ModelerControl("Tank1 Top rotation (t1TopRotation)", -180.0, 180.0, 0.1, 0.0 );
+	controls[T1_TOPGUN_LENGTH] = ModelerControl("Tank1 Top Gun Length (t1TopGunLength)", 0.5, 2.0, 0.1, 0.75 );
+	controls[T1_TOPGUN_ROT] = ModelerControl("Tank1 Top Gun rotation (t1TopGunRotation)", -90.0, 90.0, 0.1, 0.0 );
+	controls[T1_TURRET_ZROT] = ModelerControl("Tank1 Turret ZRot (t1TurretZRot)", -20.0, 2.0, 0.1, 0.0 );
+	controls[T1_TURRET_LENGTH] = ModelerControl("Tank1 Turret Length (t1TurretLength)", 0.5, 2.0, 0.1, 1 );
+
+	controls[T2_ROTATION] = ModelerControl("Tank2 rotation (t2Theta)", -180.0, 180.0, 0.1, 180.0 );
+	controls[T2_SCALE] = ModelerControl("Tank2 scale (t2Scale)", 0.1, 5.0, 0.1, 0.8 );
+	controls[T2_X] = ModelerControl("Tank2 X (t2X)", -5.6, 5.6, 0.1, -3.0 );
+	controls[T2_Z] = ModelerControl("Tank2 Z (t2Z)", -5.6, 5.6, 0.1, 0.0 );
+	controls[T2_TOP_ROTATION] = ModelerControl("Tank2 Top rotation (t2TopRotation)", -180.0, 180.0, 0.1, 0.0 );
+	controls[T2_TOPGUN_LENGTH] = ModelerControl("Tank2 Top Gun Length (t2TopGunLength)", 0.5, 2.0, 0.1, 0.75 );
+	controls[T2_TOPGUN_ROT] = ModelerControl("Tank2 Top Gun rotation (t2TopGunRotation)", -90.0, 90.0, 0.1, 0.0 );
+	controls[T2_TURRET_ZROT] = ModelerControl("Tank2 Turret ZRot (t2TurretZRot)", -20.0, 2.0, 0.1, 0.0 );
+	controls[T2_TURRET_LENGTH] = ModelerControl("Tank2 Turret Length (t2TurretLength)", 0.5, 2.0, 0.1, 1 );
     
 
 	// You should create a ParticleSystem object ps here and then
 	// call ModelerApplication::Instance()->SetParticleSystem(ps)
 	// to hook it up to the animator interface.
+	// ParticleSystem* ps = new ParticleSystem();
+	ps = new ParticleSystem();
+	ModelerApplication::Instance()->SetParticleSystem(ps);
 
-    // ModelerApplication::Instance()->Init(&createRobotArm, controls, NUMCONTROLS);
     ModelerApplication::Instance()->Init(&createRobotArm, controls, NUM_CONTROLS);
     return ModelerApplication::Instance()->Run();
 }

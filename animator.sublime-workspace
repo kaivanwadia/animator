@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"glP",
+				"glPopMatrix"
+			],
+			[
+				"set",
+				"setDiffuseColor"
+			],
+			[
+				"draw",
+				"drawWheels"
+			],
+			[
+				"t1",
+				"t1ChasScale"
+			],
+			[
+				"gl",
+				"glRotatef"
+			],
+			[
+				"tan",
+				"tankScale"
+			],
+			[
+				"TAN",
+				"TANK_SCALE"
+			],
+			[
+				"sca",
+				"chasisScale"
+			],
+			[
+				"drawC",
+				"drawCube"
+			],
+			[
+				"NUM",
+				"NUM_CONTROLS"
+			],
+			[
 				"num",
 				"numOfPoints"
 			],
@@ -30,10 +70,6 @@
 			[
 				"Part",
 				"Particle"
-			],
-			[
-				"draw",
-				"drawParticles"
 			],
 			[
 				"clear",
@@ -336,14 +372,6 @@
 				"vector	std::vector"
 			],
 			[
-				"glP",
-				"glPopMatrix"
-			],
-			[
-				"gl",
-				"glRotatef"
-			],
-			[
 				"bot",
 				"bottomRadius"
 			],
@@ -436,10 +464,6 @@
 				"GL_ONE_MINUS_SRC_ALPHA"
 			],
 			[
-				"set",
-				"setVec1f"
-			],
-			[
 				"ver",
 				"verbose"
 			],
@@ -490,30 +514,6 @@
 			[
 				"sin",
 				"sinT"
-			],
-			[
-				"sq",
-				"sqrt"
-			],
-			[
-				"ligh",
-				"lightIntensity"
-			],
-			[
-				"is",
-				"iszero"
-			],
-			[
-				"get",
-				"getMin"
-			],
-			[
-				"fina",
-				"finalPoint"
-			],
-			[
-				"dim",
-				"dimen"
 			]
 		]
 	},
@@ -528,6 +528,14 @@
 			}
 		},
 		{
+			"file": "customModel.cpp",
+			"settings":
+			{
+				"buffer_size": 8106,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "particleSystem.cpp",
 			"settings":
 			{
@@ -536,50 +544,34 @@
 			}
 		},
 		{
-			"file": "particleSystem.h",
-			"settings":
-			{
-				"buffer_size": 4193,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Particle.h",
-			"settings":
-			{
-				"buffer_size": 1073,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "animatoruiwindows.cpp",
-			"settings":
-			{
-				"buffer_size": 26200,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "catromcurveevaluator.cpp",
 			"settings":
 			{
-				"buffer_size": 3391,
+				"buffer_size": 3381,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
+			"file": "robotarm.cpp",
 			"settings":
 			{
-				"buffer_size": 23657,
+				"buffer_size": 9444,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "animatoruiwindows.h",
+			"file": "modelerapp.cpp",
 			"settings":
 			{
-				"buffer_size": 4550,
+				"buffer_size": 5736,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "modelerdraw.cpp",
+			"settings":
+			{
+				"buffer_size": 11881,
 				"line_ending": "Unix"
 			}
 		}
@@ -608,7 +600,16 @@
 	},
 	"file_history":
 	[
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catromcurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.cpp",
 		"/u/kwadia/public_html/springcapstone3d/index.html",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Makefile",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cpp",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Particle.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.cpp",
@@ -616,29 +617,21 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/dcjaucurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c1bezcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/animator/particleSystem.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.h",
 		"/u/kwadia/Downloads/Decrypt.java",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/resources/sphere.obj",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.fl",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catromcurveevaluator.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/lreisencurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/curveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Makefile",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c1bezcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c0bezcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c0bezcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/beziercurveevaluator.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Particle.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/indicatorwindow.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.cpp",
@@ -734,8 +727,7 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/glew/src/glew.c",
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/12_toon_texture.frag",
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/stb/stb_image.c",
-		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistDoc.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/stb/stb_image.h"
+		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistDoc.cpp"
 	],
 	"find":
 	{
@@ -751,9 +743,25 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"scale/2",
+			"TANK1_SCALE",
+			"TANK1_ROTATION",
+			"TANK1_CHASIS_ROTATION",
+			"t1chasisTheta",
+			"tankScale",
+			"Theta",
+			"theta",
+			"TANK_SCALE",
+			"CHASIS_ROTATION",
+			"CHASIS_SCALE",
+			"z",
+			"y",
+			"drawBox",
+			"0.0",
+			"fuck",
 			"dist",
 			"clearBak",
 			"clearbake",
@@ -865,23 +873,7 @@
 			"bSplineBasis",
 			"step",
 			"phantomCtrlPoints",
-			"g_y",
-			"g_x",
-			"num_points",
-			"g_y",
-			"g_x",
-			"t",
-			"i",
-			"front",
-			"g_y",
-			"n",
-			"g_x",
-			"0.5",
-			"catRomBasis",
-			"CATMULLROM",
-			"CURVE_TYPE_DECAS",
-			"m_t_Slider",
-			"cb_tauSlides"
+			"g_y"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -900,7 +892,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -915,8 +907,8 @@
 						"selection":
 						[
 							[
-								636,
-								636
+								300,
+								300
 							]
 						],
 						"settings":
@@ -931,6 +923,33 @@
 				},
 				{
 					"buffer": 1,
+					"file": "customModel.cpp",
+					"settings":
+					{
+						"buffer_size": 8106,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5142,
+								5142
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2766.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "particleSystem.cpp",
 					"settings":
 					{
@@ -941,8 +960,8 @@
 						"selection":
 						[
 							[
-								11050,
-								11050
+								0,
+								0
 							]
 						],
 						"settings":
@@ -950,25 +969,59 @@
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 6821.0,
+						"translation.y": 3927.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "particleSystem.h",
+					"buffer": 3,
+					"file": "catromcurveevaluator.cpp",
 					"settings":
 					{
-						"buffer_size": 4193,
+						"buffer_size": 3381,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3860,
-								3860
+								2478,
+								2478
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 459.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "robotarm.cpp",
+					"settings":
+					{
+						"buffer_size": 9444,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3641,
+								3641
 							]
 						],
 						"settings":
@@ -977,153 +1030,62 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1168.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Particle.h",
-					"settings":
-					{
-						"buffer_size": 1073,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								356,
-								356
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 51.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "animatoruiwindows.cpp",
-					"settings":
-					{
-						"buffer_size": 26200,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								18388,
-								18388
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 8058.0,
+						"translation.y": 3417.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "catromcurveevaluator.cpp",
+					"file": "modelerapp.cpp",
 					"settings":
 					{
-						"buffer_size": 3391,
+						"buffer_size": 5736,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								174,
-								174
+								1383,
+								1383
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 6,
-					"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
-					"settings":
-					{
-						"buffer_size": 23657,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12577,
-								12577
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6117.0,
+						"translation.y": 1122.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "animatoruiwindows.h",
+					"buffer": 6,
+					"file": "modelerdraw.cpp",
 					"settings":
 					{
-						"buffer_size": 4550,
+						"buffer_size": 11881,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3570,
-								3570
+								8593,
+								8593
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1632.0,
+						"translation.y": 4998.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1159,7 +1121,7 @@
 		"cols":
 		[
 			0.0,
-			0.566037735849,
+			0.585495283018,
 			1.0
 		],
 		"rows":
@@ -1184,28 +1146,56 @@
 		"selected_items":
 		[
 			[
-				"catm",
+				"catmu",
 				"catromcurveevaluator.cpp"
+			],
+			[
+				"card",
+				"cardcurveevaluator.cpp"
+			],
+			[
+				"part",
+				"particleSystem.cpp"
 			],
 			[
 				"robo",
 				"robotarm.cpp"
 			],
 			[
-				"dcj",
-				"dcjaucurveevaluator.cpp"
+				"mod",
+				"modelerdraw.cpp"
 			],
 			[
 				"anim",
 				"animatoruiwindows.cpp"
 			],
 			[
-				"mode",
-				"modelerapp.cpp"
+				"mak",
+				"Makefile"
 			],
 			[
 				"model",
-				"modelerview.cpp"
+				"modelerapp.cpp"
+			],
+			[
+				"cust",
+				"customModel.cpp"
+			],
+			[
+				"rob",
+				"robotarm.cpp"
+			],
+			[
+				"catm",
+				"catromcurveevaluator.cpp"
+			],
+			[
+				"dcj",
+				"dcjaucurveevaluator.cpp"
+			],
+			[
+				"mode",
+				"modelerapp.cpp"
 			],
 			[
 				"ani",
@@ -1220,16 +1210,8 @@
 				"c1bezcurveevaluator.cpp"
 			],
 			[
-				"mod",
-				"modelerui.cpp"
-			],
-			[
 				"lr",
 				"lreisencurveevaluator.cpp"
-			],
-			[
-				"card",
-				"cardcurveevaluator.cpp"
 			],
 			[
 				"cur",
@@ -1248,10 +1230,6 @@
 				"beziercurveevaluator.cpp"
 			],
 			[
-				"part",
-				"Particle.h"
-			],
-			[
 				"ro",
 				"robotarm.cpp"
 			],
@@ -1266,10 +1244,6 @@
 			[
 				"bez",
 				"beziercurveevaluator.cpp"
-			],
-			[
-				"mak",
-				"Makefile"
 			],
 			[
 				"catr",

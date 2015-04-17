@@ -55,7 +55,6 @@ Fl_Menu_Item ModelerUIWindows::menu_m_pchoCurveType[] = {
 Fl_Menu_Item ModelerUIWindows::menu_m_bezierCurveType[] = {
  {"C0 Continuity", 0,  0, 0, 0, 0, 0, 12, 0},
  {"C1 Continuity", 0,  0, 0, 0, 0, 0, 12, 0},
- // {"C2 Continuity", 0,  0, 0, 0, 0, 0, 12, 0},
  {0}
 };
 
@@ -75,11 +74,19 @@ int ModelerUIWindows::m_nPartPerFrame;
 int ModelerUIWindows::m_nLifespan;
 int ModelerUIWindows::m_nMaxParticles;
 bool ModelerUIWindows::m_bCollisions;
-bool ModelerUIWindows::m_bClawEmit;
-bool ModelerUIWindows::m_bChimEmit;
 
-double ModelerUIWindows::m_nMaxChimVel;
-double ModelerUIWindows::m_nMaxClawVel;
+bool ModelerUIWindows::m_bt1TurEmit;
+bool ModelerUIWindows::m_bt1GunEmit;
+
+bool ModelerUIWindows::m_bt2TurEmit;
+bool ModelerUIWindows::m_bt2GunEmit;
+
+double ModelerUIWindows::m_nMaxTank1Vel;
+double ModelerUIWindows::m_nMaxTank2Vel;
+
+bool ModelerUIWindows::m_bSprings;
+double ModelerUIWindows::m_nSpringStiffness;
+double ModelerUIWindows::m_nSpringRestLen;
 
 void ModelerUIWindows::cb_bezierCurveType(Fl_Widget* o, void* v)
 {
@@ -95,16 +102,6 @@ void ModelerUIWindows::cb_bezierCurveType(Fl_Widget* o, void* v)
     ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_C1BEZ); // C1 Continuity Bezier
     ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
   }
-  // else if (choice == 2)
-  // {
-  //   ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_C1BEZ); // Catmull Rom
-  //   ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
-  // }
-  // else if (choice == 3)
-  // {
-  //   ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_C2INTERPOLATING); // C2 curve
-  //   ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
-  // }
 }
 
 void ModelerUIWindows::cb_tauSlider(Fl_Widget* o, void* v)
@@ -182,14 +179,24 @@ void ModelerUIWindows::cb_maxPartSlider(Fl_Widget* o, void* v)
   ((ModelerUIWindows*)(o->user_data()))->m_nMaxParticles = ((Fl_Slider*)o)->value();
 }
 
-void ModelerUIWindows::cb_clawEmitBtn(Fl_Widget* o, void* v)
+void ModelerUIWindows::cb_t1TurretEmitBtn(Fl_Widget* o, void* v)
 {
-  ((ModelerUIWindows*)(o->user_data()))->m_bClawEmit = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
+  ((ModelerUIWindows*)(o->user_data()))->m_bt1TurEmit = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
 }
 
-void ModelerUIWindows::cb_chimEmitBtn(Fl_Widget* o, void* v)
+void ModelerUIWindows::cb_t1GunEmitBtn(Fl_Widget* o, void* v)
 {
-  ((ModelerUIWindows*)(o->user_data()))->m_bChimEmit = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
+  ((ModelerUIWindows*)(o->user_data()))->m_bt1GunEmit = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
+}
+
+void ModelerUIWindows::cb_t2TurretEmitBtn(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_bt2TurEmit = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
+}
+
+void ModelerUIWindows::cb_t2GunEmitBtn(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_bt2GunEmit = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
 }
 
 void ModelerUIWindows::cb_collisionBtn(Fl_Widget* o, void* v)
@@ -197,14 +204,29 @@ void ModelerUIWindows::cb_collisionBtn(Fl_Widget* o, void* v)
   ((ModelerUIWindows*)(o->user_data()))->m_bCollisions = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
 }
 
-void ModelerUIWindows::cb_chimneyVelSlider(Fl_Widget* o, void* v)
+void ModelerUIWindows::cb_tank1VelSlider(Fl_Widget* o, void* v)
 {
-  ((ModelerUIWindows*)(o->user_data()))->m_nMaxChimVel = ((Fl_Slider*)o)->value();
+  ((ModelerUIWindows*)(o->user_data()))->m_nMaxTank1Vel = ((Fl_Slider*)o)->value();
 }
 
-void ModelerUIWindows::cb_clawVelSlider(Fl_Widget* o, void* v)
+void ModelerUIWindows::cb_tank2VelSlider(Fl_Widget* o, void* v)
 {
-  ((ModelerUIWindows*)(o->user_data()))->m_nMaxClawVel = ((Fl_Slider*)o)->value();
+  ((ModelerUIWindows*)(o->user_data()))->m_nMaxTank2Vel = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_springBtn(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_bSprings = ((Fl_Light_Button*)o)->value() == 0 ? false : true;
+}
+
+void ModelerUIWindows::cb_springStiffSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nSpringStiffness = ((Fl_Slider*)o)->value();
+}
+
+void ModelerUIWindows::cb_springRestLenSlider(Fl_Widget* o, void* v)
+{
+  ((ModelerUIWindows*)(o->user_data()))->m_nSpringRestLen = ((Fl_Slider*)o)->value();
 }
 
 ModelerUIWindows::ModelerUIWindows() {
@@ -394,7 +416,7 @@ ModelerUIWindows::ModelerUIWindows() {
         m_collisionBtn->callback(cb_collisionBtn);
       }
       { 
-        m_nPenaltyStiffness = 2500; // To try 3000, previous was 5000
+        m_nPenaltyStiffness = 2500;
         m_penaltyStiffSlider = new Fl_Value_Slider(280,655,100,20,"PenaltyStiffness");
         m_penaltyStiffSlider->user_data((void*)this);
         m_penaltyStiffSlider->type(FL_HOR_NICE_SLIDER);
@@ -436,7 +458,7 @@ ModelerUIWindows::ModelerUIWindows() {
         m_lifeSlider->callback(cb_lifeSlider);
       }
       { 
-        m_nMaxParticles = 50;//here
+        m_nMaxParticles = 50;
         m_maxPartSlider = new Fl_Value_Slider(330,625,80,20,"Max Particles");
         m_maxPartSlider->user_data((void*)this);
         m_maxPartSlider->type(FL_HOR_NICE_SLIDER);
@@ -492,50 +514,106 @@ ModelerUIWindows::ModelerUIWindows() {
         m_blueSlider->callback(cb_blueSlider);
       }
       { 
-        m_bChimEmit = 1;
-        m_chimEmitBtn = new Fl_Light_Button(560,655,100,20," Emitter 1");
-        m_chimEmitBtn->labelfont(FL_COURIER);
-        m_chimEmitBtn->labelsize(12);
-        m_chimEmitBtn->user_data((void*)this);
-        m_chimEmitBtn->value(m_bChimEmit);
-        m_chimEmitBtn->callback(cb_chimEmitBtn);
+        m_bt1TurEmit = 1;
+        m_t1TurretEmitBtn = new Fl_Light_Button(560,655,100,20," Tank1Cannon");
+        m_t1TurretEmitBtn->labelfont(FL_COURIER);
+        m_t1TurretEmitBtn->labelsize(12);
+        m_t1TurretEmitBtn->user_data((void*)this);
+        m_t1TurretEmitBtn->value(m_bt1TurEmit);
+        m_t1TurretEmitBtn->callback(cb_t1TurretEmitBtn);
       }
       { 
-        m_bClawEmit = 0;
-        m_clawEmitBtn = new Fl_Light_Button(560,680,100,20," Emitter 2");
-        m_clawEmitBtn->labelfont(FL_COURIER);
-        m_clawEmitBtn->labelsize(12);
-        m_clawEmitBtn->user_data((void*)this);
-        m_clawEmitBtn->value(m_bClawEmit);
-        m_clawEmitBtn->callback(cb_clawEmitBtn);
+        m_bt1GunEmit = 0;
+        m_t1GunEmitBtn = new Fl_Light_Button(560,680,100,20," Tank1Gun");
+        m_t1GunEmitBtn->labelfont(FL_COURIER);
+        m_t1GunEmitBtn->labelsize(12);
+        m_t1GunEmitBtn->user_data((void*)this);
+        m_t1GunEmitBtn->value(m_bt1GunEmit);
+        m_t1GunEmitBtn->callback(cb_t1GunEmitBtn);
       }
       { 
-        m_nMaxChimVel = 4; // To try 3000, previous was 5000
-        m_chimneyVelSlider = new Fl_Value_Slider(165,680,100,20,"Max Emit1 Vel");
-        m_chimneyVelSlider->user_data((void*)this);
-        m_chimneyVelSlider->type(FL_HOR_NICE_SLIDER);
-        m_chimneyVelSlider->labelfont(FL_COURIER);
-        m_chimneyVelSlider->labelsize(12);
-        m_chimneyVelSlider->minimum(1);
-        m_chimneyVelSlider->maximum(10);
-        m_chimneyVelSlider->step(1);
-        m_chimneyVelSlider->value(m_nMaxChimVel);
-        m_chimneyVelSlider->align(FL_ALIGN_RIGHT);
-        m_chimneyVelSlider->callback(cb_chimneyVelSlider);
+        m_bt2TurEmit = 1;
+        m_t2TurretEmitBtn = new Fl_Light_Button(560,705,100,20," Tank2Cannon");
+        m_t2TurretEmitBtn->labelfont(FL_COURIER);
+        m_t2TurretEmitBtn->labelsize(12);
+        m_t2TurretEmitBtn->user_data((void*)this);
+        m_t2TurretEmitBtn->value(m_bt2TurEmit);
+        m_t2TurretEmitBtn->callback(cb_t2TurretEmitBtn);
       }
       { 
-        m_nMaxClawVel = 4; // To try 3000, previous was 5000
-        m_clawVelSlider = new Fl_Value_Slider(360,680,100,20,"Max Emit2 Vel");
-        m_clawVelSlider->user_data((void*)this);
-        m_clawVelSlider->type(FL_HOR_NICE_SLIDER);
-        m_clawVelSlider->labelfont(FL_COURIER);
-        m_clawVelSlider->labelsize(12);
-        m_clawVelSlider->minimum(1);
-        m_clawVelSlider->maximum(10);
-        m_clawVelSlider->step(1);
-        m_clawVelSlider->value(m_nMaxClawVel);
-        m_clawVelSlider->align(FL_ALIGN_RIGHT);
-        m_clawVelSlider->callback(cb_clawVelSlider);
+        m_bt2GunEmit = 0;
+        m_t2GunEmitBtn = new Fl_Light_Button(560,730,100,20," Tank2Gun");
+        m_t2GunEmitBtn->labelfont(FL_COURIER);
+        m_t2GunEmitBtn->labelsize(12);
+        m_t2GunEmitBtn->user_data((void*)this);
+        m_t2GunEmitBtn->value(m_bt2GunEmit);
+        m_t2GunEmitBtn->callback(cb_t2GunEmitBtn);
+      }
+      { 
+        m_nMaxTank1Vel = 4;
+        m_tank1VelSlider = new Fl_Value_Slider(165,680,100,20,"Max Tank1 Vel");
+        m_tank1VelSlider->user_data((void*)this);
+        m_tank1VelSlider->type(FL_HOR_NICE_SLIDER);
+        m_tank1VelSlider->labelfont(FL_COURIER);
+        m_tank1VelSlider->labelsize(12);
+        m_tank1VelSlider->minimum(1);
+        m_tank1VelSlider->maximum(10);
+        m_tank1VelSlider->step(1);
+        m_tank1VelSlider->value(m_nMaxTank1Vel);
+        m_tank1VelSlider->align(FL_ALIGN_RIGHT);
+        m_tank1VelSlider->callback(cb_tank1VelSlider);
+      }
+      { 
+        m_nMaxTank2Vel = 4;
+        m_tank2VelSlider = new Fl_Value_Slider(360,680,100,20,"Max Tank2 Vel");
+        m_tank2VelSlider->user_data((void*)this);
+        m_tank2VelSlider->type(FL_HOR_NICE_SLIDER);
+        m_tank2VelSlider->labelfont(FL_COURIER);
+        m_tank2VelSlider->labelsize(12);
+        m_tank2VelSlider->minimum(1);
+        m_tank2VelSlider->maximum(10);
+        m_tank2VelSlider->step(1);
+        m_tank2VelSlider->value(m_nMaxTank2Vel);
+        m_tank2VelSlider->align(FL_ALIGN_RIGHT);
+        m_tank2VelSlider->callback(cb_tank2VelSlider);
+      }
+
+      {
+        m_bSprings = 0;
+        m_springBtn = new Fl_Light_Button(165,705,100,20," Springs");
+        m_springBtn->labelfont(FL_COURIER);
+        m_springBtn->labelsize(12);
+        m_springBtn->user_data((void*)this);
+        m_springBtn->value(m_bSprings);
+        m_springBtn->callback(cb_springBtn);
+      }
+      { 
+        m_nSpringStiffness = 100;
+        m_springStiffSlider = new Fl_Value_Slider(165,730,100,20,"Spring Stiffness");
+        m_springStiffSlider->user_data((void*)this);
+        m_springStiffSlider->type(FL_HOR_NICE_SLIDER);
+        m_springStiffSlider->labelfont(FL_COURIER);
+        m_springStiffSlider->labelsize(12);
+        m_springStiffSlider->minimum(1);
+        m_springStiffSlider->maximum(200);
+        m_springStiffSlider->step(1);
+        m_springStiffSlider->value(m_nSpringStiffness);
+        m_springStiffSlider->align(FL_ALIGN_RIGHT);
+        m_springStiffSlider->callback(cb_springStiffSlider);
+      }
+      { 
+        m_nSpringRestLen = 1;
+        m_springRestLenSlider = new Fl_Value_Slider(165,755,100,20,"Spring Rest Length");
+        m_springRestLenSlider->user_data((void*)this);
+        m_springRestLenSlider->type(FL_HOR_NICE_SLIDER);
+        m_springRestLenSlider->labelfont(FL_COURIER);
+        m_springRestLenSlider->labelsize(12);
+        m_springRestLenSlider->minimum(0.1);
+        m_springRestLenSlider->maximum(4);
+        m_springRestLenSlider->step(0.1);
+        m_springRestLenSlider->value(m_nSpringRestLen);
+        m_springRestLenSlider->align(FL_ALIGN_RIGHT);
+        m_springRestLenSlider->callback(cb_springRestLenSlider);
       }
       o->end();
     }

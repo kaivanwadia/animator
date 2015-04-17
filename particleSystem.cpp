@@ -2,6 +2,7 @@
 
 #include "particleSystem.h"
 #include "animatoruiwindows.h"
+#include "modelerdraw.h"
 
 #include <cstdio>
 #include <cstdlib>
@@ -30,8 +31,10 @@ ParticleSystem::ParticleSystem()
 	floorStiff = ModelerUIWindows::m_nFlStiff;
 	floorDrag = ModelerUIWindows::m_nFlDrag;
 	penaltyStiffness = ModelerUIWindows::m_nPenaltyStiffness;
-	maxVelocityChimney = ModelerUIWindows::m_nMaxChimVel;
-	maxVelocityClaw = ModelerUIWindows::m_nMaxClawVel;
+	maxVelocityTank1 = ModelerUIWindows::m_nMaxTank1Vel;
+	maxVelocityTank2 = ModelerUIWindows::m_nMaxTank2Vel;
+	emitPositions.resize(4, Vec3f(0,0,0));
+	emitDirections.resize(4, Vec3f(0,0,0));
 	timeStep = 0;
 }
 
@@ -71,6 +74,7 @@ void ParticleSystem::stopSimulation(float t)
 {
 	// These values are used by the UI
 	particles.clear();
+	springs.clear();
 	bakeParticles(t);
 	simulate = false;
 	dirty = true;
@@ -82,6 +86,7 @@ void ParticleSystem::resetSimulation(float t)
 	// These values are used by the UI
 	cout << "In resetSimulation\n";
 	particles.clear();
+	springs.clear();
 	clearBaked();
 	simulate = false;
 	dirty = true;
@@ -97,40 +102,18 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 	floorStiff = ModelerUIWindows::m_nFlStiff;
 	floorDrag = ModelerUIWindows::m_nFlDrag;
 	penaltyStiffness = ModelerUIWindows::m_nPenaltyStiffness;
-	maxVelocityChimney = ModelerUIWindows::m_nMaxChimVel;
-	maxVelocityClaw = ModelerUIWindows::m_nMaxClawVel;
+	maxVelocityTank1 = ModelerUIWindows::m_nMaxTank1Vel;
+	maxVelocityTank2 = ModelerUIWindows::m_nMaxTank2Vel;
 	timeStep = t-prevT;
-    
-    int numberErased = 0;
 
 	if (simulate) {
 
 		// Kill dead particles
 		timeStepcount++;
 		bakeParticles(t);
-		std::set<int> particlesToDelete;
-		for(int i=0; i<(int)particles.size(); i++)
-	    {
-	        particles[i].incrementAge();
-	        if (particles[i].isDead())
-	        {
-	        	particlesToDelete.insert(i);
-	        	numberErased++;
-	        	continue;
-	        }
-	    }
-	    vector<Particle> newparticles;
-	    if(!particlesToDelete.empty())
-	    {
-	    	for(int i=0; i<(int)particles.size(); i++)
-	        {
-	            if(particlesToDelete.count(i) == 0)
-	            {
-	                newparticles.push_back(particles[i]);
-	            }
-	        }
-	        particles = newparticles;
-	    }
+
+		// Killing particles
+		deleteParticles();
 
 	    //EMIT new particles
 		emitParticles();
@@ -147,6 +130,78 @@ void ParticleSystem::computeForcesAndUpdateParticles(float t)
 	if( t - prevT > .04 )
 		printf("(!!) Dropped Frame %lf (!!)\n", t-prevT);
 	prevT = t;
+}
+
+void ParticleSystem::deleteParticles()
+{
+	int numberErased = 0;
+	set<int> particlesToDelete;
+	set<int> springsToDelete;
+	vector<int> remainingParticleMap;
+    vector<int> remainingSpringMap;
+    vector<Particle> newparticles;
+    vector<Spring> newsprings;
+	for(int i=0; i<(int)particles.size(); i++)
+    {
+        particles[i].incrementAge();
+        if (particles[i].isDead())
+        {
+        	particlesToDelete.insert(i);
+        	numberErased++;
+        	continue;
+        }
+    }
+    if (!particlesToDelete.empty())
+    {
+    	for(int i=0; i<(int)springs.size(); i++)
+        {
+            if(particlesToDelete.count(springs[i].p1Id) || particlesToDelete.count(springs[i].p2Id))
+            {
+                springsToDelete.insert(i);
+            }
+        }
+        for(int i=0; i<(int)particles.size(); i++)
+        {
+            if(particlesToDelete.count(i) == 0)
+            {
+                remainingParticleMap.push_back(newparticles.size());
+                newparticles.push_back(particles[i]);
+            }
+            else
+                remainingParticleMap.push_back(-1);
+        }
+    }
+    if(!springsToDelete.empty())
+    {
+        for(int i=0; i<(int)springs.size(); i++)
+        {
+            if(springsToDelete.count(i) == 0)
+            {
+                remainingSpringMap.push_back(newsprings.size());
+                newsprings.push_back(springs[i]);
+            }
+            else
+            {
+                remainingSpringMap.push_back(-1);
+            }
+        }
+    }
+    if(!springsToDelete.empty() || !particlesToDelete.empty())
+    {
+        if(!springsToDelete.empty())
+        {
+            springs = newsprings;
+        }
+        if(!particlesToDelete.empty())
+        {
+            particles = newparticles;
+            for(auto it = springs.begin(); it != springs.end(); ++it)
+            {
+                it->p1Id = remainingParticleMap[it->p1Id];
+                it->p2Id = remainingParticleMap[it->p2Id];
+            }
+        }
+    }
 }
 
 void ParticleSystem::printVector(vector<float> &v, string name) const
@@ -188,11 +243,30 @@ void ParticleSystem::computeForceAndHessian(vector<float> &q, vector<float> &qpr
     {
     	processCollisionForce(q, vel, forces);
     }
+    if (ModelerUIWindows::m_bSprings)
+    {
+    	processSpringForce(q, forces);
+    }
+}
 
-    // if(params_.activeForces & SimParameters::F_SPRINGS)
-    //     processSpringForce(q, F, Hcoeffs);
-    // if(params_.activeForces & SimParameters::F_DAMPING)
-    //     processDampingForce(q, qprev, F, Hcoeffs);
+void ParticleSystem::processSpringForce(vector<float> &q, vector<float> &forces)
+{
+	for (int i = 0; i < springs.size(); i++)
+	{
+		int p1Index = springs[i].p1Id;
+		int p2Index = springs[i].p2Id;
+		Vec3f p1Pos = Vec3f(q[3*p1Index], q[3*p1Index + 1], q[3*p1Index + 2]);
+		Vec3f p2Pos = Vec3f(q[3*p2Index], q[3*p2Index + 1], q[3*p2Index + 2]);
+		double dist = (p2Pos-p1Pos).length();
+		Vec3f force = springs[i].stiffness * (dist - springs[i].restLength)/dist * (p2Pos - p1Pos);
+		forces[3*p1Index + 0] = forces[3*p1Index + 0] + force[0];
+		forces[3*p1Index + 1] = forces[3*p1Index + 1] + force[1];
+		forces[3*p1Index + 2] = forces[3*p1Index + 2] + force[2];
+
+		forces[3*p2Index + 0] = forces[3*p2Index + 0] - force[0];
+		forces[3*p2Index + 1] = forces[3*p2Index + 1] - force[1];
+		forces[3*p2Index + 2] = forces[3*p2Index + 2] - force[2];
+	}
 }
 
 void ParticleSystem::processCollisionForce(vector<float> &q, vector<float> &vel, vector<float> &forces)
@@ -255,16 +329,15 @@ void ParticleSystem::processFloorForce(vector<float> &q, vector<float> &qprev, v
     int nparticles = particles.size();
     for(int i=0; i<nparticles; i++)
     {
-        if(q[3*i+1] < 0.05 + particles[i].radius)
+        if(q[3*i+1] < 0.1 + particles[i].radius)
         {
             double vel = (q[3*i+1]-qprev[3*i+1])/timeStep;
             if (vel > 0)
             {
             	continue;
             }
-            double dist = (0.05 + particles[i].radius) - q[3*i+1];
+            double dist = (0.1 + particles[i].radius) - q[3*i+1];
             float stiffForce = floorStiff*dist;
-            // float dragForce = floorDrag*dist*vel;
             float dragForce = stiffForce * -0.7;
             forces[3*i+1] = forces[3*i + 1] + stiffForce + dragForce;
         }
@@ -281,13 +354,22 @@ void ParticleSystem::emitParticles()
 	{
 		return;
 	}
+	int x = 3+5;
 	for (int emitterNo = 0; emitterNo < emitPositions.size(); emitterNo++)
 	{
-		if (emitterNo == 1 && !ModelerUIWindows::m_bClawEmit)
+		if (emitterNo == 0 && !ModelerUIWindows::m_bt1TurEmit)
 		{
 			continue;
 		}
-		if (emitterNo == 0 && !ModelerUIWindows::m_bChimEmit)
+		if (emitterNo == 1 && !ModelerUIWindows::m_bt1GunEmit)
+		{
+			continue;
+		}
+		if (emitterNo == 2 && !ModelerUIWindows::m_bt2TurEmit)
+		{
+			continue;
+		}
+		if (emitterNo == 3 && !ModelerUIWindows::m_bt2GunEmit)
 		{
 			continue;
 		}
@@ -314,95 +396,87 @@ void ParticleSystem::emitParticles()
 			// float lifespan2 = 500;
 			// Particle p2 = Particle(pos2, mass2, color2, lifespan2, vel2, 1);
 			// particles.push_back(p2);
+			if (ModelerUIWindows::m_bSprings && (emitterNo == 1 || emitterNo == 3))
+			{
+				Vec3f pos = emitPositions[emitterNo];
+				Vec3f velDir = emitDirections[emitterNo];
+				double mass = rand() % 5 + 2;
+				float lifespan = rand() % ModelerUIWindows::m_nLifespan + 1;
 
-			if (emitterNo == 0)
-			{
-				emitChimneyParticle();
+				Vec3f color = Vec3f(ModelerUIWindows::m_nRed, ModelerUIWindows::m_nGreen, ModelerUIWindows::m_nBlue);			
+				Vec3f vel;
+				int type;
+				if (emitterNo == 0 || emitterNo == 1)
+				{
+					vel[0] = rand() % maxVelocityTank1 + 1;
+					vel[1] = rand() % maxVelocityTank1 + 1;
+					vel[2] = rand() % maxVelocityTank1 + 1;
+					type = 0;
+				}
+				else if (emitterNo == 2 || emitterNo == 3)
+				{
+					color[0] = 1.0 - color[0];
+					color[1] = 1.0 - color[1];
+					color[2] = 1.0 - color[2];
+					vel[0] = rand() % maxVelocityTank2 + 1;
+					vel[1] = rand() % maxVelocityTank2 + 1;
+					vel[2] = rand() % maxVelocityTank2 + 1;
+					type = 1;
+				}
+				vel = prod(vel, velDir);
+				Particle p1 = Particle(pos, mass, color, lifespan, vel, type);
+				particles.push_back(p1);
+				int p1ID = particles.size()-1;
+				Vec3f newPos = pos;
+				double rLen = ModelerUIWindows::m_nSpringRestLen;
+				newPos[0] = newPos[0] + ((rand()/RAND_MAX) * rLen * 2 - rLen);
+				newPos[1] = newPos[1] + ((rand()/RAND_MAX) * rLen * 2 - rLen);
+				newPos[2] = newPos[2] + ((rand()/RAND_MAX) * rLen * 2 - rLen);
+				mass = rand() % 5 + 2;
+				lifespan = rand() % ModelerUIWindows::m_nLifespan + 1;
+				Particle p2 = Particle(newPos, mass, color, lifespan, vel, type);
+				particles.push_back(p2);
+				int p2ID = particles.size()-1;
+
+				Spring spring = Spring(p1ID, p2ID, rLen, ModelerUIWindows::m_nSpringStiffness);
+				springs.push_back(spring);
+				totPartEmitted++;
+				i++;
+				continue;
 			}
-			else if (emitterNo == 1)
+
+			Vec3f pos = emitPositions[emitterNo];
+			Vec3f velDir = emitDirections[emitterNo];
+			double mass = rand() % 5 + 2;
+			float lifespan = rand() % ModelerUIWindows::m_nLifespan + 1;
+
+			Vec3f color = Vec3f(ModelerUIWindows::m_nRed, ModelerUIWindows::m_nGreen, ModelerUIWindows::m_nBlue);			
+			Vec3f vel;
+			int type;
+			if (emitterNo == 0 || emitterNo == 1)
 			{
-				emitClawParticle();
+				vel[0] = rand() % maxVelocityTank1 + 1;
+				vel[1] = rand() % maxVelocityTank1 + 1;
+				vel[2] = rand() % maxVelocityTank1 + 1;
+				type = 0;
 			}
+			else if (emitterNo == 2 || emitterNo == 3)
+			{
+				color[0] = 1.0 - color[0];
+				color[1] = 1.0 - color[1];
+				color[2] = 1.0 - color[2];
+				vel[0] = rand() % maxVelocityTank2 + 1;
+				vel[1] = rand() % maxVelocityTank2 + 1;
+				vel[2] = rand() % maxVelocityTank2 + 1;
+				type = 1;
+			}
+			vel = prod(vel, velDir);
+			Particle p = Particle(pos, mass, color, lifespan, vel, type);
+			particles.push_back(p);
 			totPartEmitted++;
 		}
 	}
 	totalNoOfParticles += totPartEmitted;
-}
-
-void ParticleSystem::emitChimneyParticle()
-{
-	// float x = rand()/float(RAND_MAX) - 0.5;
-	// float y = rand()/float(RAND_MAX);
-	// float z = rand()/float(RAND_MAX) - 0.5;
-	// Vec3f pos = Vec3f(x, y, z);
-	// pos = pos + emitPositions[1];
-	Vec3f pos = emitPositions[0];
-	Vec3f vel;
-	int max = maxVelocityChimney*2;
-	int min = -maxVelocityChimney;
-	if (ModelerUIWindows::m_bCollisions)
-	{
-		Vec3f direction = emitPositions[1] - emitPositions[0];
-		direction.normalize();
-		direction[1] = 1;
-		vel[0] = rand() % max + 1;
-		vel[1] = rand() % max + 1;
-		vel[2] = rand() % max + 1;
-		vel = prod(vel, direction);
-	}
-	else
-	{
-		vel[0] = rand() % max + min;
-		vel[1] = abs(rand() % max + min);
-		vel[2] = rand() % max + min;
-	}
-	Vec3f color = Vec3f(ModelerUIWindows::m_nRed, ModelerUIWindows::m_nGreen, ModelerUIWindows::m_nBlue);
-	double mass = rand() % 5 + 2;
-	float lifespan = rand() % ModelerUIWindows::m_nLifespan + 1;
-	int type = 0;
-	Particle p = Particle(pos, mass, color, lifespan, vel, type);
-	particles.push_back(p);
-}
-
-void ParticleSystem::emitClawParticle()
-{
-	// float x = rand()/float(RAND_MAX) - 0.5;
-	// float y = rand()/float(RAND_MAX);
-	// float z = rand()/float(RAND_MAX) - 0.5;
-	// Vec3f pos = Vec3f(x, y, z);
-	// pos = pos + emitPositions[1];
-	Vec3f pos = emitPositions[1];
-	Vec3f vel;
-	int max = maxVelocityChimney*2;
-	int min = -maxVelocityChimney;
-	if (ModelerUIWindows::m_bCollisions)
-	{
-		Vec3f direction = emitPositions[0] - emitPositions[1];
-		direction.normalize();
-		direction[1] = 1;
-		vel[0] = rand() % max + 1;
-		vel[1] = rand() % max + 1;
-		vel[2] = rand() % max + 1;
-		vel = prod(vel, direction);
-	}
-	else
-	{
-		Vec3f direction = emitPositions[1];
-		direction.direction();
-		vel[0] = rand() % max + 1;
-		vel[1] = 0; //rand() % max + 1;
-		vel[2] = rand() % max + 1;
-		vel = prod(vel, direction);
-	}
-	Vec3f color = Vec3f(ModelerUIWindows::m_nRed, ModelerUIWindows::m_nGreen, ModelerUIWindows::m_nBlue);
-	color[0] = 1.0 - color[0];
-	color[1] = 1.0 - color[1];
-	color[2] = 1.0 - color[2];
-	double mass = rand() % 5 + 2;
-	float lifespan = rand() % ModelerUIWindows::m_nLifespan + 1;
-	int type = 1;
-	Particle p = Particle(pos, mass, color, lifespan, vel, type);
-	particles.push_back(p);
 }
 
 /** Render particles */
@@ -423,23 +497,41 @@ void ParticleSystem::drawParticles(float t)
 		else if (t >= bake_start_time && t <= bake_end_time)
 		{
 			vector<Particle> bakedParticles = (*(--bakedParticleMap.end())).second;
+			vector<Spring> bakedSprings = (*(--bakedSpringMap.end())).second;
+			auto sitr = bakedSpringMap.begin();
 	        for(auto itr = bakedParticleMap.begin(); itr != bakedParticleMap.end(); ++itr)
 	        {
 	        	float mapTime = (*itr).first;
 	            if(t == mapTime)
 	            {
 	                bakedParticles = (*itr).second;
+	                bakedSprings = (*sitr).second;
 	                break;
 	            }
 	            else if(t<mapTime)
 	            {
 	            	bakedParticles = (*(--itr)).second;
+	            	bakedSprings = (*(--sitr)).second;
 	                break;
 	            }
+	            ++sitr;
 	        }
 	        for(auto partItr = bakedParticles.begin(); partItr != bakedParticles.end(); ++partItr) {
 		        partItr->draw();
 		    }
+		    setAmbientColor(1,1,1);
+			setDiffuseColor(1,1,1);
+		    glLineWidth(0.5);
+			for (int i = 0; i < bakedSprings.size(); i++)
+			{
+				Vec3f pos1 = bakedParticles[bakedSprings[i].p1Id].pos;
+				Vec3f pos2 = bakedParticles[bakedSprings[i].p2Id].pos;
+				glColor4f(1, 1, 1, 1);
+				glBegin(GL_LINES);
+					glVertex3f(pos1[0], pos1[1], pos1[2]);
+					glVertex3f(pos2[0], pos2[1], pos2[2]);
+				glEnd();
+			}
 		}
 		else
 		{
@@ -451,31 +543,37 @@ void ParticleSystem::drawParticles(float t)
 		for(auto partItr = particles.begin(); partItr != particles.end(); ++partItr) {
 	        partItr->draw();
 	    }
+	    setAmbientColor(1,1,1);
+		setDiffuseColor(1,1,1);
+	    glLineWidth(0.5);
+		for (int i = 0; i < springs.size(); i++)
+		{
+			Vec3f pos1 = particles[springs[i].p1Id].pos;
+			Vec3f pos2 = particles[springs[i].p2Id].pos;
+			glBegin(GL_LINES);
+				glVertex3f(pos1[0], pos1[1], pos1[2]);
+				glVertex3f(pos2[0], pos2[1], pos2[2]);
+			glEnd();
+		}
 	}
 }
 
 void ParticleSystem::setEmitterPosition(Vec3f _emitPos, int index)
 {
-	if (index >= emitPositions.size())
-	{
-		addEmitterPosition(_emitPos);
-	}
-	else
-	{
-		Vec3f &emitPosition = emitPositions[index];
-		emitPosition[0] = _emitPos[0];
-		emitPosition[1] = _emitPos[1];
-		emitPosition[2] = _emitPos[2];
-	}
-}
-
-void ParticleSystem::addEmitterPosition(Vec3f _emitPos)
-{
-	Vec3f emitPosition;
+	Vec3f &emitPosition = emitPositions[index];
 	emitPosition[0] = _emitPos[0];
 	emitPosition[1] = _emitPos[1];
 	emitPosition[2] = _emitPos[2];
-	emitPositions.push_back(emitPosition);
+	return;
+}
+
+void ParticleSystem::setEmitterDirection(Vec3f _emitDir, int index)
+{
+	Vec3f &emitDirection = emitDirections[index];
+	emitDirection[0] = _emitDir[0];
+	emitDirection[1] = _emitDir[1];
+	emitDirection[2] = _emitDir[2];
+	return;
 }
 
 void ParticleSystem::buildConfiguration(vector<float> &q, vector<float> &qprev, vector<float> &vel)
@@ -542,6 +640,7 @@ void ParticleSystem::bakeParticles(float t)
 	}
 	bake_end_time = t;
 	bakedParticleMap[t] = particles;
+	bakedSpringMap[t] = springs;
 }
 
 /** Clears out your data structure of baked particles */
@@ -550,4 +649,5 @@ void ParticleSystem::clearBaked()
 	// TODO
 	cout << "In clearBaked() \n";
 	bakedParticleMap.clear();
+	bakedSpringMap.clear();
 }
