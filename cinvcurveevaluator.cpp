@@ -34,12 +34,6 @@ void CInvBezCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,
 		newCtrlPoints.insert(newCtrlPoints.begin(), temp);
 		temp = Point(fAniLength + 4.0, ptvCtrlPts[numCtrlPoints-1].y);
 		newCtrlPoints.push_back(temp);
-
-		// for (int i = 0; i < pointsNeeded; i++)
-		// {
-		// 	temp = Point(fAniLength + 5.0 + i, ptvCtrlPts[numCtrlPoints-1].y);
-		// 	newCtrlPoints.push_back(temp);
-		// }
 	}
 	if (newCtrlPoints.size() < 6)
 	{
@@ -75,5 +69,4 @@ void CInvBezCurveEvaluator::evaluateCurve(const std::vector<Point>& ptvCtrlPts,
 	{
 		ptvEvaluatedCurvePts.push_back(newCtrlPoints[j]);
 	}
-	// ptvEvaluatedCurvePts.push_back(newCtrlPoints[newCtrlPoints.size() - 1]);
 }

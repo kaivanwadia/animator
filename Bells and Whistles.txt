@@ -1,0 +1,41 @@
+Curves:
+
+1. Catmull Rom - 1 whistle
+2. Lane Riesenfield - 1 whistle
+3. Different bezier curve types - 1 whistle
+
+4. Wrapping for all curve types. - 1 Bell
+5. De Casteljau Algo for bezier (DCJ Step slider) - 1 Bell and 1 Whistle
+6. C2 Interpolating - 2 Bells
+7. Quad B-spline
+8. Cardinal Curves with Tau slider
+9. Cinv
+
+Particle System:
+
+1. Something other than white points - Provide sliders for color and rendering spheres - 1 Whistle
+2. Sliders for Max Particles, Lifespan, MaxPartPerFrame
+3. Gravity Force - Sliders provided - Necessary
+4. Initial velocity sliders provided
+5. Drag Force - Sliders provided
+6. Floor force - Slider for floor stiffness
+7. Spring Force - Slider for stiffness and rest length - 1 Bell
+8. Spring Damping Force - Dampen spring movement - Slider provided
+9. Spring Max Strain - Prune overstrained springs - Slider provided
+10. Collisions - Slider for penalty stiffness - 1 Bell
+
+Overall :
+
+1. Interface improvement - 1 Bell
+
+=========================================================================
+
+TODO :
+
+Curves :
+
+
+Particle:
+
+1. Bake particles - DONE
+3. Spring force - Prune overstrained springs

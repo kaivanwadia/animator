@@ -4,20 +4,96 @@
 		"selected_items":
 		[
 			[
-				"for",
-				"force"
+				"ptv",
+				"ptvEvaluatedCurvePts"
 			],
 			[
-				"p1",
-				"p1Index"
+				"pt",
+				"ptvEvaluatedCurvePts"
 			],
 			[
-				"p2",
-				"p2Pos"
+				"begi",
+				"begin"
+			],
+			[
+				"num",
+				"numCtrlPoints"
+			],
+			[
+				"CU",
+				"CURVE_TYPE_COUNT"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"B",
+				"bezierBasis"
+			],
+			[
+				"bez",
+				"bezD_x"
+			],
+			[
+				"c2",
+				"c2Inter"
 			],
 			[
 				"spr",
 				"springs"
+			],
+			[
+				"cou",
+				"count"
+			],
+			[
+				"springs",
+				"springsToDelete"
+			],
+			[
+				"spring",
+				"springMaxStrain"
+			],
+			[
+				"str",
+				"strain"
+			],
+			[
+				"p1",
+				"p1Id"
+			],
+			[
+				"rem",
+				"remainingSpringMap"
+			],
+			[
+				"new",
+				"newsprings"
+			],
+			[
+				"rel",
+				"relVel"
+			],
+			[
+				"p2",
+				"p2PrevPos"
+			],
+			[
+				"for",
+				"forces"
+			],
+			[
+				"procec",
+				"processDampingForce"
+			],
+			[
+				"Pa",
+				"ParticleSystem"
+			],
+			[
+				"m_nmax",
+				"m_nMaxSpringStrain"
 			],
 			[
 				"par",
@@ -50,10 +126,6 @@
 			[
 				"sri",
 				"spring"
-			],
-			[
-				"new",
-				"newPos"
 			],
 			[
 				"m_b",
@@ -240,10 +312,6 @@
 				"NUM_CONTROLS"
 			],
 			[
-				"num",
-				"numOfPoints"
-			],
-			[
 				"noo",
 				"numOfPoints"
 			],
@@ -254,10 +322,6 @@
 			[
 				"map",
 				"mapTime"
-			],
-			[
-				"Pa",
-				"Particle"
 			],
 			[
 				"Part",
@@ -344,10 +408,6 @@
 				"m_nGreen"
 			],
 			[
-				"ptv",
-				"ptvEvaluatedCurvePts"
-			],
-			[
 				"newct",
 				"newCtrlPoints"
 			],
@@ -390,10 +450,6 @@
 			[
 				"s",
 				"size"
-			],
-			[
-				"cou",
-				"cout"
 			],
 			[
 				"vel",
@@ -444,10 +500,6 @@
 				"numCtrlPoints-1"
 			],
 			[
-				"pt",
-				"ptvCtrlPts"
-			],
-			[
 				"numC",
 				"numCtrlPoints-1"
 			],
@@ -462,148 +514,16 @@
 			[
 				"nu",
 				"numCtrlPoints-1"
-			],
-			[
-				"wrap",
-				"wrapLength"
-			],
-			[
-				"fn",
-				"fAniLength"
-			],
-			[
-				"x",
-				"xCoords"
-			],
-			[
-				"de",
-				"define"
-			],
-			[
-				"beg",
-				"begin"
-			],
-			[
-				"mode",
-				"modelMatrix"
-			],
-			[
-				"inc",
-				"include"
-			],
-			[
-				"GL",
-				"GL_MODELVIEW_MATRIX"
-			],
-			[
-				"model",
-				"modelViewMatrix"
-			],
-			[
-				"no",
-				"noOfPart"
-			],
-			[
-				"particles",
-				"particles"
-			],
-			[
-				"tim",
-				"timeStep"
-			],
-			[
-				"gra",
-				"gravity"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
-			"settings":
-			{
-				"buffer_size": 998,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "customModel.cpp",
-			"settings":
-			{
-				"buffer_size": 14878,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "particleSystem.cpp",
-			"settings":
-			{
-				"buffer_size": 18214,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "animatoruiwindows.cpp",
 			"settings":
 			{
-				"buffer_size": 28990,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "particleSystem.h",
-			"settings":
-			{
-				"buffer_size": 4614,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
-			"settings":
-			{
-				"buffer_size": 47266,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.h",
-			"settings":
-			{
-				"buffer_size": 4981,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "animatoruiwindows.h",
-			"settings":
-			{
-				"buffer_size": 5189,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "robotarm.cpp",
-			"settings":
-			{
-				"buffer_size": 9444,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "modelerapp.cpp",
-			"settings":
-			{
-				"buffer_size": 5736,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "modelerdraw.cpp",
-			"settings":
-			{
-				"buffer_size": 11881,
+				"buffer_size": 30980,
 				"line_ending": "Unix"
 			}
 		}
@@ -632,20 +552,38 @@
 	},
 	"file_history":
 	[
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cinvcurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cinvcurveevaluator.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/customModel.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Bells and Whistles.txt",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cpp",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.h",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/linearcurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/beziercurveevaluator.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/beziercurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Makefile",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/curveevaluator.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c2curveevaluator.h",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c2curveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerdraw.cpp",
+		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
+		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simparameters.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catromcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Particle.h",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.cpp",
 		"/u/kwadia/public_html/springcapstone3d/index.html",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Makefile",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cpp",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/particleSystem.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/robotarm.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/vec.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/dcjaucurveevaluator.cpp",
@@ -656,18 +594,14 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.fl",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/lreisencurveevaluator.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/graphwidget.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/curveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerui.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c1bezcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cardcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c0bezcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/c0bezcurveevaluator.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/beziercurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/indicatorwindow.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/bsplinecurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/lreisencurveevaluator.h",
 		"/u/kwadia/cs312/Moss/Script Instructions",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/qbsplinecurveevaluator.cpp",
@@ -676,17 +610,11 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catromcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catmullromcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/catmullromcurveevaluator.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/beziercurveevaluator.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/curveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/linearcurveevaluator.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/linearcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerapp.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/mat.h",
-		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.h",
-		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/customModel.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/rulerwindow.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/.gitignore",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Final Project/fluids/simulation.cpp",
@@ -751,15 +679,7 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/texture.hpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/texture.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/scene.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/scene.hpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/menus.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/main.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/15_temp.frag",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/glew/include/GL/glew.h",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/glew/src/glew.c",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/12_toon_texture.frag",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/stb/stb_image.c",
-		"/u/kwadia/CS384G - Computer Graphics/Project 1/impressionist/impressionistDoc.cpp"
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/scene.hpp"
 	],
 	"find":
 	{
@@ -778,6 +698,28 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"iCtrlPtCount",
+			"yCoords",
+			"xCoords",
+			"xInters",
+			"xDs",
+			".x",
+			"D_y",
+			"D_x",
+			".x",
+			"springs_",
+			"remainingspringmap",
+			"newsprings",
+			"springstodelete",
+			"pruneOverstrainedSprings",
+			"q",
+			"vector",
+			"m_springStiffSlider",
+			"dampingStiffness",
+			"pruneOverstrainedSprings",
+			"m_springRestLenSlider",
+			"pruneOverstrainedSprings",
+			"double",
 			"p1Index",
 			"remainingparticlemap",
 			"springs_",
@@ -883,29 +825,7 @@
 			"tankScale",
 			"Theta",
 			"theta",
-			"TANK_SCALE",
-			"CHASIS_ROTATION",
-			"CHASIS_SCALE",
-			"z",
-			"y",
-			"drawBox",
-			"0.0",
-			"fuck",
-			"dist",
-			"clearBak",
-			"clearbake",
-			"0.00",
-			"vel",
-			";\n",
-			"size",
-			"floorDrag",
-			"drawPa",
-			"particles",
-			"(*itr).first",
-			"it",
-			"timeStampedParticles",
-			"thisParticles",
-			"timeStampedParticles"
+			"TANK_SCALE"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -924,102 +844,23 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/u/kwadia/CS384G - Computer Graphics/Project 4/Bells and Whistles.txt",
-					"settings":
-					{
-						"buffer_size": 998,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								806,
-								806
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "customModel.cpp",
-					"settings":
-					{
-						"buffer_size": 14878,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12554,
-								12554
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7220.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "particleSystem.cpp",
-					"settings":
-					{
-						"buffer_size": 18214,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7348,
-								7348
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 4415.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "animatoruiwindows.cpp",
 					"settings":
 					{
-						"buffer_size": 28990,
+						"buffer_size": 30980,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								21815,
-								21815
+								24780,
+								24780
 							]
 						],
 						"settings":
@@ -1029,200 +870,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 9639.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "particleSystem.h",
-					"settings":
-					{
-						"buffer_size": 4614,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								294,
-								294
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.cpp",
-					"settings":
-					{
-						"buffer_size": 47266,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								23957,
-								23957
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 10537.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 2/UniverseOfGooPart2/simulation.h",
-					"settings":
-					{
-						"buffer_size": 4981,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1659,
-								1659
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1071.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "animatoruiwindows.h",
-					"settings":
-					{
-						"buffer_size": 5189,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4980,
-								4980
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2397.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "robotarm.cpp",
-					"settings":
-					{
-						"buffer_size": 9444,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3942,
-								3942
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2040.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "modelerapp.cpp",
-					"settings":
-					{
-						"buffer_size": 5736,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1383,
-								1383
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1122.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "modelerdraw.cpp",
-					"settings":
-					{
-						"buffer_size": 11881,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								874,
-								874
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 10214.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1276,12 +924,8 @@
 		"selected_items":
 		[
 			[
-				"catm",
-				"catromcurveevaluator.cpp"
-			],
-			[
-				"par",
-				"Particle.h"
+				"anima",
+				"animatoruiwindows.cpp"
 			],
 			[
 				"ani",
@@ -1292,12 +936,72 @@
 				"particleSystem.cpp"
 			],
 			[
-				"catmu",
-				"catromcurveevaluator.cpp"
+				"bell",
+				"Bells and Whistles.txt"
+			],
+			[
+				"cus",
+				"customModel.cpp"
+			],
+			[
+				"line",
+				"linearcurveevaluator.cpp"
+			],
+			[
+				"gra",
+				"graphwidget.cpp"
+			],
+			[
+				"gr",
+				"graphwidget.cpp"
+			],
+			[
+				"graph",
+				"graphwidget.h"
+			],
+			[
+				"make",
+				"Makefile"
+			],
+			[
+				"bez",
+				"beziercurveevaluator.cpp"
+			],
+			[
+				"curv",
+				"curveevaluator.h"
+			],
+			[
+				"mak",
+				"Makefile"
+			],
+			[
+				"anim",
+				"animatoruiwindows.cpp"
+			],
+			[
+				"bezi",
+				"beziercurveevaluator.cpp"
+			],
+			[
+				"bsp",
+				"bsplinecurveevaluator.cpp"
 			],
 			[
 				"card",
 				"cardcurveevaluator.cpp"
+			],
+			[
+				"catm",
+				"catromcurveevaluator.cpp"
+			],
+			[
+				"par",
+				"Particle.h"
+			],
+			[
+				"catmu",
+				"catromcurveevaluator.cpp"
 			],
 			[
 				"robo",
@@ -1306,14 +1010,6 @@
 			[
 				"mod",
 				"modelerdraw.cpp"
-			],
-			[
-				"anim",
-				"animatoruiwindows.cpp"
-			],
-			[
-				"mak",
-				"Makefile"
 			],
 			[
 				"model",
@@ -1352,18 +1048,6 @@
 				"curveevaluator.cpp"
 			],
 			[
-				"make",
-				"Makefile"
-			],
-			[
-				"gra",
-				"graphwidget.h"
-			],
-			[
-				"bezi",
-				"beziercurveevaluator.cpp"
-			],
-			[
 				"ro",
 				"robotarm.cpp"
 			],
@@ -1376,16 +1060,8 @@
 				"bsplinecurveevaluator.cpp"
 			],
 			[
-				"bez",
-				"beziercurveevaluator.cpp"
-			],
-			[
 				"catr",
 				"catromcurveevaluator.cpp"
-			],
-			[
-				"anima",
-				"animatoruiwindows.cpp"
 			],
 			[
 				"bspl",
@@ -1550,10 +1226,6 @@
 			[
 				"bb",
 				"src/scene/bbox.h"
-			],
-			[
-				"graph",
-				"src/ui/GraphicalUI.cpp"
 			],
 			[
 				"trac",
