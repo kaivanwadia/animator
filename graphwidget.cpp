@@ -35,6 +35,7 @@
 #include "lreisencurveevaluator.h"
 #include "c1bezcurveevaluator.h"
 #include "c2curveevaluator.h"
+#include "cinvcurveevaluator.h"
 
 #define LEFT		1
 #define MIDDLE		2
@@ -133,6 +134,7 @@ m_flcCurrCurve(FL_BLACK)
 	m_ppceCurveEvaluators[CURVE_TYPE_LREISEN] = new LReisenCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_C0BEZ] = new BezierCurveEvaluator();
 	m_ppceCurveEvaluators[CURVE_TYPE_C1BEZ] = new C1BezCurveEvaluator();
+	m_ppceCurveEvaluators[CURVE_TYPE_CINVBEZ] = new CInvBezCurveEvaluator();
 }
 
 GraphWidget::~GraphWidget()

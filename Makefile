@@ -22,7 +22,7 @@ ALL.O = bitmap.o camera.o color.o curve.o curveevaluator.o \
         graphwidget.o indicatorwindow.o linearcurveevaluator.o bsplinecurveevaluator.o \
         beziercurveevaluator.o catromcurveevaluator.o cardcurveevaluator.o dcjaucurveevaluator.o \
         qbsplinecurveevaluator.o lreisencurveevaluator.o c1bezcurveevaluator.o c2curveevaluator.o \
-        modelerapp.o modelerdraw.o modelerui.o animatoruiwindows.o \
+        cinvcurveevaluator.o modelerapp.o modelerdraw.o modelerui.o animatoruiwindows.o \
         modelerview.o particleSystem.o point.o \
         rect.o customModel.o rulerwindow.o
 

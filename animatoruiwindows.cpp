@@ -55,6 +55,7 @@ Fl_Menu_Item ModelerUIWindows::menu_m_pchoCurveType[] = {
 Fl_Menu_Item ModelerUIWindows::menu_m_bezierCurveType[] = {
  {"C0 Continuity", 0,  0, 0, 0, 0, 0, 12, 0},
  {"C1 Continuity", 0,  0, 0, 0, 0, 0, 12, 0},
+ {"C-Inv Continuity", 0,  0, 0, 0, 0, 0, 12, 0},
  {0}
 };
 
@@ -102,6 +103,11 @@ void ModelerUIWindows::cb_bezierCurveType(Fl_Widget* o, void* v)
   else if (choice == 1)
   {
     ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_C1BEZ); // C1 Continuity Bezier
+    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
+  }
+  else if (choice == 2)
+  {
+    ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->currCurveType(CURVE_TYPE_CINVBEZ); // C-inv Continuity Bezier
     ((ModelerUIWindows*)(o->user_data()))->m_pwndGraphWidget->redraw();
   }
 }
