@@ -50,10 +50,10 @@ enum TANK_CONTROLS
 void ground(float h);
 void drawCube(float len, float wid, float hei);
 
-void tankChasis(float len, float wid, float hei);
-void drawBumper(float len, float wid, float hei);
+void tankChasis(float len, float wid, float hei, float red, float green, float blue);
+void drawBumper(float len, float wid, float hei, float red, float green, float blue);
 void drawWheels(float cLen, float cWid, float cHei);
-void drawTurretBase(float len, float wid, float hei);
+void drawTurretBase(float len, float wid, float hei, float red, float green, float blue);
 void drawDoor(float len, float wid, float hei);
 void drawTopGun(float gunLength, float gunRotation, int tankNo);
 void drawTurret(float turretZRot, float turretLength, int tankNo);
@@ -161,14 +161,14 @@ void RobotArm::draw()
 		glTranslatef(t1X, 0.2, t1Z); //Translate the whole tank
 		glRotatef(t1Theta, 0.0, 1.0, 0.0); // Rotate the whole tank
 		glPushMatrix();
-			tankChasis(2.5, 1.5, 1);
+			tankChasis(2.5, 1.5, 1, 1, 0, 0);
 			glPushMatrix(); // Drawing front of tank
 				glTranslatef(-(2.5)/2, (1.5)/3, -(1)/1.33);
-				drawBumper(2.5, 1, 1.5);
+				drawBumper(2.5, 1, 1.5, 1, 0, 0);
 			glPopMatrix();
 			glPushMatrix(); // Drawing back of tank
 				glTranslatef((2.5)/2, (1.5)/3, -(1)/1.33);
-				drawBumper(2.5, 1, 1.5);
+				drawBumper(2.5, 1, 1.5, 1, 0, 0);
 			glPopMatrix();
 			glPushMatrix(); // Draw Right wheels
 				drawWheels(2.5, 1, 1.5);
@@ -178,7 +178,7 @@ void RobotArm::draw()
 		glTranslatef(0.2, 1, 0.0); // Move to the top of the Chasis
 		glRotatef(t1TopRotation, 0.0, 1.0, 0.0); // Rotation for top of tank
 		glPushMatrix();
-			drawTurretBase(2.5, 1, 1.5); // Draw the turret base cylinder
+			drawTurretBase(2.5, 1, 1.5, 0, 1, 0); // Draw the turret base cylinder
 			glPushMatrix(); // Draw opening of the tank
 				glTranslatef(0.0, 0.3, 0.0); // Move to top of turret base
 				drawDoor(2.5, 1, 1.5);
@@ -197,14 +197,14 @@ void RobotArm::draw()
 		glTranslatef(t2X, 0.2, t2Z); //Translate the whole tank
 		glRotatef(t2Theta, 0.0, 1.0, 0.0); // Rotate the whole tank
 		glPushMatrix();
-			tankChasis(2.5, 1.5, 1);
+			tankChasis(2.5, 1.5, 1, 0, 1, 0);
 			glPushMatrix(); // Drawing front of tank
 				glTranslatef(-(2.5)/2, (1.5)/3, -(1)/1.33);
-				drawBumper(2.5, 1, 1.5);
+				drawBumper(2.5, 1, 1.5, 0, 1, 0);
 			glPopMatrix();
 			glPushMatrix(); // Drawing back of tank
 				glTranslatef((2.5)/2, (1.5)/3, -(1)/1.33);
-				drawBumper(2.5, 1, 1.5);
+				drawBumper(2.5, 1, 1.5, 0, 1, 0);
 			glPopMatrix();
 			glPushMatrix(); // Draw Right wheels
 				drawWheels(2.5, 1, 1.5);
@@ -214,7 +214,7 @@ void RobotArm::draw()
 		glTranslatef(0.2, 1, 0.0); // Move to the top of the Chasis
 		glRotatef(t2TopRotation, 0.0, 1.0, 0.0); // Rotation for top of tank
 		glPushMatrix();
-			drawTurretBase(2.5, 1, 1.5); // Draw the turret base cylinder
+			drawTurretBase(2.5, 1, 1.5, 1, 0, 0); // Draw the turret base cylinder
 			glPushMatrix(); // Draw opening of the tank
 				glTranslatef(0.0, 0.3, 0.0); // Move to top of turret base
 				drawDoor(2.5, 1, 1.5);
@@ -314,10 +314,10 @@ void drawDoor(float len, float wid, float hei)
 	glPopMatrix();
 }
 
-void drawTurretBase(float len, float wid, float hei)
+void drawTurretBase(float len, float wid, float hei, float red, float green, float blue)
 {
-	setDiffuseColor(0, 1, 0);
-	setAmbientColor(0, 1, 0);
+	setDiffuseColor( red, green, blue );
+	setAmbientColor( red, green, blue );
 	glPushMatrix();
 		glRotatef(-90.0, 1.0, 0.0, 0.0);
 		drawCylinder(0.3, 0.65, 0.65);
@@ -451,19 +451,19 @@ void drawWheels(float cLen, float cWid, float cHei)
 	glPopMatrix();
 }
 
-void drawBumper(float len, float wid, float hei)
+void drawBumper(float len, float wid, float hei, float red, float green, float blue)
 {
-	setDiffuseColor(1, 0, 0);
-	setAmbientColor(1, 0, 0);
+	setDiffuseColor( red, green, blue );
+	setAmbientColor( red, green, blue );
 	glPushMatrix();
 		drawCylinder(wid*1.5, hei/3, hei/3);
 	glPopMatrix();
 }
 
-void tankChasis(float len, float wid, float hei)
+void tankChasis(float len, float wid, float hei, float red, float green, float blue)
 {
-	setDiffuseColor( 1, 0, 0 );
-	setAmbientColor( 1, 0, 0 );
+	setDiffuseColor( red, green, blue );
+	setAmbientColor( red, green, blue );
 	glPushMatrix();
 		drawCube(len, wid ,hei);
 	glPopMatrix();
