@@ -158,7 +158,7 @@ void RobotArm::draw()
 	
 	glPushMatrix(); // Tank 1
 		glScalef(t1Scale, t1Scale, t1Scale); // Scale the whole tank
-		glTranslatef(t1X, 0.5, t1Z); //Translate the whole tank
+		glTranslatef(t1X, 0.2, t1Z); //Translate the whole tank
 		glRotatef(t1Theta, 0.0, 1.0, 0.0); // Rotate the whole tank
 		glPushMatrix();
 			tankChasis(2.5, 1.5, 1);
@@ -194,7 +194,7 @@ void RobotArm::draw()
 
 	glPushMatrix(); // Tank 2
 		glScalef(t2Scale, t2Scale, t2Scale); // Scale the whole tank
-		glTranslatef(t2X, 0.5, t2Z); //Translate the whole tank
+		glTranslatef(t2X, 0.2, t2Z); //Translate the whole tank
 		glRotatef(t2Theta, 0.0, 1.0, 0.0); // Rotate the whole tank
 		glPushMatrix();
 			tankChasis(2.5, 1.5, 1);
@@ -327,49 +327,127 @@ void drawTurretBase(float len, float wid, float hei)
 void drawWheels(float cLen, float cWid, float cHei)
 {
 	double radius  = cLen/(5 * 2.5);
-	setDiffuseColor( 1, 1, 1);
-	setAmbientColor( 1, 1, 1);
 	// Right wheels
 	glPushMatrix(); // Rear wheel
+		setDiffuseColor( 1, 1, 1);
+		setAmbientColor( 1, 1, 1);
 		glTranslatef(cLen/2.5, 0.0, -cWid/1.15);
 		drawCylinder(cWid/4, radius, radius);
+		glPushMatrix();
+			setDiffuseColor( 1, 1, 0);
+			setAmbientColor( 1, 1, 0);
+			glTranslatef(0, 0, -0.1);
+			drawCylinder(cWid/9, radius/2.5, radius/2.5);
+		glPopMatrix();
 	glPopMatrix();
 	glPushMatrix(); // Rear - 1 wheel
+		setDiffuseColor( 1, 1, 1);
+		setAmbientColor( 1, 1, 1);
 		glTranslatef(cLen/5, 0.0, -cWid/1.15);
 		drawCylinder(cWid/4, radius, radius);
+		glPushMatrix();
+			setDiffuseColor( 1, 1, 0);
+			setAmbientColor( 1, 1, 0);
+			glTranslatef(0, 0, -0.1);
+			drawCylinder(cWid/9, radius/2.5, radius/2.5);
+		glPopMatrix();
 	glPopMatrix();
 	glPushMatrix(); // Center wheel
+		setDiffuseColor( 1, 1, 1);
+		setAmbientColor( 1, 1, 1);
 		glTranslatef(0.0, 0.0, -cWid/1.15);
 		drawCylinder(cWid/4, radius, radius);
+		glPushMatrix();
+			setDiffuseColor( 1, 1, 0);
+			setAmbientColor( 1, 1, 0);
+			glTranslatef(0, 0, -0.1);
+			drawCylinder(cWid/9, radius/2.5, radius/2.5);
+		glPopMatrix();
 	glPopMatrix();
 	glPushMatrix(); // Front - 1 wheel
+		setDiffuseColor( 1, 1, 1);
+		setAmbientColor( 1, 1, 1);
 		glTranslatef(-cLen/5, 0.0, -cWid/1.15);
 		drawCylinder(cWid/4, radius, radius);
+		glPushMatrix();
+			setDiffuseColor( 1, 1, 0);
+			setAmbientColor( 1, 1, 0);
+			glTranslatef(0, 0, -0.1);
+			drawCylinder(cWid/9, radius/2.5, radius/2.5);
+		glPopMatrix();
 	glPopMatrix();
 	glPushMatrix(); // Front wheel
+		setDiffuseColor( 1, 1, 1);
+		setAmbientColor( 1, 1, 1);
 		glTranslatef(-cLen/2.5, 0.0, -cWid/1.15);
 		drawCylinder(cWid/4, radius, radius);
+		glPushMatrix();
+			setDiffuseColor( 1, 1, 0);
+			setAmbientColor( 1, 1, 0);
+			glTranslatef(0, 0, -0.1);
+			drawCylinder(cWid/9, radius/2.5, radius/2.5);
+		glPopMatrix();
 	glPopMatrix();
 	// Left wheels
 	glPushMatrix(); // Rear wheel
+		setDiffuseColor( 1, 1, 1);
+		setAmbientColor( 1, 1, 1);
 		glTranslatef(cLen/2.5, 0.0, cWid/1.55);
 		drawCylinder(cWid/4, radius, radius);
+		glPushMatrix();
+			setDiffuseColor( 1, 1, 0);
+			setAmbientColor( 1, 1, 0);
+			glTranslatef(0, 0, 0.25);
+			drawCylinder(cWid/9, radius/2.5, radius/2.5);
+		glPopMatrix();
 	glPopMatrix();
 	glPushMatrix(); // Rear - 1 wheel
+		setDiffuseColor( 1, 1, 1);
+		setAmbientColor( 1, 1, 1);
 		glTranslatef(cLen/5, 0.0, cWid/1.55);
 		drawCylinder(cWid/4, radius, radius);
+		glPushMatrix();
+			setDiffuseColor( 1, 1, 0);
+			setAmbientColor( 1, 1, 0);
+			glTranslatef(0, 0, 0.25);
+			drawCylinder(cWid/9, radius/2.5, radius/2.5);
+		glPopMatrix();
 	glPopMatrix();
 	glPushMatrix(); // Center wheel
+		setDiffuseColor( 1, 1, 1);
+		setAmbientColor( 1, 1, 1);
 		glTranslatef(0.0, 0.0, cWid/1.55);
 		drawCylinder(cWid/4, radius, radius);
+		glPushMatrix();
+			setDiffuseColor( 1, 1, 0);
+			setAmbientColor( 1, 1, 0);
+			glTranslatef(0, 0, 0.25);
+			drawCylinder(cWid/9, radius/2.5, radius/2.5);
+		glPopMatrix();
 	glPopMatrix();
 	glPushMatrix(); // Front - 1 wheel
+		setDiffuseColor( 1, 1, 1);
+		setAmbientColor( 1, 1, 1);
 		glTranslatef(-cLen/5, 0.0, cWid/1.55);
 		drawCylinder(cWid/4, radius, radius);
+		glPushMatrix();
+			setDiffuseColor( 1, 1, 0);
+			setAmbientColor( 1, 1, 0);
+			glTranslatef(0, 0, 0.25);
+			drawCylinder(cWid/9, radius/2.5, radius/2.5);
+		glPopMatrix();
 	glPopMatrix();
 	glPushMatrix(); // Front wheel
+		setDiffuseColor( 1, 1, 1);
+		setAmbientColor( 1, 1, 1);
 		glTranslatef(-cLen/2.5, 0.0, cWid/1.55);
 		drawCylinder(cWid/4, radius, radius);
+		glPushMatrix();
+			setDiffuseColor( 1, 1, 0);
+			setAmbientColor( 1, 1, 0);
+			glTranslatef(0, 0, 0.25);
+			drawCylinder(cWid/9, radius/2.5, radius/2.5);
+		glPopMatrix();
 	glPopMatrix();
 }
 
