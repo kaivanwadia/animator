@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"glP",
+				"glPopMatrix"
+			],
+			[
 				"ptv",
 				"ptvEvaluatedCurvePts"
 			],
@@ -230,10 +234,6 @@
 			[
 				"tu",
 				"turretYRot"
-			],
-			[
-				"glP",
-				"glPopMatrix"
 			],
 			[
 				"t1tur",
@@ -526,6 +526,14 @@
 				"buffer_size": 30980,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "customModel.cpp",
+			"settings":
+			{
+				"buffer_size": 17482,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -552,6 +560,8 @@
 	},
 	"file_history":
 	[
+		"/u/kwadia/public_html/springcapstone3d/index.html",
+		"/u/kwadia/Downloads/ConnectFour.java",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cinvcurveevaluator.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/cinvcurveevaluator.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/customModel.cpp",
@@ -582,7 +592,6 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/Particle.h",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/Universe Of Goo Milestone 1/UniverseOfGoo/simulation.h",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/animatoruiwindows.cxx",
-		"/u/kwadia/public_html/springcapstone3d/index.html",
 		"/u/kwadia/Old Courses/PhysicalSimCS395T/BirdsMilestone2/FuriousBirdsMilestone2/simulation.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/modelerview.cpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 4/animator/vec.h",
@@ -678,8 +687,7 @@
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/glsl/09_combo.frag",
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/texture.hpp",
 		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/texture.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/scene.cpp",
-		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/scene.hpp"
+		"/u/kwadia/CS384G - Computer Graphics/Project 3/shader/src/scene.cpp"
 	],
 	"find":
 	{
@@ -698,6 +706,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"isGameFinished",
+			"playersTurn",
+			"drawTurretBase",
+			"setDiffuseColor",
+			"tankChasis",
+			"drawWheels",
+			"2",
 			"iCtrlPtCount",
 			"yCoords",
 			"xCoords",
@@ -818,14 +833,7 @@
 			"15",
 			"-cWid",
 			"scale/2",
-			"TANK1_SCALE",
-			"TANK1_ROTATION",
-			"TANK1_CHASIS_ROTATION",
-			"t1chasisTheta",
-			"tankScale",
-			"Theta",
-			"theta",
-			"TANK_SCALE"
+			"TANK1_SCALE"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -844,7 +852,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -859,8 +867,8 @@
 						"selection":
 						[
 							[
-								24780,
-								24780
+								23212,
+								23212
 							]
 						],
 						"settings":
@@ -871,6 +879,33 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 10214.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "customModel.cpp",
+					"settings":
+					{
+						"buffer_size": 17482,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7021,
+								7021
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3542.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -924,6 +959,10 @@
 		"selected_items":
 		[
 			[
+				"cus",
+				"customModel.cpp"
+			],
+			[
 				"anima",
 				"animatoruiwindows.cpp"
 			],
@@ -938,10 +977,6 @@
 			[
 				"bell",
 				"Bells and Whistles.txt"
-			],
-			[
-				"cus",
-				"customModel.cpp"
 			],
 			[
 				"line",
